@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sistema de Caixa", "Sistema de Caixa\Sistema de Caixa.csproj", "{188AC19D-6005-487B-B7BF-E08B1FFA147A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{31473B6A-89CC-4A1C-8458-25763ADDB9D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{188AC19D-6005-487B-B7BF-E08B1FFA147A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{188AC19D-6005-487B-B7BF-E08B1FFA147A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{188AC19D-6005-487B-B7BF-E08B1FFA147A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{188AC19D-6005-487B-B7BF-E08B1FFA147A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B568027B-E0C0-495D-81DE-3AF0B8A35AE1}
+	EndGlobalSection
+EndGlobal
