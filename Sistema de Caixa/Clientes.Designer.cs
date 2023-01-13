@@ -37,6 +37,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbEndereco = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtDataNasc = new System.Windows.Forms.MaskedTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCNPJ = new System.Windows.Forms.MaskedTextBox();
@@ -47,10 +51,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbEndereco = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -135,6 +141,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.txtPesquisar);
+            this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.cbEndereco);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtDataNasc);
@@ -151,6 +160,39 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 3;
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.Location = new System.Drawing.Point(18, 345);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(780, 36);
+            this.txtPesquisar.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 312);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(104, 30);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Pesquisar";
+            // 
+            // cbEndereco
+            // 
+            this.cbEndereco.FormattingEnabled = true;
+            this.cbEndereco.Location = new System.Drawing.Point(18, 271);
+            this.cbEndereco.Name = "cbEndereco";
+            this.cbEndereco.Size = new System.Drawing.Size(780, 38);
+            this.cbEndereco.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 238);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 30);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Endereço";
             // 
             // txtDataNasc
             // 
@@ -236,26 +278,32 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 30);
+            this.label1.Size = new System.Drawing.Size(73, 30);
             this.label1.TabIndex = 1;
-            this.label1.Text = "nome";
+            this.label1.Text = "Nome";
             // 
-            // label6
+            // dataGridView1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 238);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 30);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Endereço";
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.editar,
+            this.apagar});
+            this.dataGridView1.Location = new System.Drawing.Point(18, 387);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(780, 237);
+            this.dataGridView1.TabIndex = 16;
             // 
-            // cbEndereco
+            // editar
             // 
-            this.cbEndereco.FormattingEnabled = true;
-            this.cbEndereco.Location = new System.Drawing.Point(18, 271);
-            this.cbEndereco.Name = "cbEndereco";
-            this.cbEndereco.Size = new System.Drawing.Size(780, 38);
-            this.cbEndereco.TabIndex = 13;
+            this.editar.HeaderText = "";
+            this.editar.Name = "editar";
+            // 
+            // apagar
+            // 
+            this.apagar.HeaderText = "";
+            this.apagar.Name = "apagar";
             // 
             // Clientes
             // 
@@ -273,6 +321,7 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -301,5 +350,10 @@
         private Label label5;
         private ComboBox cbEndereco;
         private Label label6;
+        private TextBox txtPesquisar;
+        private Label label7;
+        private DataGridView dataGridView1;
+        private DataGridViewImageColumn editar;
+        private DataGridViewImageColumn apagar;
     }
 }
