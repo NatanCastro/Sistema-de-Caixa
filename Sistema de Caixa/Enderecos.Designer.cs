@@ -82,7 +82,7 @@
             this.tsSair});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1604, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1370, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -185,13 +185,14 @@
             // 
             // txtStreet
             // 
-            this.txtStreet.Location = new System.Drawing.Point(459, 204);
+            this.txtStreet.Location = new System.Drawing.Point(18, 53);
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(656, 36);
             this.txtStreet.TabIndex = 3;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtStreet);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.dataGridView1);
@@ -204,7 +205,7 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(441, 151);
+            this.panel1.Location = new System.Drawing.Point(200, 100);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 4;
@@ -278,7 +279,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(18, 330);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 30);
+            this.label6.Size = new System.Drawing.Size(103, 30);
             this.label6.TabIndex = 2;
             this.label6.Text = "Pesquisar";
             // 
@@ -294,8 +295,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sistema_de_Caixa.Properties.Resources.wallpaper;
-            this.ClientSize = new System.Drawing.Size(1604, 881);
-            this.Controls.Add(this.txtStreet);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsSave = new System.Windows.Forms.ToolStripButton();
+            this.tsSavar = new System.Windows.Forms.ToolStripButton();
             this.tsEdit = new System.Windows.Forms.ToolStripButton();
             this.tsCancel = new System.Windows.Forms.ToolStripButton();
             this.tsDelete = new System.Windows.Forms.ToolStripButton();
@@ -37,6 +37,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbCadEndereco = new System.Windows.Forms.PictureBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbEndereco = new System.Windows.Forms.ComboBox();
@@ -51,11 +55,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.label8 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCadEndereco)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +67,7 @@
             this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsSave,
+            this.tsSavar,
             this.tsEdit,
             this.tsCancel,
             this.tsDelete,
@@ -73,20 +76,21 @@
             this.tsSair});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1904, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1370, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsSave
+            // tsSavar
             // 
-            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsSave.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tsSave.Image = global::Sistema_de_Caixa.Properties.Resources.saveIcon;
-            this.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(23, 22);
-            this.tsSave.Text = "toolStripButton1";
-            this.tsSave.ToolTipText = "salvar";
+            this.tsSavar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsSavar.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.tsSavar.Image = global::Sistema_de_Caixa.Properties.Resources.saveIcon;
+            this.tsSavar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSavar.Name = "tsSavar";
+            this.tsSavar.Size = new System.Drawing.Size(23, 22);
+            this.tsSavar.Text = "toolStripButton1";
+            this.tsSavar.ToolTipText = "salvar";
+            this.tsSavar.Click += new System.EventHandler(this.tsSavar_Click);
             // 
             // tsEdit
             // 
@@ -141,6 +145,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.pbCadEndereco);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Controls.Add(this.txtPesquisar);
             this.panel1.Controls.Add(this.label7);
@@ -156,10 +161,44 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtNome);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(441, 151);
+            this.panel1.Location = new System.Drawing.Point(200, 100);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 3;
+            // 
+            // pbCadEndereco
+            // 
+            this.pbCadEndereco.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
+            this.pbCadEndereco.Location = new System.Drawing.Point(773, 275);
+            this.pbCadEndereco.Name = "pbCadEndereco";
+            this.pbCadEndereco.Size = new System.Drawing.Size(30, 30);
+            this.pbCadEndereco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCadEndereco.TabIndex = 17;
+            this.pbCadEndereco.TabStop = false;
+            this.pbCadEndereco.Click += new System.EventHandler(this.pbCadEndereco_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.editar,
+            this.apagar});
+            this.dataGridView1.Location = new System.Drawing.Point(18, 387);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 25;
+            this.dataGridView1.Size = new System.Drawing.Size(780, 237);
+            this.dataGridView1.TabIndex = 16;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "";
+            this.editar.Name = "editar";
+            // 
+            // apagar
+            // 
+            this.apagar.HeaderText = "";
+            this.apagar.Name = "apagar";
             // 
             // txtPesquisar
             // 
@@ -173,7 +212,7 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(18, 312);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(104, 30);
+            this.label7.Size = new System.Drawing.Size(103, 30);
             this.label7.TabIndex = 14;
             this.label7.Text = "Pesquisar";
             // 
@@ -182,7 +221,7 @@
             this.cbEndereco.FormattingEnabled = true;
             this.cbEndereco.Location = new System.Drawing.Point(18, 271);
             this.cbEndereco.Name = "cbEndereco";
-            this.cbEndereco.Size = new System.Drawing.Size(780, 38);
+            this.cbEndereco.Size = new System.Drawing.Size(749, 38);
             this.cbEndereco.TabIndex = 13;
             // 
             // label6
@@ -201,7 +240,7 @@
             this.txtDataNasc.Name = "txtDataNasc";
             this.txtDataNasc.Size = new System.Drawing.Size(96, 36);
             this.txtDataNasc.TabIndex = 11;
-            // 
+            //
             // label5
             // 
             this.label5.AutoSize = true;
@@ -253,7 +292,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(150, 166);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 30);
+            this.label3.Size = new System.Drawing.Size(62, 30);
             this.label3.TabIndex = 4;
             this.label3.Text = "CNPJ";
             // 
@@ -282,45 +321,35 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nome";
             // 
-            // dataGridView1
+            // label8
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.editar,
-            this.apagar});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 387);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 237);
-            this.dataGridView1.TabIndex = 16;
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "";
-            this.editar.Name = "editar";
-            // 
-            // apagar
-            // 
-            this.apagar.HeaderText = "";
-            this.apagar.Name = "apagar";
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(497, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(212, 30);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Cadastro de Clientes";
             // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sistema_de_Caixa.Properties.Resources.wallpaper;
-            this.ClientSize = new System.Drawing.Size(1904, 1042);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Clientes";
             this.Text = "Clientes";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCadEndereco)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -330,7 +359,7 @@
         #endregion
 
         private ToolStrip toolStrip1;
-        private ToolStripButton tsSave;
+        private ToolStripButton tsSavar;
         private ToolStripButton tsEdit;
         private ToolStripButton tsCancel;
         private ToolStripButton tsDelete;
@@ -355,5 +384,7 @@
         private DataGridView dataGridView1;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
+        private PictureBox pbCadEndereco;
+        private Label label8;
     }
 }
