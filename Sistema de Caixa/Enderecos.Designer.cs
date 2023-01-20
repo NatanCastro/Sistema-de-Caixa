@@ -30,10 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsSave = new System.Windows.Forms.ToolStripButton();
-            this.tsEdit = new System.Windows.Forms.ToolStripButton();
-            this.tsCancel = new System.Windows.Forms.ToolStripButton();
-            this.tsDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsSalvar = new System.Windows.Forms.ToolStripButton();
+            this.tsEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsCancelar = new System.Windows.Forms.ToolStripButton();
+            this.tsDeletar = new System.Windows.Forms.ToolStripButton();
             this.tsBuscar = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
@@ -41,21 +41,21 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtStreet = new System.Windows.Forms.TextBox();
+            this.txtRua = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgEndereco = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.deletar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.txtCEP = new System.Windows.Forms.TextBox();
+            this.txtEstado = new System.Windows.Forms.TextBox();
+            this.txtCidade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtNum = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEndereco)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -73,10 +73,10 @@
             // 
             this.toolStrip1.BackColor = System.Drawing.Color.White;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsSave,
-            this.tsEdit,
-            this.tsCancel,
-            this.tsDelete,
+            this.tsSalvar,
+            this.tsEditar,
+            this.tsCancelar,
+            this.tsDeletar,
             this.tsBuscar,
             this.toolStripSeparator1,
             this.tsSair});
@@ -86,45 +86,45 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // tsSave
+            // tsSalvar
             // 
-            this.tsSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsSave.Image = global::Sistema_de_Caixa.Properties.Resources.saveIcon;
-            this.tsSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsSave.Name = "tsSave";
-            this.tsSave.Size = new System.Drawing.Size(23, 22);
-            this.tsSave.Text = "toolStripButton1";
-            this.tsSave.ToolTipText = "salvar";
+            this.tsSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsSalvar.Image = global::Sistema_de_Caixa.Properties.Resources.saveIcon;
+            this.tsSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSalvar.Name = "tsSalvar";
+            this.tsSalvar.Size = new System.Drawing.Size(23, 22);
+            this.tsSalvar.Text = "toolStripButton1";
+            this.tsSalvar.ToolTipText = "salvar";
             // 
-            // tsEdit
+            // tsEditar
             // 
-            this.tsEdit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsEdit.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
-            this.tsEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsEdit.Name = "tsEdit";
-            this.tsEdit.Size = new System.Drawing.Size(23, 22);
-            this.tsEdit.Text = "toolStripButton2";
-            this.tsEdit.ToolTipText = "editar";
+            this.tsEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsEditar.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
+            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEditar.Name = "tsEditar";
+            this.tsEditar.Size = new System.Drawing.Size(23, 22);
+            this.tsEditar.Text = "toolStripButton2";
+            this.tsEditar.ToolTipText = "editar";
             // 
-            // tsCancel
+            // tsCancelar
             // 
-            this.tsCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsCancel.Image = global::Sistema_de_Caixa.Properties.Resources.cancelIcon;
-            this.tsCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsCancel.Name = "tsCancel";
-            this.tsCancel.Size = new System.Drawing.Size(23, 22);
-            this.tsCancel.Text = "toolStripButton3";
-            this.tsCancel.ToolTipText = "cancelar";
+            this.tsCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsCancelar.Image = global::Sistema_de_Caixa.Properties.Resources.cancelIcon;
+            this.tsCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCancelar.Name = "tsCancelar";
+            this.tsCancelar.Size = new System.Drawing.Size(23, 22);
+            this.tsCancelar.Text = "toolStripButton3";
+            this.tsCancelar.ToolTipText = "cancelar";
             // 
-            // tsDelete
+            // tsDeletar
             // 
-            this.tsDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsDelete.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIcon;
-            this.tsDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsDelete.Name = "tsDelete";
-            this.tsDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsDelete.Text = "toolStripButton4";
-            this.tsDelete.ToolTipText = "apagar";
+            this.tsDeletar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsDeletar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIcon;
+            this.tsDeletar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsDeletar.Name = "tsDeletar";
+            this.tsDeletar.Size = new System.Drawing.Size(23, 22);
+            this.tsDeletar.Text = "toolStripButton4";
+            this.tsDeletar.ToolTipText = "apagar";
             // 
             // tsBuscar
             // 
@@ -183,29 +183,29 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Cidade";
             // 
-            // txtStreet
+            // txtRua
             // 
-            this.txtStreet.Location = new System.Drawing.Point(18, 53);
-            this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(656, 36);
-            this.txtStreet.TabIndex = 3;
+            this.txtRua.Location = new System.Drawing.Point(18, 53);
+            this.txtRua.Name = "txtRua";
+            this.txtRua.Size = new System.Drawing.Size(656, 36);
+            this.txtRua.TabIndex = 3;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.txtStreet);
+            this.panel1.Controls.Add(this.txtRua);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.textBox5);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.txtCity);
+            this.panel1.Controls.Add(this.dgEndereco);
+            this.panel1.Controls.Add(this.txtPesquisar);
+            this.panel1.Controls.Add(this.txtCEP);
+            this.panel1.Controls.Add(this.txtEstado);
+            this.panel1.Controls.Add(this.txtCidade);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtNum);
+            this.panel1.Controls.Add(this.txtNumero);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(200, 100);
+            this.panel1.Location = new System.Drawing.Point(397, 98);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 4;
@@ -219,18 +219,18 @@
             this.label7.TabIndex = 5;
             this.label7.Text = "CEP";
             // 
-            // dataGridView1
+            // dgEndereco
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgEndereco.AllowUserToAddRows = false;
+            this.dgEndereco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgEndereco.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.editar,
             this.deletar});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 405);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(784, 213);
-            this.dataGridView1.TabIndex = 4;
+            this.dgEndereco.Location = new System.Drawing.Point(18, 405);
+            this.dgEndereco.Name = "dgEndereco";
+            this.dgEndereco.RowTemplate.Height = 25;
+            this.dgEndereco.Size = new System.Drawing.Size(784, 213);
+            this.dgEndereco.TabIndex = 4;
             // 
             // editar
             // 
@@ -246,33 +246,33 @@
             this.deletar.Name = "deletar";
             this.deletar.Width = 6;
             // 
-            // textBox5
+            // txtPesquisar
             // 
-            this.textBox5.Location = new System.Drawing.Point(18, 363);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(784, 36);
-            this.textBox5.TabIndex = 3;
+            this.txtPesquisar.Location = new System.Drawing.Point(18, 363);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(784, 36);
+            this.txtPesquisar.TabIndex = 3;
             // 
-            // textBox6
+            // txtCEP
             // 
-            this.textBox6.Location = new System.Drawing.Point(18, 269);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(784, 36);
-            this.textBox6.TabIndex = 3;
+            this.txtCEP.Location = new System.Drawing.Point(18, 269);
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(784, 36);
+            this.txtCEP.TabIndex = 3;
             // 
-            // textBox4
+            // txtEstado
             // 
-            this.textBox4.Location = new System.Drawing.Point(18, 197);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(784, 36);
-            this.textBox4.TabIndex = 3;
+            this.txtEstado.Location = new System.Drawing.Point(18, 197);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.Size = new System.Drawing.Size(784, 36);
+            this.txtEstado.TabIndex = 3;
             // 
-            // txtCity
+            // txtCidade
             // 
-            this.txtCity.Location = new System.Drawing.Point(18, 125);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(784, 36);
-            this.txtCity.TabIndex = 3;
+            this.txtCidade.Location = new System.Drawing.Point(18, 125);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(784, 36);
+            this.txtCidade.TabIndex = 3;
             // 
             // label6
             // 
@@ -283,12 +283,12 @@
             this.label6.TabIndex = 2;
             this.label6.Text = "Pesquisar";
             // 
-            // txtNum
+            // txtNumero
             // 
-            this.txtNum.Location = new System.Drawing.Point(680, 53);
-            this.txtNum.Name = "txtNum";
-            this.txtNum.Size = new System.Drawing.Size(122, 36);
-            this.txtNum.TabIndex = 3;
+            this.txtNumero.Location = new System.Drawing.Point(680, 53);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(122, 36);
+            this.txtNumero.TabIndex = 3;
             // 
             // Enderecos
             // 
@@ -310,7 +310,7 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgEndereco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -320,10 +320,10 @@
 
         private Label label1;
         private ToolStrip toolStrip1;
-        private ToolStripButton tsSave;
-        private ToolStripButton tsEdit;
-        private ToolStripButton tsCancel;
-        private ToolStripButton tsDelete;
+        private ToolStripButton tsSalvar;
+        private ToolStripButton tsEditar;
+        private ToolStripButton tsCancelar;
+        private ToolStripButton tsDeletar;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripButton tsSair;
         private ToolStripTextBox tsBuscar;
@@ -331,17 +331,17 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private TextBox txtStreet;
+        private TextBox txtRua;
         private Panel panel1;
-        private TextBox txtCity;
-        private TextBox txtNum;
-        private TextBox textBox4;
-        private DataGridView dataGridView1;
+        private TextBox txtCidade;
+        private TextBox txtNumero;
+        private TextBox txtEstado;
+        private DataGridView dgEndereco;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn deletar;
-        private TextBox textBox5;
+        private TextBox txtPesquisar;
         private Label label6;
         private Label label7;
-        private TextBox textBox6;
+        private TextBox txtCEP;
     }
 }

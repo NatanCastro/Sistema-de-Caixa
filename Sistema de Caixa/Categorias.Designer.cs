@@ -28,19 +28,209 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsSalvar = new System.Windows.Forms.ToolStripButton();
+            this.tsEditar = new System.Windows.Forms.ToolStripButton();
+            this.tsCancelar = new System.Windows.Forms.ToolStripButton();
+            this.tsDeletar = new System.Windows.Forms.ToolStripButton();
+            this.tsBuscar = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsSair = new System.Windows.Forms.ToolStripButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgCategoria = new System.Windows.Forms.DataGridView();
+            this.txtPesquisar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtNome = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCategoria)).BeginInit();
             this.SuspendLayout();
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.BackColor = System.Drawing.Color.White;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsSalvar,
+            this.tsEditar,
+            this.tsCancelar,
+            this.tsDeletar,
+            this.tsBuscar,
+            this.toolStripSeparator1,
+            this.tsSair});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1370, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsSalvar
+            // 
+            this.tsSalvar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsSalvar.Image = global::Sistema_de_Caixa.Properties.Resources.saveIcon;
+            this.tsSalvar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSalvar.Name = "tsSalvar";
+            this.tsSalvar.Size = new System.Drawing.Size(23, 22);
+            this.tsSalvar.Text = "toolStripButton1";
+            this.tsSalvar.ToolTipText = "salvar";
+            // 
+            // tsEditar
+            // 
+            this.tsEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsEditar.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
+            this.tsEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsEditar.Name = "tsEditar";
+            this.tsEditar.Size = new System.Drawing.Size(23, 22);
+            this.tsEditar.Text = "toolStripButton2";
+            this.tsEditar.ToolTipText = "editar";
+            // 
+            // tsCancelar
+            // 
+            this.tsCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsCancelar.Image = global::Sistema_de_Caixa.Properties.Resources.cancelIcon;
+            this.tsCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsCancelar.Name = "tsCancelar";
+            this.tsCancelar.Size = new System.Drawing.Size(23, 22);
+            this.tsCancelar.Text = "toolStripButton3";
+            this.tsCancelar.ToolTipText = "cancelar";
+            // 
+            // tsDeletar
+            // 
+            this.tsDeletar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsDeletar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIcon;
+            this.tsDeletar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsDeletar.Name = "tsDeletar";
+            this.tsDeletar.Size = new System.Drawing.Size(23, 22);
+            this.tsDeletar.Text = "toolStripButton4";
+            this.tsDeletar.ToolTipText = "apagar";
+            // 
+            // tsBuscar
+            // 
+            this.tsBuscar.Name = "tsBuscar";
+            this.tsBuscar.Size = new System.Drawing.Size(169, 25);
+            this.tsBuscar.Visible = false;
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsSair
+            // 
+            this.tsSair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsSair.Image = global::Sistema_de_Caixa.Properties.Resources.exitIcon;
+            this.tsSair.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsSair.Name = "tsSair";
+            this.tsSair.Size = new System.Drawing.Size(23, 22);
+            this.tsSair.Text = "toolStripButton5";
+            this.tsSair.ToolTipText = "Sair";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgCategoria);
+            this.panel1.Controls.Add(this.txtPesquisar);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.txtNome);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(400, 142);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(600, 400);
+            this.panel1.TabIndex = 3;
+            // 
+            // dgCategoria
+            // 
+            this.dgCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCategoria.Location = new System.Drawing.Point(10, 191);
+            this.dgCategoria.Name = "dgCategoria";
+            this.dgCategoria.RowTemplate.Height = 25;
+            this.dgCategoria.Size = new System.Drawing.Size(580, 199);
+            this.dgCategoria.TabIndex = 4;
+            // 
+            // txtPesquisar
+            // 
+            this.txtPesquisar.Location = new System.Drawing.Point(10, 149);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(580, 36);
+            this.txtPesquisar.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(10, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(103, 30);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Pesquisar";
+            // 
+            // txtNome
+            // 
+            this.txtNome.Location = new System.Drawing.Point(10, 53);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(580, 36);
+            this.txtNome.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 30);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Nome";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(585, 65);
+            this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(214, 30);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Cadastrar Categorias";
             // 
             // Categorias
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Sistema_de_Caixa.Properties.Resources.wallpaper;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.toolStrip1);
+            this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Categorias";
             this.Text = "Categorias";
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCategoria)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
+
+        private ToolStrip toolStrip1;
+        private ToolStripButton tsSalvar;
+        private ToolStripButton tsEditar;
+        private ToolStripButton tsCancelar;
+        private ToolStripButton tsDeletar;
+        private ToolStripTextBox tsBuscar;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripButton tsSair;
+        private Panel panel1;
+        private TextBox txtNome;
+        private Label label2;
+        private Label label1;
+        private TextBox txtPesquisar;
+        private Label label3;
+        private DataGridView dgCategoria;
     }
 }

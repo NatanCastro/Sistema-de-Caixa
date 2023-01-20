@@ -38,7 +38,7 @@
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbCadEndereco = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgCliente = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
@@ -59,7 +59,7 @@
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCadEndereco)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -146,7 +146,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.pbCadEndereco);
-            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.dgCliente);
             this.panel1.Controls.Add(this.txtPesquisar);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.cbEndereco);
@@ -177,18 +177,18 @@
             this.pbCadEndereco.TabStop = false;
             this.pbCadEndereco.Click += new System.EventHandler(this.pbCadEndereco_Click);
             // 
-            // dataGridView1
+            // dgCliente
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgCliente.AllowUserToAddRows = false;
+            this.dgCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.editar,
             this.apagar});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 387);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(780, 237);
-            this.dataGridView1.TabIndex = 16;
+            this.dgCliente.Location = new System.Drawing.Point(18, 387);
+            this.dgCliente.Name = "dgCliente";
+            this.dgCliente.RowTemplate.Height = 25;
+            this.dgCliente.Size = new System.Drawing.Size(780, 237);
+            this.dgCliente.TabIndex = 16;
             // 
             // editar
             // 
@@ -240,7 +240,7 @@
             this.txtDataNasc.Name = "txtDataNasc";
             this.txtDataNasc.Size = new System.Drawing.Size(96, 36);
             this.txtDataNasc.TabIndex = 11;
-            //
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -350,7 +350,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCadEndereco)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,7 +381,7 @@
         private Label label6;
         private TextBox txtPesquisar;
         private Label label7;
-        private DataGridView dataGridView1;
+        private DataGridView dgCliente;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
         private PictureBox pbCadEndereco;

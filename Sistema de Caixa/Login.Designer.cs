@@ -31,7 +31,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLogin = new System.Windows.Forms.TextBox();
-            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtSenha = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -62,12 +62,12 @@
             this.txtLogin.Size = new System.Drawing.Size(180, 36);
             this.txtLogin.TabIndex = 2;
             // 
-            // txtPass
+            // txtSenha
             // 
-            this.txtPass.Location = new System.Drawing.Point(211, 286);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(180, 36);
-            this.txtPass.TabIndex = 3;
+            this.txtSenha.Location = new System.Drawing.Point(211, 286);
+            this.txtSenha.Name = "txtSenha";
+            this.txtSenha.Size = new System.Drawing.Size(180, 36);
+            this.txtSenha.TabIndex = 3;
             // 
             // btnLogin
             // 
@@ -96,13 +96,14 @@
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -115,7 +116,7 @@
         private Label label3;
         private Label label4;
         private TextBox txtLogin;
-        private TextBox txtPass;
+        private TextBox txtSenha;
         private Button btnLogin;
         private PictureBox pictureBox1;
     }

@@ -9,7 +9,7 @@ namespace Sistema_de_Caixa
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard();
+            Dashboard dashboard = new();
             this.Hide();
             dashboard.ShowDialog();
         }

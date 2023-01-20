@@ -51,7 +51,7 @@
             this.endereçoToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1904, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1370, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,14 +67,16 @@
             // cadastrareditarconsultarexcluirProdutoToolStripMenuItem
             // 
             this.cadastrareditarconsultarexcluirProdutoToolStripMenuItem.Name = "cadastrareditarconsultarexcluirProdutoToolStripMenuItem";
-            this.cadastrareditarconsultarexcluirProdutoToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
+            this.cadastrareditarconsultarexcluirProdutoToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.cadastrareditarconsultarexcluirProdutoToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir produto";
+            this.cadastrareditarconsultarexcluirProdutoToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirProdutoToolStripMenuItem_Click);
             // 
             // cadastrareditarconsultarexcluirCategoriaToolStripMenuItem
             // 
             this.cadastrareditarconsultarexcluirCategoriaToolStripMenuItem.Name = "cadastrareditarconsultarexcluirCategoriaToolStripMenuItem";
-            this.cadastrareditarconsultarexcluirCategoriaToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
+            this.cadastrareditarconsultarexcluirCategoriaToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.cadastrareditarconsultarexcluirCategoriaToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir categoria";
+            this.cadastrareditarconsultarexcluirCategoriaToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirCategoriaToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
@@ -87,7 +89,7 @@
             // cadastrareditarconsultarexcluirClienteToolStripMenuItem
             // 
             this.cadastrareditarconsultarexcluirClienteToolStripMenuItem.Name = "cadastrareditarconsultarexcluirClienteToolStripMenuItem";
-            this.cadastrareditarconsultarexcluirClienteToolStripMenuItem.Size = new System.Drawing.Size(288, 22);
+            this.cadastrareditarconsultarexcluirClienteToolStripMenuItem.Size = new System.Drawing.Size(289, 22);
             this.cadastrareditarconsultarexcluirClienteToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir cliente";
             this.cadastrareditarconsultarexcluirClienteToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirClienteToolStripMenuItem_Click);
             // 
@@ -102,8 +104,9 @@
             // cadastrareditarconsultarexcluirFornecedorToolStripMenuItem
             // 
             this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Name = "cadastrareditarconsultarexcluirFornecedorToolStripMenuItem";
-            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Size = new System.Drawing.Size(311, 22);
+            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Size = new System.Drawing.Size(312, 22);
             this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir fornecedor";
+            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem_Click);
             // 
             // endereçoToolStripMenuItem
             // 
@@ -116,7 +119,7 @@
             // cadastrareditarconsultarexcluirEndereçoToolStripMenuItem
             // 
             this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem.Name = "cadastrareditarconsultarexcluirEndereçoToolStripMenuItem";
-            this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem.Size = new System.Drawing.Size(302, 22);
+            this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem.Size = new System.Drawing.Size(303, 22);
             this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir endereço";
             this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem_Click);
             // 
@@ -126,7 +129,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sistema_de_Caixa.Properties.Resources.wallpaper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1904, 1042);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MainMenuStrip = this.menuStrip1;
