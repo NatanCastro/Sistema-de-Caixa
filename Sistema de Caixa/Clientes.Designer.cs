@@ -101,6 +101,7 @@
             this.tsEdit.Size = new System.Drawing.Size(23, 22);
             this.tsEdit.Text = "toolStripButton2";
             this.tsEdit.ToolTipText = "editar";
+            this.tsEdit.Click += new System.EventHandler(this.tsEdit_Click);
             // 
             // tsCancel
             // 
@@ -111,6 +112,7 @@
             this.tsCancel.Size = new System.Drawing.Size(23, 22);
             this.tsCancel.Text = "toolStripButton3";
             this.tsCancel.ToolTipText = "cancelar";
+            this.tsCancel.Click += new System.EventHandler(this.tsCancel_Click);
             // 
             // tsDelete
             // 
@@ -121,6 +123,7 @@
             this.tsDelete.Size = new System.Drawing.Size(23, 22);
             this.tsDelete.Text = "toolStripButton4";
             this.tsDelete.ToolTipText = "apagar";
+            this.tsDelete.Click += new System.EventHandler(this.tsDelete_Click);
             // 
             // tsBuscar
             // 
@@ -142,6 +145,7 @@
             this.tsSair.Size = new System.Drawing.Size(23, 22);
             this.tsSair.Text = "toolStripButton5";
             this.tsSair.ToolTipText = "Sair";
+            this.tsSair.Click += new System.EventHandler(this.tsSair_Click);
             // 
             // panel1
             // 
@@ -252,7 +256,6 @@
             // 
             // txtCNPJ
             // 
-            this.txtCNPJ.Enabled = false;
             this.txtCNPJ.Location = new System.Drawing.Point(150, 199);
             this.txtCNPJ.Mask = "00.000.000/0000-00";
             this.txtCNPJ.Name = "txtCNPJ";
@@ -286,6 +289,7 @@
             this.cbTipoPessoa.Name = "cbTipoPessoa";
             this.cbTipoPessoa.Size = new System.Drawing.Size(121, 38);
             this.cbTipoPessoa.TabIndex = 6;
+            this.cbTipoPessoa.SelectedIndexChanged += new System.EventHandler(this.cbTipoPessoa_SelectedIndexChanged);
             // 
             // label3
             // 
