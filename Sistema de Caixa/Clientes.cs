@@ -14,7 +14,8 @@ namespace Sistema_de_Caixa
 {
     public partial class Clientes : Form
     {
-        SQLiteConnection conn = new(@"Data Source=C:\Users\natan.gacastro\source\repos\natan22gt\Sistema-de-Caixa\Sistema de Caixa\banco\caixa.sqlite3; Version=3;");
+        private static string user = "user";
+        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco\caixa.sqlite3; Version=3;");
         string sqlString = string.Empty;
 
         public Clientes()
@@ -46,29 +47,32 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show(ex.ToString());
             }
-            
-
-            conn.Close();
+            finally { conn.Close(); }
         }
 
         private void listarEnderecos()
         {
-            conn.Open();
-
             sqlString = "SELECT id, rua, numero FROM endereco";
-            SQLiteCommand command = new(sqlString, conn);
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            List<string> enderecos = new List<string>();
-
-            while (reader.Read())
+            try
             {
-                enderecos.Add($"{reader.GetInt32(0)} - {reader.GetString(1)} {reader.GetString(2)}");
-            }
-            cbEndereco.DataSource = enderecos.AsReadOnly();
-            reader.Close();
-            conn.Close();
+                conn.Open();
+                SQLiteCommand command = new(sqlString, conn);
+                SQLiteDataReader reader = command.ExecuteReader();
 
+                List<string> enderecos = new List<string>();
+
+                while (reader.Read())
+                {
+                    enderecos.Add($"{reader.GetInt32(0)} - {reader.GetString(1)} {reader.GetString(2)}");
+                }
+                cbEndereco.DataSource = enderecos.AsReadOnly();
+                reader.Close();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally{ conn.Close(); }
         }
 
         private void Clientes_Load(object sender, EventArgs e)
@@ -91,7 +95,6 @@ namespace Sistema_de_Caixa
 
         private void tsSavar_Click(object sender, EventArgs e)
         {
-            conn.Open();
             string nome = txtNome.Text;
             string cpfCnpj = txtCPF.Text != "" ? txtCPF.Text : txtCNPJ.Text;
             cpfCnpj = cpfCnpj.Replace(',', '.');
@@ -103,15 +106,31 @@ namespace Sistema_de_Caixa
             int idEndereco = int.Parse(cbEndereco.Text.Substring(0,1));
 
             sqlString = $"INSERT INTO cliente (\"nome\", \"cpf_cnpj\", \"data_nascimento\", \"id_endereco\")" +
-                $" VALUES ('{nome}', '{cpfCnpj}', DATE('{dataNasc}'), {idEndereco})";
-            MessageBox.Show(sqlString);
-            using (SQLiteTransaction transaction = conn.BeginTransaction())
+                $" VALUES ('@nome', '@cpfCnpj', DATE('@dataNasc'), @idEndereco)";
+
+            try
             {
-                SQLiteCommand command = new(sqlString, conn);
-                command.ExecuteNonQuery();
-                transaction.Commit();
+                conn.Open();
+
+                using (SQLiteTransaction transaction = conn.BeginTransaction())
+                {
+                    SQLiteCommand command = new(sqlString, conn);
+                    command.Parameters.Add("@nome", DbType.String, nome.Length, nome);
+                    command.Parameters.Add("@cpfCnpj", DbType.String, cpfCnpj.Length, cpfCnpj);
+                    command.Parameters.Add("@dataNasc", DbType.String, dataNasc.Length, dataNasc);
+                    command.Parameters.Add("@idEndereco", DbType.Int64, 1, $"{idEndereco}");
+
+                    MessageBox.Show(sqlString);
+
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                }
             }
-            conn.Close();
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show($"Não foi possivel dacastrar o cliente\n{ex}");
+            }
+            finally { conn.Close(); }
             
             txtNome.Text = string.Empty;
             txtPesquisar.Text = string.Empty;
