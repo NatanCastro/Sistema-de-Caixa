@@ -14,7 +14,7 @@ namespace Sistema_de_Caixa
 {
     public partial class Clientes : Form
     {
-        SQLiteConnection conn = new(@"Data Source=C:\Users\User\source\repos\Sistema-de-Caixa\Sistema de Caixa\banco\caixa.sqlite3;Version=3;");
+        SQLiteConnection conn = new(@"Data Source=C:\Users\natan.gacastro\source\repos\natan22gt\Sistema-de-Caixa\Sistema de Caixa\banco\caixa.sqlite3; Version=3;");
         string sqlString = string.Empty;
 
         public Clientes()
@@ -26,19 +26,29 @@ namespace Sistema_de_Caixa
         {
             sqlString =
                 "SELECT cliente.id, cliente.nome, cliente.cpf_cnpj, cliente.data_nascimento," +
-                "endereco.rua || ', ' || endereco.numero AS 'endereco'" +
-                "FROM cliente" +
-                "INNER JOIN endereco" +
+                "endereco.rua || ', ' || endereco.numero AS 'endereco' " +
+                "FROM cliente " +
+                "INNER JOIN endereco " +
                 "WHERE cliente.id_endereco = endereco.id";
-            MessageBox.Show(sqlString);
-            conn.Open();
-            SQLiteCommand command = new(sqlString, conn);
-            SQLiteDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
+            // MessageBox.Show(sqlString);
+            try
             {
-                MessageBox.Show(reader.ToString());
+                conn.Open();
+                SQLiteCommand command = new(sqlString, conn);
+                SQLiteDataAdapter adapter = new(command);
+
+                DataTable table = new();
+                adapter.Fill(table);
+
+                dgCliente.DataSource = table;
             }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
+
+            conn.Close();
         }
 
         private void listarEnderecos()
