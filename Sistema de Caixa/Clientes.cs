@@ -14,8 +14,8 @@ namespace Sistema_de_Caixa
 {
     public partial class Clientes : Form
     {
-        private static string user = "user";
-        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco\caixa.sqlite3; Version=3;");
+        private static string user = "natan.gacastro";
+        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
         string sqlString = string.Empty;
 
         public Clientes()
@@ -142,12 +142,16 @@ namespace Sistema_de_Caixa
 
         private void tsEdit_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void tsCancel_Click(object sender, EventArgs e)
         {
-
+            txtNome.Text = string.Empty;
+            txtPesquisar.Text = string.Empty;
+            txtCPF.Text = string.Empty;
+            txtCNPJ.Text = string.Empty;
+            txtDataNasc.Text = string.Empty;
         }
 
         private void tsDelete_Click(object sender, EventArgs e)
@@ -158,6 +162,32 @@ namespace Sistema_de_Caixa
         private void tsSair_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private ComboBox GetCbTipoPessoa()
+        {
+            return cbTipoPessoa;
+        }
+
+        private void dgCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idCliente = Convert.ToInt32(dgCliente.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            if (dgCliente.Columns[e.ColumnIndex] == dgCliente.Columns["editar"]
+                || dgCliente.Columns[e.ColumnIndex] == dgCliente.Columns["apagar"])
+            {
+                tsBuscar.Text = dgCliente.Rows[e.RowIndex].Cells["nome"].ToString();
+                txtNome.Text = dgCliente.Rows[e.RowIndex].Cells["nome"].ToString();
+                if (dgCliente.Rows[e.RowIndex].Cells["cpfCnpj"].Value.ToString().Length > 14)
+                {
+                    cbTipoPessoa.SelectedItem = "Juridica";
+                    txtCNPJ.Text = dgCliente.Rows[e.RowIndex].Cells["cpfCnpj"].ToString();
+                }
+                else
+                {
+                    cbTipoPessoa.SelectedItem = "Fisica";
+                    txtCPF.Text = dgCliente.Rows[e.RowIndex].Cells["cpfCnpj"].ToString();
+                }
+            }
         }
     }
 }

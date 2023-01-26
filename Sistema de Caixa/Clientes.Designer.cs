@@ -39,6 +39,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbCadEndereco = new System.Windows.Forms.PictureBox();
             this.dgCliente = new System.Windows.Forms.DataGridView();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbEndereco = new System.Windows.Forms.ComboBox();
@@ -54,8 +56,6 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCadEndereco)).BeginInit();
@@ -193,6 +193,23 @@
             this.dgCliente.RowTemplate.Height = 25;
             this.dgCliente.Size = new System.Drawing.Size(780, 237);
             this.dgCliente.TabIndex = 16;
+            this.dgCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCliente_CellContentClick);
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "";
+            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
+            this.editar.MinimumWidth = 6;
+            this.editar.Name = "editar";
+            this.editar.Width = 24;
+            // 
+            // apagar
+            // 
+            this.apagar.HeaderText = "";
+            this.apagar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
+            this.apagar.MinimumWidth = 6;
+            this.apagar.Name = "apagar";
+            this.apagar.Width = 24;
             // 
             // txtPesquisar
             // 
@@ -324,22 +341,6 @@
             this.label8.Size = new System.Drawing.Size(212, 30);
             this.label8.TabIndex = 4;
             this.label8.Text = "Cadastro de Clientes";
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "";
-            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
-            this.editar.MinimumWidth = 6;
-            this.editar.Name = "editar";
-            this.editar.Width = 24;
-            // 
-            // apagar
-            // 
-            this.apagar.HeaderText = "";
-            this.apagar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
-            this.apagar.MinimumWidth = 6;
-            this.apagar.Name = "apagar";
-            this.apagar.Width = 24;
             // 
             // Clientes
             // 
