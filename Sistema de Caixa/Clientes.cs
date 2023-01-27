@@ -7,14 +7,16 @@ using System.Drawing;
 using System.Linq;
 using System.Net.Security;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 
 namespace Sistema_de_Caixa
 {
     public partial class Clientes : Form
     {
-        private static string user = "natan.gacastro";
+        private static string user = "user";
         SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
         string sqlString = string.Empty;
 
@@ -26,7 +28,8 @@ namespace Sistema_de_Caixa
         private void listarClietes()
         {
             sqlString =
-                "SELECT cliente.id, cliente.nome, cliente.cpf_cnpj, cliente.data_nascimento," +
+                "SELECT cliente.id, cliente.nome, " +
+                "cliente.cpf_cnpj AS 'cpf/cnpj', cliente.data_nascimento," +
                 "endereco.rua || ', ' || endereco.numero AS 'endereco' " +
                 "FROM cliente " +
                 "INNER JOIN endereco " +
@@ -75,6 +78,16 @@ namespace Sistema_de_Caixa
             finally{ conn.Close(); }
         }
 
+        private void limparDados()
+        {
+            txtNome.Text = string.Empty;
+            txtPesquisar.Text = string.Empty;
+            txtCPF.Text = string.Empty;
+            txtCNPJ.Text = string.Empty;
+            txtDataNasc.Text = string.Empty;
+            txtDataNasc.Text = string.Empty;
+        }
+
         private void Clientes_Load(object sender, EventArgs e)
         {
             listarClietes();
@@ -91,13 +104,18 @@ namespace Sistema_de_Caixa
         {
             txtCPF.Enabled = cbTipoPessoa.Text == "Fisica";
             txtCNPJ.Enabled = cbTipoPessoa.Text == "Juridica";
+            txtCPF.Text = string.Empty;
+            txtCNPJ.Text = string.Empty;
         }
 
         private void tsSavar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
-            string cpfCnpj = txtCPF.Text != "" ? txtCPF.Text : txtCNPJ.Text;
+            
+            string cpfCnpj = cbTipoPessoa.SelectedItem == "Fisica"
+                ? txtCPF.Text : txtCNPJ.Text;
             cpfCnpj = cpfCnpj.Replace(',', '.');
+
             string[] dataArray = txtDataNasc.Text.Split('/');
             string ano = dataArray[2];
             string mes = dataArray[1];
@@ -105,88 +123,151 @@ namespace Sistema_de_Caixa
             string dataNasc = $"{ano}-{mes}-{dia}";
             int idEndereco = int.Parse(cbEndereco.Text.Substring(0,1));
 
-            sqlString = $"INSERT INTO cliente (\"nome\", \"cpf_cnpj\", \"data_nascimento\", \"id_endereco\")" +
-                $" VALUES ('@nome', '@cpfCnpj', DATE('@dataNasc'), @idEndereco)";
+            sqlString = "INSERT INTO cliente (\"nome\", \"cpf_cnpj\", \"data_nascimento\", \"id_endereco\")" +
+                $" VALUES ('{nome}', '{cpfCnpj}', DATE('{dataNasc}'), {idEndereco})";
 
             try
             {
                 conn.Open();
 
-                using (SQLiteTransaction transaction = conn.BeginTransaction())
-                {
-                    SQLiteCommand command = new(sqlString, conn);
-                    command.Parameters.Add("@nome", DbType.String, nome.Length, nome);
-                    command.Parameters.Add("@cpfCnpj", DbType.String, cpfCnpj.Length, cpfCnpj);
-                    command.Parameters.Add("@dataNasc", DbType.String, dataNasc.Length, dataNasc);
-                    command.Parameters.Add("@idEndereco", DbType.Int64, 1, $"{idEndereco}");
+                using SQLiteTransaction transaction = conn.BeginTransaction();
+                SQLiteCommand command = new(sqlString, conn);
 
-                    MessageBox.Show(sqlString);
+                MessageBox.Show(sqlString);
 
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                }
+                command.ExecuteNonQuery();
+                transaction.Commit();
             }
             catch (SQLiteException ex)
             {
                 MessageBox.Show($"Não foi possivel dacastrar o cliente\n{ex}");
             }
-            finally { conn.Close(); }
-            
-            txtNome.Text = string.Empty;
-            txtPesquisar.Text = string.Empty;
-            txtCPF.Text = string.Empty;
-            txtCNPJ.Text = string.Empty;
-            txtDataNasc.Text = string.Empty;
-            txtDataNasc.Text = string.Empty;
+            finally
+            {
+                conn.Close();
+            }
+            limparDados();
+            listarClietes();
         }
 
         private void tsEdit_Click(object sender, EventArgs e)
         {
+            if (tsBuscar.Text == string.Empty)
+            {
+                MessageBox.Show("Selecione um cliente entes de editar");
+                return;
+            }
             
+            string nome = txtNome.Text;
+
+            string cpfCnpj = cbTipoPessoa.SelectedItem == "Fisica"
+                ? txtCPF.Text : txtCNPJ.Text;
+            cpfCnpj = cpfCnpj.Replace(',', '.');
+
+            string[] dataArray = txtDataNasc.Text.Split('/');
+            string ano = dataArray[2];
+            string mes = dataArray[1];
+            string dia = dataArray[0];
+            string dataNasc = $"{ano}-{mes}-{dia}";
+            int idEndereco = int.Parse(cbEndereco.Text.Substring(0,1));
+
+            sqlString = $"UPDATE cliente SET nome={nome}, cpf_cnpj={cpfCnpj}, " +
+                $"data_nascimento={dataNasc}, id_endereco={idEndereco} " +
+                $"WHERE id={tsBuscar}";
+
+            try
+            {
+                conn.Open();
+                using SQLiteTransaction transaction = conn.BeginTransaction();
+                SQLiteCommand command = new(sqlString, conn);
+
+                command.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show($"Não foi possivel atualizar o cadastro\n{ex}");
+            }
+            finally
+            {
+                conn.Close();
+            }
+            limparDados();
+            listarClietes();
         }
 
         private void tsCancel_Click(object sender, EventArgs e)
         {
-            txtNome.Text = string.Empty;
-            txtPesquisar.Text = string.Empty;
-            txtCPF.Text = string.Empty;
-            txtCNPJ.Text = string.Empty;
-            txtDataNasc.Text = string.Empty;
+            limparDados();
         }
 
         private void tsDelete_Click(object sender, EventArgs e)
         {
+            if (tsBuscar.Text == string.Empty)
+            {
+                MessageBox.Show("Selecione um cliente entes de apagar");
+                return;
+            }
+            
+            sqlString = $"DELETE FROM cliente WHERE id={tsBuscar.Text}";
 
+            try
+            {
+                conn.Open();
+                using SQLiteTransaction transaction = conn.BeginTransaction();
+                SQLiteCommand command = new(sqlString, conn);
+
+                command.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show($"Não foi possivel apagar o cadastro\n{ex}");
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            limparDados();
+            listarClietes();
         }
 
         private void tsSair_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private ComboBox GetCbTipoPessoa()
-        {
-            return cbTipoPessoa;
+            Close();
         }
 
         private void dgCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int idCliente = Convert.ToInt32(dgCliente.Rows[e.RowIndex].Cells["id"].Value.ToString());
             if (dgCliente.Columns[e.ColumnIndex] == dgCliente.Columns["editar"]
                 || dgCliente.Columns[e.ColumnIndex] == dgCliente.Columns["apagar"])
             {
-                tsBuscar.Text = dgCliente.Rows[e.RowIndex].Cells["nome"].ToString();
-                txtNome.Text = dgCliente.Rows[e.RowIndex].Cells["nome"].ToString();
-                if (dgCliente.Rows[e.RowIndex].Cells["cpfCnpj"].Value.ToString().Length > 14)
+                tsBuscar.Text = dgCliente.Rows[e.RowIndex].Cells["id"].Value.ToString();
+                txtNome.Text = dgCliente.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+
+                string cpfCnpj = dgCliente.Rows[e.RowIndex].Cells["cpf/cnpj"].Value.ToString();
+                cpfCnpj = cpfCnpj.Replace(".", ",");
+                string pattern = @"[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}";
+
+                Regex regex = new Regex(pattern);
+
+                if (regex.IsMatch(cpfCnpj))
                 {
-                    cbTipoPessoa.SelectedItem = "Juridica";
-                    txtCNPJ.Text = dgCliente.Rows[e.RowIndex].Cells["cpfCnpj"].ToString();
+                    cbTipoPessoa.SelectedItem = "Fisica";
+                    txtCPF.Text = dgCliente.Rows[e.RowIndex]
+                        .Cells["cpf/cnpj"].Value.ToString();
                 }
                 else
                 {
-                    cbTipoPessoa.SelectedItem = "Fisica";
-                    txtCPF.Text = dgCliente.Rows[e.RowIndex].Cells["cpfCnpj"].ToString();
+                    cbTipoPessoa.SelectedItem = "Juridica";
+                    txtCNPJ.Text = dgCliente.Rows[e.RowIndex]
+                        .Cells["cpf/cnpj"].Value.ToString();
                 }
+
+                string[] dataNascArray = dgCliente.Rows[e.RowIndex]
+                    .Cells["data_nascimento"].Value.ToString().Split("-");
+                txtDataNasc.Text = $"{dataNascArray[2]}/{dataNascArray[1]}/{dataNascArray[0]}";
             }
         }
     }

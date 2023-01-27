@@ -246,10 +246,10 @@
             // 
             // txtDataNasc
             // 
-            this.txtDataNasc.Location = new System.Drawing.Point(702, 199);
+            this.txtDataNasc.Location = new System.Drawing.Point(683, 199);
             this.txtDataNasc.Mask = "00/00/0000";
             this.txtDataNasc.Name = "txtDataNasc";
-            this.txtDataNasc.Size = new System.Drawing.Size(96, 36);
+            this.txtDataNasc.Size = new System.Drawing.Size(115, 36);
             this.txtDataNasc.TabIndex = 11;
             // 
             // label5
