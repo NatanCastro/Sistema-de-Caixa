@@ -270,5 +270,37 @@ namespace Sistema_de_Caixa
                 txtDataNasc.Text = $"{dataNascArray[2]}/{dataNascArray[1]}/{dataNascArray[0]}";
             }
         }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+            string pesquisa = txtPesquisar.Text;
+
+            sqlString = 
+                "SELECT cliente.id, cliente.nome, " +
+                "cliente.cpf_cnpj AS 'cpf/cnpj', cliente.data_nascimento," +
+                "endereco.rua || ', ' || endereco.numero AS 'endereco' " +
+                "FROM cliente " +
+                "INNER JOIN endereco " +
+                "WHERE cliente.id_endereco = endereco.id " +
+                $"AND cliente.nome LIKE '%{pesquisa}%'";
+
+            try
+            {
+                conn.Open();
+                SQLiteCommand command = new(sqlString, conn);
+                SQLiteDataAdapter adapter = new(command);
+
+                DataTable table = new();
+                adapter.Fill(table);
+
+                dgCliente.DataSource = table;
+            }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally { conn.Close(); }
+
+        }
     }
 }
