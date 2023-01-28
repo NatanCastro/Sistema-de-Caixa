@@ -45,14 +45,14 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.dgEndereco = new System.Windows.Forms.DataGridView();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.txtCEP = new System.Windows.Forms.TextBox();
             this.txtEstado = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEndereco)).BeginInit();
@@ -63,7 +63,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(688, 50);
+            this.label1.Location = new System.Drawing.Point(646, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(296, 45);
             this.label1.TabIndex = 0;
@@ -232,20 +232,6 @@
             this.dgEndereco.Size = new System.Drawing.Size(784, 213);
             this.dgEndereco.TabIndex = 4;
             // 
-            // editar
-            // 
-            this.editar.HeaderText = "";
-            this.editar.MinimumWidth = 6;
-            this.editar.Name = "editar";
-            this.editar.Width = 6;
-            // 
-            // deletar
-            // 
-            this.deletar.HeaderText = "";
-            this.deletar.MinimumWidth = 6;
-            this.deletar.Name = "deletar";
-            this.deletar.Width = 6;
-            // 
             // txtPesquisar
             // 
             this.txtPesquisar.Location = new System.Drawing.Point(18, 363);
@@ -289,6 +275,22 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(122, 36);
             this.txtNumero.TabIndex = 3;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "";
+            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
+            this.editar.MinimumWidth = 24;
+            this.editar.Name = "editar";
+            this.editar.Width = 24;
+            // 
+            // deletar
+            // 
+            this.deletar.HeaderText = "";
+            this.deletar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
+            this.deletar.MinimumWidth = 24;
+            this.deletar.Name = "deletar";
+            this.deletar.Width = 24;
             // 
             // Enderecos
             // 
@@ -337,11 +339,11 @@
         private TextBox txtNumero;
         private TextBox txtEstado;
         private DataGridView dgEndereco;
-        private DataGridViewImageColumn editar;
-        private DataGridViewImageColumn deletar;
         private TextBox txtPesquisar;
         private Label label6;
         private Label label7;
         private TextBox txtCEP;
+        private DataGridViewImageColumn editar;
+        private DataGridViewImageColumn deletar;
     }
 }

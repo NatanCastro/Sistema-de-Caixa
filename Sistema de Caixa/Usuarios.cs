@@ -69,7 +69,7 @@ namespace Sistema_de_Caixa
             string senha = txtSenha.Text;
 
             sqlString = $"INSERT INTO usuario (nome, senha) " +
-                $"VALUES ({nome}, {senha})";
+                $"VALUES ('{nome}', '{senha}')";
 
             try
             {
@@ -105,7 +105,7 @@ namespace Sistema_de_Caixa
             string nome = txtNome.Text;
             string senha = txtSenha.Text;
 
-            sqlString = $"UPDATE usuario SET nome='{nome}' senha='{senha}' " +
+            sqlString = $"UPDATE usuario SET nome='{nome}', senha='{senha}' " +
                 $"WHERE id={tsBuscar.Text}";
 
             try
