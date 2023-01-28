@@ -194,6 +194,7 @@
             this.dgCliente.Size = new System.Drawing.Size(780, 237);
             this.dgCliente.TabIndex = 16;
             this.dgCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCliente_CellContentClick);
+            this.dgCliente.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgCliente_CellFormatting);
             // 
             // editar
             // 

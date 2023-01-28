@@ -41,10 +41,10 @@ namespace Sistema_de_Caixa
             categorias.ShowDialog();
         }
 
-        private void cadastrareditarconsultarexcluirFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cadastrareditarconsultarexcluirUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Fornecedores fornecedores = new();
-            fornecedores.ShowDialog();
+            Usuarios usuarios = new();
+            usuarios.ShowDialog();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show($"Não foi possivel retornar os dados dos Clientes\n\n{ex}");
             }
             finally { conn.Close(); }
         }
@@ -66,14 +66,14 @@ namespace Sistema_de_Caixa
 
                 while (reader.Read())
                 {
-                    enderecos.Add($"{reader.GetInt32(0)} - {reader.GetString(1)} {reader.GetString(2)}");
+                    enderecos.Add($"{reader.GetInt32(0)} - {reader.GetString(1)}, {reader.GetString(2)}");
                 }
                 cbEndereco.DataSource = enderecos.AsReadOnly();
                 reader.Close();
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show($"Não foi possivel retornar os endereços cadastrados\n\n{ex}");
             }
             finally{ conn.Close(); }
         }
@@ -140,7 +140,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel dacastrar o cliente\n{ex}");
+                MessageBox.Show($"Não foi possivel dacastrar o cliente\n\n{ex}");
             }
             finally
             {
@@ -154,7 +154,7 @@ namespace Sistema_de_Caixa
         {
             if (tsBuscar.Text == string.Empty)
             {
-                MessageBox.Show("Selecione um cliente entes de editar");
+                MessageBox.Show("Selecione um cliente para editar");
                 return;
             }
             
@@ -173,7 +173,7 @@ namespace Sistema_de_Caixa
 
             sqlString = $"UPDATE cliente SET nome={nome}, cpf_cnpj={cpfCnpj}, " +
                 $"data_nascimento={dataNasc}, id_endereco={idEndereco} " +
-                $"WHERE id={tsBuscar}";
+                $"WHERE id={tsBuscar.Text}";
 
             try
             {
@@ -186,7 +186,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel atualizar o cadastro\n{ex}");
+                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex}");
             }
             finally
             {
@@ -205,7 +205,7 @@ namespace Sistema_de_Caixa
         {
             if (tsBuscar.Text == string.Empty)
             {
-                MessageBox.Show("Selecione um cliente entes de apagar");
+                MessageBox.Show("Selecione um cliente para apagar");
                 return;
             }
             
@@ -222,7 +222,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel apagar o cadastro\n{ex}");
+                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex}");
             }
             finally
             {
@@ -297,10 +297,16 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex}");
             }
             finally { conn.Close(); }
 
+        }
+
+        private void dgCliente_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            dgCliente.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
+            dgCliente.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
         }
     }
 }

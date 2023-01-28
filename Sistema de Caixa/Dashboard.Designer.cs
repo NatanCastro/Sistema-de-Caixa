@@ -98,15 +98,15 @@
             this.fornecedorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem});
             this.fornecedorToolStripMenuItem.Name = "fornecedorToolStripMenuItem";
-            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(88, 20);
-            this.fornecedorToolStripMenuItem.Text = "fornecedores";
+            this.fornecedorToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.fornecedorToolStripMenuItem.Text = "usuarios";
             // 
             // cadastrareditarconsultarexcluirFornecedorToolStripMenuItem
             // 
             this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Name = "cadastrareditarconsultarexcluirFornecedorToolStripMenuItem";
-            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Size = new System.Drawing.Size(312, 22);
-            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir fornecedor";
-            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem_Click);
+            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Size = new System.Drawing.Size(298, 22);
+            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir usuarios";
+            this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirUsuarioToolStripMenuItem_Click);
             // 
             // endereçoToolStripMenuItem
             // 
