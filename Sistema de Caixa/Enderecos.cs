@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Refit;
+using Sistema_de_Caixa.Controller;
+using Sistema_de_Caixa.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +9,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -40,7 +44,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel retornar os dados dos usuarios\n\n{ex}");
+                MessageBox.Show($"Não foi possivel retornar os dados dos endereços\n\n{ex.Message}");
             }
             finally
             {
@@ -58,6 +62,23 @@ namespace Sistema_de_Caixa
             txtPais.Text = string.Empty;
             txtCEP.Text = string.Empty;
         }
+
+        private static async Task<CepResponse?> getAddress(string cep)
+        {
+            try
+            {
+                CepApiService cepClient = RestService.For<CepApiService>("https://viacep.com.br/");
+
+                CepResponse address = await cepClient.GetAddressAsync(cep);
+                return address;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro na consulta do CEP\n\n{ex.Message}");
+                return null;
+            }
+        }
+
 
         private void Enderecos_Load(object sender, EventArgs e)
         {
@@ -80,7 +101,7 @@ namespace Sistema_de_Caixa
             string pais = txtPais.Text;
             string CEP = txtCEP.Text;
 
-            sqlString = $"INSERT INTO usuario (rua, numero, complemento, " +
+            sqlString = $"INSERT INTO endereco (rua, numero, complemento, " +
                 $"bairro, cidade, UF, pais, CEP) " +
                 $"VALUES ('{rua}', '{numero}', '{complemento}', '{bairro}', " +
                 $"'{cidade}', '{UF}', '{pais}', '{CEP}')";
@@ -97,7 +118,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não fui possivel cadastrar o Endereço\n\n{ex}");
+                MessageBox.Show($"Não fui possivel cadastrar o Endereço\n\n{ex.Message]");
             }
             finally
             {
@@ -124,7 +145,7 @@ namespace Sistema_de_Caixa
             string UF = txtUF.Text ;
             string pais = txtPais.Text;
 
-            sqlString = $"UPDATE usuario SET rua='{rua}', numero='{numero}', complemento='{complemento}', "+
+            sqlString = $"UPDATE endereco SET rua='{rua}', numero='{numero}', complemento='{complemento}', "+
                 $"bairro='{bairro}', cidade='{cidade}', UF='{UF}', pais='{pais} " +
                 $"WHERE id={tsBuscar.Text}";
 
@@ -140,7 +161,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex}");
+                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex.Message]");
             }
             finally
             {
@@ -165,7 +186,7 @@ namespace Sistema_de_Caixa
                 return;
             }
 
-            sqlString = $"DELETE FROM usuario WHERE id='{tsBuscar.Text}'";
+            sqlString = $"DELETE FROM endereco WHERE id='{tsBuscar.Text}'";
 
             try
             {
@@ -178,7 +199,7 @@ namespace Sistema_de_Caixa
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex}");
+                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex.Message]");
             }
             finally
             {
@@ -229,7 +250,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex}");
+                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message]");
             }
             finally
             {
@@ -237,10 +258,30 @@ namespace Sistema_de_Caixa
             }
         }
 
+        private async void txtCEP_TextChanged(object sender, EventArgs e)
+        {
+            Regex regex = new Regex(@"[0-9]{5}\-[0-9]{3}");
+
+            if (!regex.IsMatch(txtCEP.Text) || tsBuscar.Text != string.Empty) return;
+
+            string cep = $"{txtCEP.Text.Split('-')[0]}{txtCEP.Text.Split('-')[1]}";
+
+            CepResponse? address = await getAddress(cep);
+
+
+            txtRua.Text = address.Logradouro == null ? "" : address.Logradouro.ToString();
+            txtComplemento.Text = address.Complemento == null ? "" : address.Complemento.ToString();
+            txtBairro.Text = address.Bairro == null ? "" : address.Bairro.ToString();
+            txtCidade.Text = address.Localidade == null ? "" : address.Localidade.ToString();
+            txtUF.Text = address.Uf == null ? "" : address.Uf.ToString();
+        }
+
         private void dgEndereco_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             dgEndereco.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
             dgEndereco.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
         }
+
+        
     }
 }

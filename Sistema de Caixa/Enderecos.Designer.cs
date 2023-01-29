@@ -43,6 +43,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtRua = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCEP = new System.Windows.Forms.MaskedTextBox();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,13 +53,12 @@
             this.txtUF = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgEndereco = new System.Windows.Forms.DataGridView();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
-            this.txtCEP = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEndereco)).BeginInit();
@@ -203,6 +203,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtCEP);
             this.panel1.Controls.Add(this.txtPais);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
@@ -216,7 +217,6 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.dgEndereco);
             this.panel1.Controls.Add(this.txtPesquisar);
-            this.panel1.Controls.Add(this.txtCEP);
             this.panel1.Controls.Add(this.txtCidade);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtNumero);
@@ -226,6 +226,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 4;
+            // 
+            // txtCEP
+            // 
+            this.txtCEP.Location = new System.Drawing.Point(18, 269);
+            this.txtCEP.Mask = "00000-000";
+            this.txtCEP.Name = "txtCEP";
+            this.txtCEP.Size = new System.Drawing.Size(784, 36);
+            this.txtCEP.TabIndex = 11;
+            this.txtCEP.TextChanged += new System.EventHandler(this.txtCEP_TextChanged);
             // 
             // txtPais
             // 
@@ -297,7 +306,7 @@
             this.dgEndereco.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgEndereco.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.editar,
-            this.deletar});
+            this.apagar});
             this.dgEndereco.Location = new System.Drawing.Point(18, 405);
             this.dgEndereco.Name = "dgEndereco";
             this.dgEndereco.RowTemplate.Height = 25;
@@ -306,22 +315,6 @@
             this.dgEndereco.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEndereco_CellContentClick);
             this.dgEndereco.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgEndereco_CellFormatting);
             // 
-            // editar
-            // 
-            this.editar.HeaderText = "";
-            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
-            this.editar.MinimumWidth = 24;
-            this.editar.Name = "editar";
-            this.editar.Width = 24;
-            // 
-            // deletar
-            // 
-            this.deletar.HeaderText = "";
-            this.deletar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
-            this.deletar.MinimumWidth = 24;
-            this.deletar.Name = "deletar";
-            this.deletar.Width = 24;
-            // 
             // txtPesquisar
             // 
             this.txtPesquisar.Location = new System.Drawing.Point(18, 363);
@@ -329,13 +322,6 @@
             this.txtPesquisar.Size = new System.Drawing.Size(784, 36);
             this.txtPesquisar.TabIndex = 3;
             this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
-            // 
-            // txtCEP
-            // 
-            this.txtCEP.Location = new System.Drawing.Point(18, 269);
-            this.txtCEP.Name = "txtCEP";
-            this.txtCEP.Size = new System.Drawing.Size(784, 36);
-            this.txtCEP.TabIndex = 3;
             // 
             // txtCidade
             // 
@@ -359,6 +345,22 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(122, 36);
             this.txtNumero.TabIndex = 3;
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "";
+            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
+            this.editar.MinimumWidth = 24;
+            this.editar.Name = "editar";
+            this.editar.Width = 24;
+            // 
+            // apagar
+            // 
+            this.apagar.HeaderText = "";
+            this.apagar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
+            this.apagar.MinimumWidth = 24;
+            this.apagar.Name = "apagar";
+            this.apagar.Width = 24;
             // 
             // Enderecos
             // 
@@ -411,14 +413,14 @@
         private TextBox txtPesquisar;
         private Label label6;
         private Label label7;
-        private TextBox txtCEP;
-        private DataGridViewImageColumn editar;
-        private DataGridViewImageColumn deletar;
         private Label label9;
         private TextBox txtComplemento;
         private TextBox txtBairro;
         private Label label8;
         private TextBox txtPais;
         private Label label10;
+        private MaskedTextBox txtCEP;
+        private DataGridViewImageColumn editar;
+        private DataGridViewImageColumn apagar;
     }
 }

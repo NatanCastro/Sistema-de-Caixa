@@ -40,7 +40,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel retornar os dados dos usuarios\n\n{ex}");
+                MessageBox.Show($"Não foi possivel retornar os dados dos usuarios\n\n{ex.Message]");
             }
             finally
             {
@@ -83,7 +83,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não fui possivel cadastrar o usuario\n\n{ex}");
+                MessageBox.Show($"Não fui possivel cadastrar o usuario\n\n{ex.Message]");
             }
             finally
             {
@@ -120,7 +120,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex}");
+                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex.Message]");
             }
             finally
             {
@@ -157,7 +157,7 @@ namespace Sistema_de_Caixa
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex}");
+                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex.Message]");
             }
             finally
             {
@@ -199,7 +199,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex}");
+                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message]");
             }
             finally
             {
