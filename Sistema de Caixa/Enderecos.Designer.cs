@@ -43,16 +43,22 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtRua = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtPais = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.txtUF = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgEndereco = new System.Windows.Forms.DataGridView();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.deletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.txtCEP = new System.Windows.Forms.TextBox();
-            this.txtEstado = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.deletar = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEndereco)).BeginInit();
@@ -95,6 +101,7 @@
             this.tsSalvar.Size = new System.Drawing.Size(23, 22);
             this.tsSalvar.Text = "toolStripButton1";
             this.tsSalvar.ToolTipText = "salvar";
+            this.tsSalvar.Click += new System.EventHandler(this.tsSalvar_Click);
             // 
             // tsEditar
             // 
@@ -105,6 +112,7 @@
             this.tsEditar.Size = new System.Drawing.Size(23, 22);
             this.tsEditar.Text = "toolStripButton2";
             this.tsEditar.ToolTipText = "editar";
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
             // 
             // tsCancelar
             // 
@@ -115,6 +123,7 @@
             this.tsCancelar.Size = new System.Drawing.Size(23, 22);
             this.tsCancelar.Text = "toolStripButton3";
             this.tsCancelar.ToolTipText = "cancelar";
+            this.tsCancelar.Click += new System.EventHandler(this.tsCancelar_Click);
             // 
             // tsDeletar
             // 
@@ -125,6 +134,7 @@
             this.tsDeletar.Size = new System.Drawing.Size(23, 22);
             this.tsDeletar.Text = "toolStripButton4";
             this.tsDeletar.ToolTipText = "apagar";
+            this.tsDeletar.Click += new System.EventHandler(this.tsDeletar_Click);
             // 
             // tsBuscar
             // 
@@ -146,6 +156,7 @@
             this.tsSair.Size = new System.Drawing.Size(23, 22);
             this.tsSair.Text = "toolStripButton5";
             this.tsSair.ToolTipText = "Sair";
+            this.tsSair.Click += new System.EventHandler(this.tsSair_Click);
             // 
             // label2
             // 
@@ -168,16 +179,16 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 164);
+            this.label4.Location = new System.Drawing.Point(407, 164);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 30);
+            this.label4.Size = new System.Drawing.Size(39, 30);
             this.label4.TabIndex = 2;
-            this.label4.Text = "Estado";
+            this.label4.Text = "UF";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 92);
+            this.label5.Location = new System.Drawing.Point(18, 164);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 30);
             this.label5.TabIndex = 2;
@@ -192,23 +203,84 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtPais);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.txtBairro);
+            this.panel1.Controls.Add(this.txtComplemento);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.txtUF);
             this.panel1.Controls.Add(this.txtRua);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.dgEndereco);
             this.panel1.Controls.Add(this.txtPesquisar);
             this.panel1.Controls.Add(this.txtCEP);
-            this.panel1.Controls.Add(this.txtEstado);
             this.panel1.Controls.Add(this.txtCidade);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtNumero);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(397, 98);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 4;
+            // 
+            // txtPais
+            // 
+            this.txtPais.Location = new System.Drawing.Point(490, 197);
+            this.txtPais.Name = "txtPais";
+            this.txtPais.Size = new System.Drawing.Size(312, 36);
+            this.txtPais.TabIndex = 10;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(490, 164);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(49, 30);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "País";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 92);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(152, 30);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Complemento";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(407, 92);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(71, 30);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Bairro";
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.Location = new System.Drawing.Point(407, 125);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(395, 36);
+            this.txtBairro.TabIndex = 6;
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.Location = new System.Drawing.Point(18, 125);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(383, 36);
+            this.txtComplemento.TabIndex = 7;
+            // 
+            // txtUF
+            // 
+            this.txtUF.Location = new System.Drawing.Point(407, 197);
+            this.txtUF.Name = "txtUF";
+            this.txtUF.Size = new System.Drawing.Size(77, 36);
+            this.txtUF.TabIndex = 3;
             // 
             // label7
             // 
@@ -231,6 +303,24 @@
             this.dgEndereco.RowTemplate.Height = 25;
             this.dgEndereco.Size = new System.Drawing.Size(784, 213);
             this.dgEndereco.TabIndex = 4;
+            this.dgEndereco.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEndereco_CellContentClick);
+            this.dgEndereco.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgEndereco_CellFormatting);
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "";
+            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
+            this.editar.MinimumWidth = 24;
+            this.editar.Name = "editar";
+            this.editar.Width = 24;
+            // 
+            // deletar
+            // 
+            this.deletar.HeaderText = "";
+            this.deletar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
+            this.deletar.MinimumWidth = 24;
+            this.deletar.Name = "deletar";
+            this.deletar.Width = 24;
             // 
             // txtPesquisar
             // 
@@ -238,6 +328,7 @@
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(784, 36);
             this.txtPesquisar.TabIndex = 3;
+            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
             // 
             // txtCEP
             // 
@@ -246,18 +337,11 @@
             this.txtCEP.Size = new System.Drawing.Size(784, 36);
             this.txtCEP.TabIndex = 3;
             // 
-            // txtEstado
-            // 
-            this.txtEstado.Location = new System.Drawing.Point(18, 197);
-            this.txtEstado.Name = "txtEstado";
-            this.txtEstado.Size = new System.Drawing.Size(784, 36);
-            this.txtEstado.TabIndex = 3;
-            // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(18, 125);
+            this.txtCidade.Location = new System.Drawing.Point(18, 197);
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(784, 36);
+            this.txtCidade.Size = new System.Drawing.Size(383, 36);
             this.txtCidade.TabIndex = 3;
             // 
             // label6
@@ -276,22 +360,6 @@
             this.txtNumero.Size = new System.Drawing.Size(122, 36);
             this.txtNumero.TabIndex = 3;
             // 
-            // editar
-            // 
-            this.editar.HeaderText = "";
-            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
-            this.editar.MinimumWidth = 24;
-            this.editar.Name = "editar";
-            this.editar.Width = 24;
-            // 
-            // deletar
-            // 
-            this.deletar.HeaderText = "";
-            this.deletar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
-            this.deletar.MinimumWidth = 24;
-            this.deletar.Name = "deletar";
-            this.deletar.Width = 24;
-            // 
             // Enderecos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -308,6 +376,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Endereços";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Enderecos_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -337,7 +406,7 @@
         private Panel panel1;
         private TextBox txtCidade;
         private TextBox txtNumero;
-        private TextBox txtEstado;
+        private TextBox txtUF;
         private DataGridView dgEndereco;
         private TextBox txtPesquisar;
         private Label label6;
@@ -345,5 +414,11 @@
         private TextBox txtCEP;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn deletar;
+        private Label label9;
+        private TextBox txtComplemento;
+        private TextBox txtBairro;
+        private Label label8;
+        private TextBox txtPais;
+        private Label label10;
     }
 }
