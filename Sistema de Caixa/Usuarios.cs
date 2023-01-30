@@ -40,7 +40,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel retornar os dados dos usuarios\n\n{ex.Message]");
+                MessageBox.Show($"Não foi possivel retornar os dados dos usuarios\n\n{ex.Message}");
             }
             finally
             {
@@ -50,6 +50,7 @@ namespace Sistema_de_Caixa
 
         private void limparDados()
         {
+            tsBuscar.Text = string.Empty;
             txtNome.Text = string.Empty;
             txtSenha.Text = string.Empty;
         }
@@ -83,7 +84,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não fui possivel cadastrar o usuario\n\n{ex.Message]");
+                MessageBox.Show($"Não fui possivel cadastrar o usuario\n\n{ex.Message}");
             }
             finally
             {
@@ -120,7 +121,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex.Message]");
+                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex.Message}");
             }
             finally
             {
@@ -157,7 +158,7 @@ namespace Sistema_de_Caixa
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex.Message]");
+                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex.Message}");
             }
             finally
             {
@@ -199,7 +200,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message]");
+                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message}");
             }
             finally
             {

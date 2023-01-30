@@ -34,7 +34,6 @@ namespace Sistema_de_Caixa
                 "FROM cliente " +
                 "INNER JOIN endereco " +
                 "WHERE cliente.id_endereco = endereco.id";
-            // MessageBox.Show(sqlString);
             try
             {
                 conn.Open();
@@ -80,6 +79,7 @@ namespace Sistema_de_Caixa
 
         private void limparDados()
         {
+            tsBuscar.Text = string.Empty;
             txtNome.Text = string.Empty;
             txtPesquisar.Text = string.Empty;
             txtCPF.Text = string.Empty;
@@ -112,7 +112,7 @@ namespace Sistema_de_Caixa
         {
             string nome = txtNome.Text;
             
-            string cpfCnpj = cbTipoPessoa.SelectedItem == "Fisica"
+            string cpfCnpj = cbTipoPessoa.SelectedItem.ToString() == "Fisica"
                 ? txtCPF.Text : txtCNPJ.Text;
             cpfCnpj = cpfCnpj.Replace(',', '.');
 
@@ -160,7 +160,7 @@ namespace Sistema_de_Caixa
             
             string nome = txtNome.Text;
 
-            string cpfCnpj = cbTipoPessoa.SelectedItem == "Fisica"
+            string cpfCnpj = cbTipoPessoa.SelectedItem.ToString() == "Fisica"
                 ? txtCPF.Text : txtCNPJ.Text;
             cpfCnpj = cpfCnpj.Replace(',', '.');
 
@@ -300,7 +300,6 @@ namespace Sistema_de_Caixa
                 MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message}");
             }
             finally { conn.Close(); }
-
         }
 
         private void dgCliente_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)

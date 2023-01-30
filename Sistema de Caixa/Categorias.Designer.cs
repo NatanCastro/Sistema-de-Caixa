@@ -38,6 +38,8 @@
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgCategoria = new System.Windows.Forms.DataGridView();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
@@ -75,6 +77,7 @@
             this.tsSalvar.Size = new System.Drawing.Size(23, 22);
             this.tsSalvar.Text = "toolStripButton1";
             this.tsSalvar.ToolTipText = "salvar";
+            this.tsSalvar.Click += new System.EventHandler(this.tsSalvar_Click);
             // 
             // tsEditar
             // 
@@ -85,6 +88,7 @@
             this.tsEditar.Size = new System.Drawing.Size(23, 22);
             this.tsEditar.Text = "toolStripButton2";
             this.tsEditar.ToolTipText = "editar";
+            this.tsEditar.Click += new System.EventHandler(this.tsEditar_Click);
             // 
             // tsCancelar
             // 
@@ -95,6 +99,7 @@
             this.tsCancelar.Size = new System.Drawing.Size(23, 22);
             this.tsCancelar.Text = "toolStripButton3";
             this.tsCancelar.ToolTipText = "cancelar";
+            this.tsCancelar.Click += new System.EventHandler(this.tsCancelar_Click);
             // 
             // tsDeletar
             // 
@@ -105,6 +110,7 @@
             this.tsDeletar.Size = new System.Drawing.Size(23, 22);
             this.tsDeletar.Text = "toolStripButton4";
             this.tsDeletar.ToolTipText = "apagar";
+            this.tsDeletar.Click += new System.EventHandler(this.tsDeletar_Click);
             // 
             // tsBuscar
             // 
@@ -126,6 +132,7 @@
             this.tsSair.Size = new System.Drawing.Size(23, 22);
             this.tsSair.Text = "toolStripButton5";
             this.tsSair.ToolTipText = "Sair";
+            this.tsSair.Click += new System.EventHandler(this.tsSair_Click);
             // 
             // panel1
             // 
@@ -142,12 +149,34 @@
             // 
             // dgCategoria
             // 
+            this.dgCategoria.AllowUserToAddRows = false;
             this.dgCategoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCategoria.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.editar,
+            this.apagar});
             this.dgCategoria.Location = new System.Drawing.Point(10, 191);
             this.dgCategoria.Name = "dgCategoria";
             this.dgCategoria.RowTemplate.Height = 25;
             this.dgCategoria.Size = new System.Drawing.Size(580, 199);
             this.dgCategoria.TabIndex = 4;
+            this.dgCategoria.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCategoria_CellContentClick);
+            this.dgCategoria.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgCategoria_CellFormatting);
+            // 
+            // editar
+            // 
+            this.editar.HeaderText = "";
+            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
+            this.editar.MinimumWidth = 24;
+            this.editar.Name = "editar";
+            this.editar.Width = 24;
+            // 
+            // apagar
+            // 
+            this.apagar.HeaderText = "";
+            this.apagar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
+            this.apagar.MinimumWidth = 24;
+            this.apagar.Name = "apagar";
+            this.apagar.Width = 24;
             // 
             // txtPesquisar
             // 
@@ -155,6 +184,7 @@
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(580, 36);
             this.txtPesquisar.TabIndex = 3;
+            this.txtPesquisar.TextChanged += new System.EventHandler(this.txtPesquisar_TextChanged);
             // 
             // label3
             // 
@@ -205,6 +235,7 @@
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Categorias";
             this.Text = "Categorias";
+            this.Load += new System.EventHandler(this.Categorias_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -232,5 +263,7 @@
         private TextBox txtPesquisar;
         private Label label3;
         private DataGridView dgCategoria;
+        private DataGridViewImageColumn editar;
+        private DataGridViewImageColumn apagar;
     }
 }

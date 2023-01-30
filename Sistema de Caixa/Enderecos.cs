@@ -20,7 +20,7 @@ namespace Sistema_de_Caixa
         private static string user = "user";
         SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
         string sqlString = string.Empty;
-        
+
         public Enderecos()
         {
             InitializeComponent();
@@ -54,6 +54,7 @@ namespace Sistema_de_Caixa
 
         private void limparDados()
         {
+            tsBuscar.Text = string.Empty;
             txtRua.Text = string.Empty;
             txtNumero.Text = string.Empty;
             txtComplemento.Text = string.Empty;
@@ -87,7 +88,8 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            if (txtCEP.Text == string.Empty) {
+            if (txtCEP.Text == string.Empty)
+            {
                 MessageBox.Show("Insira o CEP");
                 return;
             }
@@ -97,7 +99,7 @@ namespace Sistema_de_Caixa
             string complemento = txtComplemento.Text;
             string bairro = txtBairro.Text;
             string cidade = txtCidade.Text;
-            string UF = txtUF.Text ;
+            string UF = txtUF.Text;
             string pais = txtPais.Text;
             string CEP = txtCEP.Text;
 
@@ -118,7 +120,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não fui possivel cadastrar o Endereço\n\n{ex.Message]");
+                MessageBox.Show($"Não fui possivel cadastrar o Endereço\n\n{ex.Message}");
             }
             finally
             {
@@ -142,10 +144,10 @@ namespace Sistema_de_Caixa
             string complemento = txtComplemento.Text;
             string bairro = txtBairro.Text;
             string cidade = txtCidade.Text;
-            string UF = txtUF.Text ;
+            string UF = txtUF.Text;
             string pais = txtPais.Text;
 
-            sqlString = $"UPDATE endereco SET rua='{rua}', numero='{numero}', complemento='{complemento}', "+
+            sqlString = $"UPDATE endereco SET rua='{rua}', numero='{numero}', complemento='{complemento}', " +
                 $"bairro='{bairro}', cidade='{cidade}', UF='{UF}', pais='{pais} " +
                 $"WHERE id={tsBuscar.Text}";
 
@@ -161,7 +163,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex.Message]");
+                MessageBox.Show($"Não foi possivel atualizar o cadastro\n\n{ex.Message}");
             }
             finally
             {
@@ -199,7 +201,7 @@ namespace Sistema_de_Caixa
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex.Message]");
+                MessageBox.Show($"Não foi possivel apagar o cadastro\n\n{ex.Message}");
             }
             finally
             {
@@ -233,7 +235,7 @@ namespace Sistema_de_Caixa
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
             string pesquisa = txtPesquisar.Text;
-            sqlString = $"SELECT id, rua, numero, bairro, complemento, cidade, UF, pais, CEP FROM endereco "+ 
+            sqlString = $"SELECT id, rua, numero, bairro, complemento, cidade, UF, pais, CEP FROM endereco " +
                 $"WHERE (rua || numero || bairro || cidade || UF || pais || CEP) LIKE %{pesquisa}%";
 
             try
@@ -250,7 +252,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message]");
+                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message}");
             }
             finally
             {
@@ -281,7 +283,5 @@ namespace Sistema_de_Caixa
             dgEndereco.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
             dgEndereco.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
         }
-
-        
     }
 }
