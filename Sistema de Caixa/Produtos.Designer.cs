@@ -39,7 +39,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtValorVenda = new System.Windows.Forms.MaskedTextBox();
             this.txtValorProduto = new System.Windows.Forms.MaskedTextBox();
-            this.dgProdutos = new System.Windows.Forms.DataGridView();
+            this.dgProduto = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
@@ -59,7 +59,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -150,7 +150,7 @@
             // 
             this.panel1.Controls.Add(this.txtValorVenda);
             this.panel1.Controls.Add(this.txtValorProduto);
-            this.panel1.Controls.Add(this.dgProdutos);
+            this.panel1.Controls.Add(this.dgProduto);
             this.panel1.Controls.Add(this.txtPesquisar);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label7);
@@ -187,20 +187,20 @@
             this.txtValorProduto.Size = new System.Drawing.Size(178, 36);
             this.txtValorProduto.TabIndex = 17;
             // 
-            // dgProdutos
+            // dgProduto
             // 
-            this.dgProdutos.AllowUserToAddRows = false;
-            this.dgProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgProduto.AllowUserToAddRows = false;
+            this.dgProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgProduto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.editar,
             this.apagar});
-            this.dgProdutos.Location = new System.Drawing.Point(10, 385);
-            this.dgProdutos.Name = "dgProdutos";
-            this.dgProdutos.RowTemplate.Height = 25;
-            this.dgProdutos.Size = new System.Drawing.Size(680, 211);
-            this.dgProdutos.TabIndex = 16;
-            this.dgProdutos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProdutos_CellContentClick);
-            this.dgProdutos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgProdutos_CellFormatting);
+            this.dgProduto.Location = new System.Drawing.Point(10, 385);
+            this.dgProduto.Name = "dgProdutos";
+            this.dgProduto.RowTemplate.Height = 25;
+            this.dgProduto.Size = new System.Drawing.Size(680, 211);
+            this.dgProduto.TabIndex = 16;
+            this.dgProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProdutos_CellContentClick);
+            this.dgProduto.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgProdutos_CellFormatting);
             // 
             // editar
             // 
@@ -274,8 +274,7 @@
             this.txtMargemLucro.Name = "txtMargemLucro";
             this.txtMargemLucro.Size = new System.Drawing.Size(186, 36);
             this.txtMargemLucro.TabIndex = 8;
-            this.txtMargemLucro.TextChanged += new System.EventHandler(this.txtMargemLucro_TextChanged);
-            // 
+            //
             // label5
             // 
             this.label5.AutoSize = true;
@@ -365,7 +364,7 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,7 +389,7 @@
         private TextBox txtCodigoBarras;
         private Label label1;
         private TextBox txtMargemLucro;
-        private DataGridView dgProdutos;
+        private DataGridView dgProduto;
         private TextBox txtPesquisar;
         private Label label8;
         private Label label7;

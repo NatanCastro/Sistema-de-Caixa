@@ -29,7 +29,7 @@ namespace Sistema_de_Caixa
                 "preco_venda AS 'Preço de venda', margem_lucro AS 'Margem de lucro', quantidade categoria.nome AS 'categoria' "+
                 "FROM produto " +
                 "LEFT JOIN categoria " +
-                "WHERE id_categoria = categoria.id";
+                "ON id_categoria = categoria.id";
             try
             {
                 conn.Open();
@@ -39,7 +39,7 @@ namespace Sistema_de_Caixa
                 DataTable table = new();
                 adapter.Fill(table);
 
-                dgProdutos.DataSource = table;
+                dgProduto.DataSource = table;
             }
             catch (SQLiteException ex)
             {
@@ -174,7 +174,6 @@ namespace Sistema_de_Caixa
             }
             limparDados();
             listarProdutos();
-
         }
 
         private void tsCancelar_Click(object sender, EventArgs e)
@@ -223,7 +222,13 @@ namespace Sistema_de_Caixa
         {
             string pesquisa = txtPesquisar.Text;
 
-            sqlString = "";
+            sqlString = "SELECT codigo_barras AS 'Codigo de barras', nome, preco_custo AS 'Preço de custo', " +
+                "preco_venda AS 'Preço de venda', margem_lucro AS 'Margem de lucro', quantidade, categoria.nome AS 'categoria' " +
+                "FROM produto " +
+                "LEFT JOIN categoria " +
+                "ON id_categoria = categoria.id " +
+                $"WHERE (codigo_barras || nome || categoria.nome) LIKE %{pesquisa}%";
+
             try
             {
                 conn.Open();
@@ -233,7 +238,7 @@ namespace Sistema_de_Caixa
                 DataTable table = new();
                 adapter.Fill(table);
 
-                dgProdutos.DataSource = table;
+                dgProduto.DataSource = table;
             }
             catch (SQLiteException ex)
             {
@@ -242,19 +247,24 @@ namespace Sistema_de_Caixa
             finally { conn.Close(); }
         }
 
-        private void dgProdutos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (dgProduto.Columns[e.ColumnIndex] == dgProduto.Columns["editar"]
+                || dgProduto.Columns[e.ColumnIndex] == dgProduto.Columns["apagar"])
+            {
+                txtCodigoBarras.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
+                txtNome.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
+                txtValorProduto.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
+                txtValorVenda.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
+                txtMargemLucro.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
+                txtQtd.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
+            }
         }
 
-        private void dgProdutos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void dgProduto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
-        }
-
-        private void txtMargemLucro_TextChanged(object sender, EventArgs e)
-        {
-
+            dgProduto.Columns["editar"].ToolTipText = "editar";
+            dgProduto.Columns["apagar"].ToolTipText = "apagar";
         }
     }
 }
