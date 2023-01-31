@@ -50,7 +50,18 @@ namespace Sistema_de_Caixa
 
         private void listarCategorias()
         {
-            sqlString = "SELECT";
+            sqlString = "SELECT id || ' - ' || nome FROM categoria";
+
+            try
+            {
+                conn.Open();
+                SQLiteCommand command = new(sqlString, conn);
+                SQLiteDataAdapter adapter = new(command);
+
+                DataTable table = new();
+                adapter.Fill(table);
+                cbCategoria.DataSource = table;
+            }
         }
 
         private void limparDados()
@@ -70,33 +81,18 @@ namespace Sistema_de_Caixa
 
         private void txtValorVenda_TextChanged(object sender, EventArgs e)
         {
-            if (txtValorProduto.Text == string.Empty) return;
+            Regex regex = new(@"[0-9]{1}\,[0-9]{2}");
+            if (txtValorProduto.Text == string.Empty
+                || txtValorVenda.Text == string.Empty
+                || !regex.IsMatch(txtValorProduto.Text)
+                || !regex.IsMatch(txtValorVenda.Text)) return;
 
-            decimal valorProduto;
-            decimal valorVenda;
+            decimal valorProduto = decimal.Parse(txtValorProduto.Text);
+            decimal valorVenda = decimal.Parse(txtValorVenda.Text);
 
-            Regex regex = new Regex(@"\,");
-            if (regex.IsMatch(txtValorProduto.Text))
-            {
-                valorProduto = decimal.Parse(txtValorProduto.Text.Trim().Replace(",", "."));
-            }
-            else
-            {
-                valorProduto = decimal.Parse(txtValorProduto.Text.Trim());
-            }
+            MessageBox.Show($"{valorProduto} {valorVenda}");
 
-            if (regex.IsMatch(txtValorVenda.Text))
-            {
-                valorVenda = decimal.Parse(txtValorVenda.Text.Trim().Replace(",", "."));
-            }
-            else
-            {
-                valorVenda = decimal.Parse(txtValorVenda.Text.Trim());
-            }
-
-            //MessageBox.Show($"{valorProduto} {valorVenda}");
-
-            txtMargemLucro.Text = decimal.Round(valorVenda / valorProduto * 100, 2).ToString();
+            txtMargemLucro.Text = (decimal.Round(((valorVenda -  valorProduto) / valorVenda * 100), 2)).ToString();
         }
 
         private void tsSalvar_Click(object sender, EventArgs e)
@@ -237,7 +233,7 @@ namespace Sistema_de_Caixa
                 DataTable table = new();
                 adapter.Fill(table);
 
-                dgCliente.DataSource = table;
+                dgProdutos.DataSource = table;
             }
             catch (SQLiteException ex)
             {

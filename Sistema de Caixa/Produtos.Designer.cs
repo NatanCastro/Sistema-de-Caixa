@@ -37,8 +37,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtValorVenda = new System.Windows.Forms.TextBox();
-            this.txtValorProduto = new System.Windows.Forms.TextBox();
+            this.txtValorVenda = new System.Windows.Forms.MaskedTextBox();
+            this.txtValorProduto = new System.Windows.Forms.MaskedTextBox();
             this.dgProdutos = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -173,6 +173,7 @@
             // txtValorVenda
             // 
             this.txtValorVenda.Location = new System.Drawing.Point(194, 197);
+            this.txtValorVenda.Mask = "9999990.00";
             this.txtValorVenda.Name = "txtValorVenda";
             this.txtValorVenda.Size = new System.Drawing.Size(160, 36);
             this.txtValorVenda.TabIndex = 18;
@@ -181,6 +182,7 @@
             // txtValorProduto
             // 
             this.txtValorProduto.Location = new System.Drawing.Point(10, 197);
+            this.txtValorProduto.Mask = "9999990.00";
             this.txtValorProduto.Name = "txtValorProduto";
             this.txtValorProduto.Size = new System.Drawing.Size(178, 36);
             this.txtValorProduto.TabIndex = 17;
@@ -398,7 +400,7 @@
         private Label label9;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
-        private TextBox txtValorVenda;
-        private TextBox txtValorProduto;
+        private MaskedTextBox txtValorVenda;
+        private MaskedTextBox txtValorProduto;
     }
 }
