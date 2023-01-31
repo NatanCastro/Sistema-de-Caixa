@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
+using Validacao;
 
 namespace Sistema_de_Caixa
 {
@@ -111,11 +112,25 @@ namespace Sistema_de_Caixa
         private void tsSavar_Click(object sender, EventArgs e)
         {
             string nome = txtNome.Text;
-            
+
+            if (!ValidaCPF.IsCPF(txtCPF.Text) && txtCPF.Enabled)
+            {
+                MessageBox.Show("CPF não valido");
+                return;
+            }
+
+            if (!ValidaCNPJ.IsCnpj(txtCNPJ.Text) && txtCNPJ.Enabled)
+            {
+                MessageBox.Show("CNPJ não valido");
+                return;
+            }
+
             string cpfCnpj = cbTipoPessoa.SelectedItem.ToString() == "Fisica"
                 ? txtCPF.Text : txtCNPJ.Text;
             cpfCnpj = cpfCnpj.Replace(',', '.');
 
+
+            
             string[] dataArray = txtDataNasc.Text.Split('/');
             string ano = dataArray[2];
             string mes = dataArray[1];
