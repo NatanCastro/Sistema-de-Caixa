@@ -199,8 +199,8 @@
             this.dgProduto.RowTemplate.Height = 25;
             this.dgProduto.Size = new System.Drawing.Size(680, 211);
             this.dgProduto.TabIndex = 16;
-            this.dgProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProdutos_CellContentClick);
-            this.dgProduto.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgProdutos_CellFormatting);
+            this.dgProduto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgProduto_CellContentClick);
+            this.dgProduto.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgProduto_CellFormatting);
             // 
             // editar
             // 

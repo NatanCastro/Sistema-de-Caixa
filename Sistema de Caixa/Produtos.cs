@@ -62,6 +62,11 @@ namespace Sistema_de_Caixa
                 adapter.Fill(table);
                 cbCategoria.DataSource = table;
             }
+            catch (SQLiteException ex)
+            {
+                MessageBox.Show($"Não foi possivel recuperar os dados das categorias\n\n{ex.Message}");
+            }
+            finally { conn.Close(); }
         }
 
         private void limparDados()
@@ -125,7 +130,7 @@ namespace Sistema_de_Caixa
             }
             catch (SQLiteException ex)
             {
-                MessageBox.Show($"Não foi possivel dacastrar o cliente\n\n{ex.Message}");
+                MessageBox.Show($"Não foi possivel dacastrar o Produto\n\n{ex.Message}");
             }
             finally
             {
