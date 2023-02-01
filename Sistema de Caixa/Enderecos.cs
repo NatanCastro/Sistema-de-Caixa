@@ -148,7 +148,7 @@ namespace Sistema_de_Caixa
             string pais = txtPais.Text;
 
             sqlString = $"UPDATE endereco SET rua='{rua}', numero='{numero}', complemento='{complemento}', " +
-                $"bairro='{bairro}', cidade='{cidade}', UF='{UF}', pais='{pais} " +
+                $"bairro='{bairro}', cidade='{cidade}', UF='{UF}', pais='{pais}' " +
                 $"WHERE id={tsBuscar.Text}";
 
             try
@@ -208,6 +208,8 @@ namespace Sistema_de_Caixa
                 conn.Close();
             }
 
+            limparDados();
+            listarEnderecos();
         }
 
         private void tsSair_Click(object sender, EventArgs e)

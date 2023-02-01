@@ -41,6 +41,10 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show($"Não foi possivel retornar os dados dos categorias\n\n{ex.Message}");
             }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         private void limparDados()

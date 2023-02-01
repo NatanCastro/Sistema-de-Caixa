@@ -10,22 +10,18 @@ namespace Sistema_de_Caixa.Models
     public class CepResponse
     {
         [JsonProperty("cep")]
-        public string Cep { get; set; }
+        public string? Cep { get; set; }
         [JsonProperty("logradouro")]
-        public string Logradouro { get; set; }
+        public string? Logradouro { get; set; }
         [JsonProperty("complemento")]
-        public string Complemento { get; set; }
+        public string? Complemento { get; set; }
         [JsonProperty("bairro")]
-        public string Bairro { get; set; }
+        public string? Bairro { get; set; }
         [JsonProperty("localidade")]
-        public string Localidade { get; set; }
+        public string? Localidade { get; set; }
         [JsonProperty("uf")]
-        public string Uf { get; set; }
+        public string? Uf { get; set; }
         [JsonProperty("unidade")]
-        public string Unidade { get; set; }
-        [JsonProperty("ibge")]
-        public string Ibge { get; set; }
-        [JsonProperty("gia")]
-        public string Gia { get; set; }
+        public string? Unidade { get; set; }
     }
 }

@@ -25,11 +25,11 @@ namespace Sistema_de_Caixa
 
         private void listarProdutos()
         {
-            sqlString = "SELECT codigo_barras AS 'Codigo de barras', nome, preco_custo AS 'Preço de custo', " +
-                "preco_venda AS 'Preço de venda', margem_lucro AS 'Margem de lucro', quantidade categoria.nome AS 'categoria' "+
-                "FROM produto " +
-                "LEFT JOIN categoria " +
-                "ON id_categoria = categoria.id";
+            sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
+                "p.preco_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria' "+
+                "FROM produto AS p " +
+                "LEFT JOIN categoria AS c " +
+                "ON p.id_categoria = c.id";
             try
             {
                 conn.Open();
@@ -50,7 +50,7 @@ namespace Sistema_de_Caixa
 
         private void listarCategorias()
         {
-            sqlString = "SELECT id || ' - ' || nome FROM categoria";
+            sqlString = "SELECT (id || ' - ' || nome) FROM categoria";
 
             try
             {
@@ -138,6 +138,7 @@ namespace Sistema_de_Caixa
             }
             limparDados();
             listarProdutos();
+            listarCategorias();
         }
 
         private void tsEditar_Click(object sender, EventArgs e)
@@ -179,6 +180,7 @@ namespace Sistema_de_Caixa
             }
             limparDados();
             listarProdutos();
+            listarCategorias();
         }
 
         private void tsCancelar_Click(object sender, EventArgs e)
@@ -216,6 +218,7 @@ namespace Sistema_de_Caixa
 
             limparDados();
             listarProdutos();
+            listarCategorias();
         }
 
         private void tsSair_Click(object sender, EventArgs e)
@@ -227,12 +230,11 @@ namespace Sistema_de_Caixa
         {
             string pesquisa = txtPesquisar.Text;
 
-            sqlString = "SELECT codigo_barras AS 'Codigo de barras', nome, preco_custo AS 'Preço de custo', " +
-                "preco_venda AS 'Preço de venda', margem_lucro AS 'Margem de lucro', quantidade, categoria.nome AS 'categoria' " +
-                "FROM produto " +
-                "LEFT JOIN categoria " +
-                "ON id_categoria = categoria.id " +
-                $"WHERE (codigo_barras || nome || categoria.nome) LIKE %{pesquisa}%";
+            sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
+                "p.preco_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria' "+
+                "FROM produto AS p " +
+                "LEFT JOIN categoria AS c " +
+                $"WHERE (codigo_barras || nome || c.nome) LIKE %{pesquisa}%";
 
             try
             {
@@ -257,19 +259,19 @@ namespace Sistema_de_Caixa
             if (dgProduto.Columns[e.ColumnIndex] == dgProduto.Columns["editar"]
                 || dgProduto.Columns[e.ColumnIndex] == dgProduto.Columns["apagar"])
             {
-                txtCodigoBarras.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
-                txtNome.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
-                txtValorProduto.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
-                txtValorVenda.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
-                txtMargemLucro.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
-                txtQtd.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo de barras"].Value.ToString();
+                txtCodigoBarras.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
+                txtNome.Text = dgProduto.Rows[e.RowIndex].Cells["Produto"].Value.ToString();
+                txtValorProduto.Text = dgProduto.Rows[e.RowIndex].Cells["Custo"].Value.ToString();
+                txtValorVenda.Text = dgProduto.Rows[e.RowIndex].Cells["Venda"].Value.ToString();
+                txtMargemLucro.Text = dgProduto.Rows[e.RowIndex].Cells["Lucro/%"].Value.ToString();
+                txtQtd.Text = dgProduto.Rows[e.RowIndex].Cells["quantidade"].Value.ToString();
             }
         }
 
         private void dgProduto_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            dgProduto.Columns["editar"].ToolTipText = "editar";
-            dgProduto.Columns["apagar"].ToolTipText = "apagar";
+            dgProduto.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
+            dgProduto.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
         }
     }
 }

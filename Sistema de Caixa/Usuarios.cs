@@ -164,6 +164,9 @@ namespace Sistema_de_Caixa
             {
                 conn.Close();
             }
+
+            limparDados();
+            listarUsuarios();
         }
 
         private void tsSair_Click(object sender, EventArgs e)

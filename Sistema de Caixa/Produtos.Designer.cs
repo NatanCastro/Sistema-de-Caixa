@@ -37,8 +37,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.txtValorVenda = new System.Windows.Forms.MaskedTextBox();
-            this.txtValorProduto = new System.Windows.Forms.MaskedTextBox();
             this.dgProduto = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -57,6 +55,11 @@
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.txtValorProduto = new System.Windows.Forms.TextBox();
+            this.txtValorVenda = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).BeginInit();
@@ -165,27 +168,13 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtCodigoBarras);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label12);
             this.panel1.Location = new System.Drawing.Point(453, 97);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 606);
             this.panel1.TabIndex = 4;
-            // 
-            // txtValorVenda
-            // 
-            this.txtValorVenda.Location = new System.Drawing.Point(194, 197);
-            this.txtValorVenda.Mask = "9999990.00";
-            this.txtValorVenda.Name = "txtValorVenda";
-            this.txtValorVenda.Size = new System.Drawing.Size(160, 36);
-            this.txtValorVenda.TabIndex = 18;
-            this.txtValorVenda.TextChanged += new System.EventHandler(this.txtValorVenda_TextChanged);
-            // 
-            // txtValorProduto
-            // 
-            this.txtValorProduto.Location = new System.Drawing.Point(10, 197);
-            this.txtValorProduto.Mask = "9999990.00";
-            this.txtValorProduto.Name = "txtValorProduto";
-            this.txtValorProduto.Size = new System.Drawing.Size(178, 36);
-            this.txtValorProduto.TabIndex = 17;
             // 
             // dgProduto
             // 
@@ -195,7 +184,7 @@
             this.editar,
             this.apagar});
             this.dgProduto.Location = new System.Drawing.Point(10, 385);
-            this.dgProduto.Name = "dgProdutos";
+            this.dgProduto.Name = "dgProduto";
             this.dgProduto.RowTemplate.Height = 25;
             this.dgProduto.Size = new System.Drawing.Size(680, 211);
             this.dgProduto.TabIndex = 16;
@@ -272,9 +261,9 @@
             // 
             this.txtMargemLucro.Location = new System.Drawing.Point(360, 197);
             this.txtMargemLucro.Name = "txtMargemLucro";
-            this.txtMargemLucro.Size = new System.Drawing.Size(186, 36);
+            this.txtMargemLucro.Size = new System.Drawing.Size(159, 36);
             this.txtMargemLucro.TabIndex = 8;
-            //
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -344,6 +333,50 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "Cadastrar Produtos";
             // 
+            // txtValorProduto
+            // 
+            this.txtValorProduto.Location = new System.Drawing.Point(41, 197);
+            this.txtValorProduto.Name = "txtValorProduto";
+            this.txtValorProduto.Size = new System.Drawing.Size(147, 36);
+            this.txtValorProduto.TabIndex = 17;
+            // 
+            // txtValorVenda
+            // 
+            this.txtValorVenda.Location = new System.Drawing.Point(226, 197);
+            this.txtValorVenda.Name = "txtValorVenda";
+            this.txtValorVenda.Size = new System.Drawing.Size(128, 36);
+            this.txtValorVenda.TabIndex = 18;
+            this.txtValorVenda.TextChanged += new System.EventHandler(this.txtValorVenda_TextChanged);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Location = new System.Drawing.Point(10, 200);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(38, 30);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "R$";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Location = new System.Drawing.Point(194, 200);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 30);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "R$";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(515, 200);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(31, 30);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "%";
+            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -399,7 +432,10 @@
         private Label label9;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
-        private MaskedTextBox txtValorVenda;
-        private MaskedTextBox txtValorProduto;
+        private TextBox txtValorVenda;
+        private TextBox txtValorProduto;
+        private Label label11;
+        private Label label10;
+        private Label label12;
     }
 }

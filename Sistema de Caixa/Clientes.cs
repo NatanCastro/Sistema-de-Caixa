@@ -33,7 +33,7 @@ namespace Sistema_de_Caixa
                 "cliente.cpf_cnpj AS 'cpf/cnpj', cliente.data_nascimento," +
                 "endereco.rua || ', ' || endereco.numero AS 'endereco' " +
                 "FROM cliente " +
-                "INNER JOIN endereco " +
+                "LEFT JOIN endereco " +
                 "WHERE cliente.id_endereco = endereco.id";
             try
             {
@@ -295,7 +295,7 @@ namespace Sistema_de_Caixa
                 "cliente.cpf_cnpj AS 'cpf/cnpj', cliente.data_nascimento," +
                 "endereco.rua || ', ' || endereco.numero AS 'endereco' " +
                 "FROM cliente " +
-                "INNER JOIN endereco " +
+                "LEFT JOIN endereco " +
                 "WHERE cliente.id_endereco = endereco.id " +
                 $"AND cliente.nome LIKE '%{pesquisa}%'";
 
