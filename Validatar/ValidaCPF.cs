@@ -24,6 +24,7 @@
                 soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
 
             resto = soma % 11;
+
             if (resto < 2)
                 resto = 0;
             else
@@ -34,10 +35,12 @@
             tempCpf = tempCpf + digito;
 
             soma = 0;
+
             for (int i = 0; i < 10; i++)
                 soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
 
             resto = soma % 11;
+
             if (resto < 2)
                 resto = 0;
             else

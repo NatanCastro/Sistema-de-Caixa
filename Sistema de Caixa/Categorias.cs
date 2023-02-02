@@ -13,8 +13,8 @@ namespace Sistema_de_Caixa
 {
     public partial class Categorias : Form
     {
-        private static string user = "user";
-        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
+        private static string user = "natan.gacastro";
+        private SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
         string sqlString = string.Empty;
 
         public Categorias()

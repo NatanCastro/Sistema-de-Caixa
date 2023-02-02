@@ -14,7 +14,7 @@ namespace Sistema_de_Caixa
 {
     public partial class Produtos : Form
     {
-        private static string user = "user";
+        private static string user = "natan.gacastro";
         SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
         string sqlString = string.Empty;
 
@@ -50,17 +50,21 @@ namespace Sistema_de_Caixa
 
         private void listarCategorias()
         {
-            sqlString = "SELECT (id || ' - ' || nome) FROM categoria";
+            sqlString = "SELECT id, nome FROM categoria";
 
             try
             {
                 conn.Open();
                 SQLiteCommand command = new(sqlString, conn);
-                SQLiteDataAdapter adapter = new(command);
+                SQLiteDataReader adapter = command.ExecuteReader();
 
-                DataTable table = new();
-                adapter.Fill(table);
-                cbCategoria.DataSource = table;
+                List<string> categorias = new List<string>();
+                while (adapter.Read())
+                {
+                    categorias.Add($"{adapter.GetInt32(0)} - {adapter.GetString(1)}");
+                }
+
+                cbCategoria.DataSource = categorias.AsReadOnly;
             }
             catch (SQLiteException ex)
             {
@@ -108,8 +112,18 @@ namespace Sistema_de_Caixa
             decimal valorVenda = decimal.Parse(txtValorVenda.Text.Replace(",", "."));
             decimal margemLucro = decimal.Round(decimal.Parse(txtMargemLucro.Text), 2);
             int quantidade = int.Parse(txtQtd.Text);
-            int idCategoria = int.Parse(cbCategoria.SelectedText.Substring(0, 1));
+            uint idCategoria;
 
+            if (cbCategoria.SelectedText != "")
+            {
+                idCategoria = uint.Parse(cbCategoria.SelectedText.Substring(0, 1));
+            }
+            else
+            {
+                MessageBox.Show("Por favor cadastre uma categoria para o produto");
+                return;
+            }
+            
             sqlString = "INSERT INTO produto " +
                 "(\"codigo_barras\", \"nome\", \"preco_custo\", \"preco_venda\",\"margem_lucro\", \"quantidade\", \"id_categoria\") " +
                 $"VALUES ('{codigoBarras}', '{nome}', {valorProduto}, {valorVenda}, {margemLucro}, {quantidade}, {idCategoria})";

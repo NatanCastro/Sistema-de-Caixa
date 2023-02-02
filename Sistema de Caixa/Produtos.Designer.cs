@@ -37,6 +37,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtValorVenda = new System.Windows.Forms.TextBox();
+            this.txtValorProduto = new System.Windows.Forms.TextBox();
             this.dgProduto = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -54,12 +56,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtValorProduto = new System.Windows.Forms.TextBox();
-            this.txtValorVenda = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).BeginInit();
@@ -175,6 +175,21 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 606);
             this.panel1.TabIndex = 4;
+            // 
+            // txtValorVenda
+            // 
+            this.txtValorVenda.Location = new System.Drawing.Point(226, 197);
+            this.txtValorVenda.Name = "txtValorVenda";
+            this.txtValorVenda.Size = new System.Drawing.Size(128, 36);
+            this.txtValorVenda.TabIndex = 18;
+            this.txtValorVenda.TextChanged += new System.EventHandler(this.txtValorVenda_TextChanged);
+            // 
+            // txtValorProduto
+            // 
+            this.txtValorProduto.Location = new System.Drawing.Point(41, 197);
+            this.txtValorProduto.Name = "txtValorProduto";
+            this.txtValorProduto.Size = new System.Drawing.Size(147, 36);
+            this.txtValorProduto.TabIndex = 17;
             // 
             // dgProduto
             // 
@@ -323,30 +338,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Codigo de Barras\r\n";
             // 
-            // label9
+            // label11
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Location = new System.Drawing.Point(703, 40);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(198, 30);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Cadastrar Produtos";
-            // 
-            // txtValorProduto
-            // 
-            this.txtValorProduto.Location = new System.Drawing.Point(41, 197);
-            this.txtValorProduto.Name = "txtValorProduto";
-            this.txtValorProduto.Size = new System.Drawing.Size(147, 36);
-            this.txtValorProduto.TabIndex = 17;
-            // 
-            // txtValorVenda
-            // 
-            this.txtValorVenda.Location = new System.Drawing.Point(226, 197);
-            this.txtValorVenda.Name = "txtValorVenda";
-            this.txtValorVenda.Size = new System.Drawing.Size(128, 36);
-            this.txtValorVenda.TabIndex = 18;
-            this.txtValorVenda.TextChanged += new System.EventHandler(this.txtValorVenda_TextChanged);
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Location = new System.Drawing.Point(194, 200);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(38, 30);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "R$";
             // 
             // label10
             // 
@@ -358,16 +358,6 @@
             this.label10.TabIndex = 19;
             this.label10.Text = "R$";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Location = new System.Drawing.Point(194, 200);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(38, 30);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "R$";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -376,6 +366,16 @@
             this.label12.Size = new System.Drawing.Size(31, 30);
             this.label12.TabIndex = 21;
             this.label12.Text = "%";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Location = new System.Drawing.Point(703, 40);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(198, 30);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Cadastrar Produtos";
             // 
             // Produtos
             // 
