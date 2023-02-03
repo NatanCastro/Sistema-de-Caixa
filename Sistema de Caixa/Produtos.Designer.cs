@@ -258,6 +258,7 @@
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(340, 38);
             this.cbCategoria.TabIndex = 12;
+            this.cbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // txtQtd
             // 
@@ -369,27 +370,6 @@
             this.label12.Size = new System.Drawing.Size(31, 30);
             this.label12.TabIndex = 21;
             this.label12.Text = "%";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Location = new System.Drawing.Point(703, 40);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(198, 30);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Cadastrar Produtos";
-            // 
-            // pbCadCategoria
-            // 
-            this.pbCadCategoria.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
-            this.pbCadCategoria.Location = new System.Drawing.Point(360, 273);
-            this.pbCadCategoria.Name = "pbCadCategoria";
-            this.pbCadCategoria.Size = new System.Drawing.Size(30, 30);
-            this.pbCadCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCadCategoria.TabIndex = 22;
-            this.pbCadCategoria.TabStop = false;
-            this.pbCadCategoria.Click += new System.EventHandler(this.pbCadCategoria_Click);
             // 
             // Produtos
             // 

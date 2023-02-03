@@ -50,7 +50,7 @@ namespace Sistema_de_Caixa
 
         private void listarCategorias()
         {
-            Conexao.sqlString = "SELECT (id || ' - ' || nome) FROM categoria";
+            sqlString = "SELECT id, nome FROM categoria";
 
             try
             {
@@ -58,9 +58,15 @@ namespace Sistema_de_Caixa
                 SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
-                DataTable table = new();
-                adapter.Fill(table);
-                cbCategoria.DataSource = table;
+                List<string> categorias = new List<string>();
+
+                while (reader.Read())
+                {
+                    categorias.Add($"{reader.GetInt32(0)} - {reader.GetString(1)}");
+                }
+
+                cbCategoria.DataSource = categorias.AsReadOnly();
+                reader.Close();
             }
             catch (SQLiteException ex)
             {
@@ -82,6 +88,7 @@ namespace Sistema_de_Caixa
         private void Produtos_Load(object sender, EventArgs e)
         {
             listarProdutos();
+            listarCategorias();
         }
 
         private void pbCadCategoria_Click(object sender, EventArgs e)
@@ -110,15 +117,25 @@ namespace Sistema_de_Caixa
         {
             string codigoBarras = txtCodigoBarras.Text;
             string nome = txtNome.Text;
-            decimal valorProduto = decimal.Parse(txtValorProduto.Text.Replace(",", "."));
-            decimal valorVenda = decimal.Parse(txtValorVenda.Text.Replace(",", "."));
+            decimal valorProduto = decimal.Parse(txtValorProduto.Text);
+            decimal valorVenda = decimal.Parse(txtValorVenda.Text);
             decimal margemLucro = decimal.Round(decimal.Parse(txtMargemLucro.Text), 2);
             int quantidade = int.Parse(txtQtd.Text);
-            int idCategoria = int.Parse(cbCategoria.SelectedText.Substring(0, 1));
+            uint idCategoria;
 
-            Conexao.sqlString = "INSERT INTO produto " +
+            if (cbCategoria.SelectedItem.ToString() != "")
+            {
+                idCategoria = uint.Parse(cbCategoria.SelectedItem.ToString().Substring(0, 1));
+            }
+            else
+            {
+                MessageBox.Show("Por favor cadastre uma categoria para o produto");
+                return;
+            }
+            
+            sqlString = "INSERT INTO produto " +
                 "(\"codigo_barras\", \"nome\", \"preco_custo\", \"preco_venda\",\"margem_lucro\", \"quantidade\", \"id_categoria\") " +
-                $"VALUES ('{codigoBarras}', '{nome}', {valorProduto}, {valorVenda}, {margemLucro}, {quantidade}, {idCategoria})";
+                $"VALUES ('{codigoBarras}', '{nome}', {valorProduto}, '{valorVenda}', '{margemLucro}', {quantidade}, {idCategoria})";
 
             MessageBox.Show(Conexao.sqlString);
 
@@ -154,16 +171,26 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um cliente para editar");
                 return;
             }
-            
+
             string codigoBarras = txtCodigoBarras.Text;
             string nome = txtNome.Text;
-            decimal valorProduto = decimal.Parse(txtValorProduto.Text.Replace(",", "."));
-            decimal valorVenda = decimal.Parse(txtValorVenda.Text.Replace(",", "."));
+            decimal valorProduto = decimal.Parse(txtValorProduto.Text);
+            decimal valorVenda = decimal.Parse(txtValorVenda.Text);
             decimal margemLucro = decimal.Round(decimal.Parse(txtMargemLucro.Text), 2);
             int quantidade = int.Parse(txtQtd.Text);
-            int idCategoria = int.Parse(cbCategoria.SelectedText.Substring(0, 1));
+            uint idCategoria;
 
-            Conexao.sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_custo={valorProduto}, " +
+            if (cbCategoria.SelectedItem.ToString() != "")
+            {
+                idCategoria = uint.Parse(cbCategoria.SelectedItem.ToString().Substring(0, 1));
+            }
+            else
+            {
+                MessageBox.Show("Por favor cadastre uma categoria para o produto");
+                return;
+            }
+            
+            sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_custo={valorProduto}, " +
                 $"valor_venda={valorVenda}, margem_lucro={margemLucro}, quantidade={quantidade}, id_caregoria={idCategoria} " + 
                 $"WHERE codigo_barras={tsBuscar.Text}";
 
@@ -265,6 +292,7 @@ namespace Sistema_de_Caixa
             if (dgProduto.Columns[e.ColumnIndex] == dgProduto.Columns["editar"]
                 || dgProduto.Columns[e.ColumnIndex] == dgProduto.Columns["apagar"])
             {
+                tsBuscar.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                 txtCodigoBarras.Text = dgProduto.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
                 txtNome.Text = dgProduto.Rows[e.RowIndex].Cells["Produto"].Value.ToString();
                 txtValorProduto.Text = dgProduto.Rows[e.RowIndex].Cells["Custo"].Value.ToString();
