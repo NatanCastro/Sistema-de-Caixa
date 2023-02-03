@@ -56,6 +56,7 @@ namespace Sistema_de_Caixa
         private void listarEnderecos()
         {
             sqlString = "SELECT id, rua, numero FROM endereco";
+
             try
             {
                 conn.Open();

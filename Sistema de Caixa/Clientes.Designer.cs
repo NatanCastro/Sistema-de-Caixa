@@ -236,6 +236,7 @@
             this.cbEndereco.Name = "cbEndereco";
             this.cbEndereco.Size = new System.Drawing.Size(749, 38);
             this.cbEndereco.TabIndex = 13;
+            this.cbEndereco.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // label6
             // 

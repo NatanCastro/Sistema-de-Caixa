@@ -255,6 +255,7 @@
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(340, 38);
             this.cbCategoria.TabIndex = 12;
+            this.cbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // txtQtd
             // 
