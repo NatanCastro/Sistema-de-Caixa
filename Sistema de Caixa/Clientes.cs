@@ -322,5 +322,10 @@ namespace Sistema_de_Caixa
             dgCliente.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
             dgCliente.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
         }
+
+        private void cbEndereco_Click(object sender, EventArgs e)
+        {
+            listarEnderecos();
+        }
     }
 }

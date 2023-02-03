@@ -43,7 +43,7 @@ namespace Sistema_de_Caixa
 
         private void cadastrareditarconsultarexcluirUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios = new();
+            Usuarios usuarios = new(false);
             usuarios.ShowDialog();
         }
     }

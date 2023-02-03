@@ -84,6 +84,12 @@ namespace Sistema_de_Caixa
             listarProdutos();
         }
 
+        private void pbCadCategoria_Click(object sender, EventArgs e)
+        {
+            Categorias categorias = new();
+            categorias.ShowDialog();
+        }
+
         private void txtValorVenda_TextChanged(object sender, EventArgs e)
         {
             Regex regex = new(@"[0-9]{1}\,[0-9]{2}");

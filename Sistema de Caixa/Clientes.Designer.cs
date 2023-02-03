@@ -231,11 +231,13 @@
             // 
             // cbEndereco
             // 
+            this.cbEndereco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEndereco.FormattingEnabled = true;
             this.cbEndereco.Location = new System.Drawing.Point(18, 271);
             this.cbEndereco.Name = "cbEndereco";
             this.cbEndereco.Size = new System.Drawing.Size(749, 38);
             this.cbEndereco.TabIndex = 13;
+            this.cbEndereco.Click += new System.EventHandler(this.cbEndereco_Click);
             // 
             // label6
             // 

@@ -17,9 +17,12 @@ namespace Sistema_de_Caixa
         readonly Conexao Conexao = new();
         readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
 
-        public Usuarios()
+        public bool PrimeiroUsuario { get; }
+
+        public Usuarios(bool PrimeiroUsuario)
         {
             InitializeComponent();
+            this.PrimeiroUsuario = PrimeiroUsuario;
         }
 
         private void listarUsuarios()
@@ -93,6 +96,7 @@ namespace Sistema_de_Caixa
 
             limparDados();
             listarUsuarios();
+            if (PrimeiroUsuario) { Close(); }
         }
 
         private void tsEditar_Click(object sender, EventArgs e)
