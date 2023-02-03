@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_de_Caixa.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +14,8 @@ namespace Sistema_de_Caixa
 {
     public partial class Usuarios : Form
     {
-        private static string user = "user";
-        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
-        string sqlString = string.Empty;
+        readonly Conexao Conexao = new();
+        readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
 
         public Usuarios()
         {
@@ -24,13 +24,13 @@ namespace Sistema_de_Caixa
 
         private void listarUsuarios()
         {
-            sqlString = "SELECT id, nome FROM usuario";
+            Conexao.sqlString = "SELECT id, nome FROM usuario";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                SQLiteCommand command = new(sqlString, conn);
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -44,7 +44,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
         }
 
@@ -69,15 +69,15 @@ namespace Sistema_de_Caixa
             string nome = txtNome.Text;
             string senha = txtSenha.Text;
 
-            sqlString = $"INSERT INTO usuario (nome, senha) " +
+            Conexao.sqlString = $"INSERT INTO usuario (nome, senha) " +
                 $"VALUES ('{nome}', '{senha}')";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -88,7 +88,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -106,15 +106,15 @@ namespace Sistema_de_Caixa
             string nome = txtNome.Text;
             string senha = txtSenha.Text;
 
-            sqlString = $"UPDATE usuario SET nome='{nome}', senha='{senha}' " +
+            Conexao.sqlString = $"UPDATE usuario SET nome='{nome}', senha='{senha}' " +
                 $"WHERE id={tsBuscar.Text}";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -125,7 +125,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -145,14 +145,14 @@ namespace Sistema_de_Caixa
                 return;
             }
 
-            sqlString = $"DELETE FROM usuario WHERE id='{tsBuscar.Text}'";
+            Conexao.sqlString = $"DELETE FROM usuario WHERE id='{tsBuscar.Text}'";
 
             try
             {
-                conn.Open();
-                using SQLiteTransaction transaction = conn.BeginTransaction();
+                ConexaoString.Open();
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
 
-                SQLiteCommand command = new(sqlString, conn);
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 command.ExecuteNonQuery();
                 transaction.Commit();
             }
@@ -162,7 +162,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -187,13 +187,13 @@ namespace Sistema_de_Caixa
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
             string pesquisa = txtPesquisar.Text;
-            sqlString = $"SELECT id, nome FROM usuario WHERE nome LIKE %{pesquisa}%";
+            Conexao.sqlString = $"SELECT id, nome FROM usuario WHERE nome LIKE %{pesquisa}%";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                SQLiteCommand command = new(sqlString, conn);
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -207,7 +207,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
         }
 

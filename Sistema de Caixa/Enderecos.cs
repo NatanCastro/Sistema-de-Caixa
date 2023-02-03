@@ -17,9 +17,8 @@ namespace Sistema_de_Caixa
 {
     public partial class Enderecos : Form
     {
-        private static string user = "user";
-        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
-        string sqlString = string.Empty;
+        readonly Conexao Conexao = new();
+        readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
 
         public Enderecos()
         {
@@ -28,13 +27,13 @@ namespace Sistema_de_Caixa
 
         private void listarEnderecos()
         {
-            sqlString = "SELECT id, rua, numero, bairro, complemento, cidade, UF, pais, CEP FROM endereco";
+            Conexao.sqlString = "SELECT id, rua, numero, bairro, complemento, cidade, UF, pais, CEP FROM endereco";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                SQLiteCommand command = new(sqlString, conn);
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -48,7 +47,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
         }
 
@@ -103,17 +102,17 @@ namespace Sistema_de_Caixa
             string pais = txtPais.Text;
             string CEP = txtCEP.Text;
 
-            sqlString = $"INSERT INTO endereco (rua, numero, complemento, " +
+            Conexao.sqlString = $"INSERT INTO endereco (rua, numero, complemento, " +
                 $"bairro, cidade, UF, pais, CEP) " +
                 $"VALUES ('{rua}', '{numero}', '{complemento}', '{bairro}', " +
                 $"'{cidade}', '{UF}', '{pais}', '{CEP}')";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -124,7 +123,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -147,16 +146,16 @@ namespace Sistema_de_Caixa
             string UF = txtUF.Text;
             string pais = txtPais.Text;
 
-            sqlString = $"UPDATE endereco SET rua='{rua}', numero='{numero}', complemento='{complemento}', " +
+            Conexao.sqlString = $"UPDATE endereco SET rua='{rua}', numero='{numero}', complemento='{complemento}', " +
                 $"bairro='{bairro}', cidade='{cidade}', UF='{UF}', pais='{pais}' " +
                 $"WHERE id={tsBuscar.Text}";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -167,7 +166,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -188,14 +187,14 @@ namespace Sistema_de_Caixa
                 return;
             }
 
-            sqlString = $"DELETE FROM endereco WHERE id='{tsBuscar.Text}'";
+            Conexao.sqlString = $"DELETE FROM endereco WHERE id='{tsBuscar.Text}'";
 
             try
             {
-                conn.Open();
-                using SQLiteTransaction transaction = conn.BeginTransaction();
+                ConexaoString.Open();
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
 
-                SQLiteCommand command = new(sqlString, conn);
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 command.ExecuteNonQuery();
                 transaction.Commit();
             }
@@ -205,7 +204,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -237,14 +236,14 @@ namespace Sistema_de_Caixa
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
             string pesquisa = txtPesquisar.Text;
-            sqlString = $"SELECT id, rua, numero, bairro, complemento, cidade, UF, pais, CEP FROM endereco " +
+            Conexao.sqlString = $"SELECT id, rua, numero, bairro, complemento, cidade, UF, pais, CEP FROM endereco " +
                 $"WHERE (rua || numero || bairro || cidade || UF || pais || CEP) LIKE %{pesquisa}%";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                SQLiteCommand command = new(sqlString, conn);
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -258,7 +257,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
         }
 

@@ -9,14 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Sistema_de_Caixa.Controller;
 
 namespace Sistema_de_Caixa
 {
     public partial class Produtos : Form
     {
-        private static string user = "user";
-        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
-        string sqlString = string.Empty;
+        readonly Conexao Conexao = new();
+        readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
 
         public Produtos()
         {
@@ -25,15 +25,15 @@ namespace Sistema_de_Caixa
 
         private void listarProdutos()
         {
-            sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
+            Conexao.sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
                 "p.preco_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria' "+
                 "FROM produto AS p " +
                 "LEFT JOIN categoria AS c " +
                 "ON p.id_categoria = c.id";
             try
             {
-                conn.Open();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -45,17 +45,17 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show($"Não foi possivel retornar os dados dos Produtos\n\n{ex.Message}");
             }
-            finally { conn.Close(); }
+            finally { ConexaoString.Close(); }
         }
 
         private void listarCategorias()
         {
-            sqlString = "SELECT (id || ' - ' || nome) FROM categoria";
+            Conexao.sqlString = "SELECT (id || ' - ' || nome) FROM categoria";
 
             try
             {
-                conn.Open();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -66,7 +66,7 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show($"Não foi possivel recuperar os dados das categorias\n\n{ex.Message}");
             }
-            finally { conn.Close(); }
+            finally { ConexaoString.Close(); }
         }
 
         private void limparDados()
@@ -110,20 +110,20 @@ namespace Sistema_de_Caixa
             int quantidade = int.Parse(txtQtd.Text);
             int idCategoria = int.Parse(cbCategoria.SelectedText.Substring(0, 1));
 
-            sqlString = "INSERT INTO produto " +
+            Conexao.sqlString = "INSERT INTO produto " +
                 "(\"codigo_barras\", \"nome\", \"preco_custo\", \"preco_venda\",\"margem_lucro\", \"quantidade\", \"id_categoria\") " +
                 $"VALUES ('{codigoBarras}', '{nome}', {valorProduto}, {valorVenda}, {margemLucro}, {quantidade}, {idCategoria})";
 
-            MessageBox.Show(sqlString);
+            MessageBox.Show(Conexao.sqlString);
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
-                MessageBox.Show(sqlString);
+                MessageBox.Show(Conexao.sqlString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -134,7 +134,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
             limparDados();
             listarProdutos();
@@ -157,15 +157,15 @@ namespace Sistema_de_Caixa
             int quantidade = int.Parse(txtQtd.Text);
             int idCategoria = int.Parse(cbCategoria.SelectedText.Substring(0, 1));
 
-            sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_custo={valorProduto}, " +
+            Conexao.sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_custo={valorProduto}, " +
                 $"valor_venda={valorVenda}, margem_lucro={margemLucro}, quantidade={quantidade}, id_caregoria={idCategoria} " + 
                 $"WHERE codigo_barras={tsBuscar.Text}";
 
             try
             {
-                conn.Open();
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -176,7 +176,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
             limparDados();
             listarProdutos();
@@ -196,13 +196,13 @@ namespace Sistema_de_Caixa
                 return;
             }
             
-            sqlString = $"DELETE FROM produto WHERE id={tsBuscar.Text}";
+            Conexao.sqlString = $"DELETE FROM produto WHERE id={tsBuscar.Text}";
 
             try
             {
-                conn.Open();
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -213,7 +213,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -230,7 +230,7 @@ namespace Sistema_de_Caixa
         {
             string pesquisa = txtPesquisar.Text;
 
-            sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
+            Conexao.sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
                 "p.preco_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria' "+
                 "FROM produto AS p " +
                 "LEFT JOIN categoria AS c " +
@@ -238,8 +238,8 @@ namespace Sistema_de_Caixa
 
             try
             {
-                conn.Open();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -251,7 +251,7 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message}");
             }
-            finally { conn.Close(); }
+            finally { ConexaoString.Close(); }
         }
 
         private void dgProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)

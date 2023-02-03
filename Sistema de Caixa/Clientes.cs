@@ -12,14 +12,14 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
 using Validacao;
+using Sistema_de_Caixa.Controller;
 
 namespace Sistema_de_Caixa
 {
     public partial class Clientes : Form
     {
-        private static string user = "user";
-        SQLiteConnection conn = new($"Data Source=C:/Users/{user}/source/repos/natan22gt/Sistema-de-Caixa/Sistema de Caixa/banco/caixa.sqlite3; Version=3;");
-        string sqlString = string.Empty;
+        readonly Conexao Conexao = new();
+        readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
 
         public Clientes()
         {
@@ -28,7 +28,7 @@ namespace Sistema_de_Caixa
 
         private void listarClietes()
         {
-            sqlString =
+            Conexao.sqlString =
                 "SELECT cliente.id, cliente.nome, " +
                 "cliente.cpf_cnpj AS 'cpf/cnpj', cliente.data_nascimento," +
                 "endereco.rua || ', ' || endereco.numero AS 'endereco' " +
@@ -37,8 +37,8 @@ namespace Sistema_de_Caixa
                 "WHERE cliente.id_endereco = endereco.id";
             try
             {
-                conn.Open();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -50,16 +50,16 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show($"Não foi possivel retornar os dados dos Clientes\n\n{ex.Message}");
             }
-            finally { conn.Close(); }
+            finally { ConexaoString.Close(); }
         }
 
         private void listarEnderecos()
         {
-            sqlString = "SELECT id, rua, numero FROM endereco";
+            Conexao.sqlString = "SELECT id, rua, numero FROM endereco";
             try
             {
-                conn.Open();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataReader reader = command.ExecuteReader();
 
                 List<string> enderecos = new List<string>();
@@ -75,7 +75,7 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show($"Não foi possivel retornar os endereços cadastrados\n\n{ex.Message}");
             }
-            finally{ conn.Close(); }
+            finally{ ConexaoString.Close(); }
         }
 
         private void limparDados()
@@ -138,17 +138,17 @@ namespace Sistema_de_Caixa
             string dataNasc = $"{ano}-{mes}-{dia}";
             int idEndereco = int.Parse(cbEndereco.Text.Substring(0,1));
 
-            sqlString = "INSERT INTO cliente (\"nome\", \"cpf_cnpj\", \"data_nascimento\", \"id_endereco\")" +
+            Conexao.sqlString = "INSERT INTO cliente (\"nome\", \"cpf_cnpj\", \"data_nascimento\", \"id_endereco\")" +
                 $" VALUES ('{nome}', '{cpfCnpj}', DATE('{dataNasc}'), {idEndereco})";
 
             try
             {
-                conn.Open();
+                ConexaoString.Open();
 
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
-                MessageBox.Show(sqlString);
+                MessageBox.Show(Conexao.sqlString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -159,7 +159,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
             limparDados();
             listarClietes();
@@ -186,15 +186,15 @@ namespace Sistema_de_Caixa
             string dataNasc = $"{ano}-{mes}-{dia}";
             int idEndereco = int.Parse(cbEndereco.Text.Substring(0,1));
 
-            sqlString = $"UPDATE cliente SET nome={nome}, cpf_cnpj={cpfCnpj}, " +
+            Conexao.sqlString = $"UPDATE cliente SET nome={nome}, cpf_cnpj={cpfCnpj}, " +
                 $"data_nascimento={dataNasc}, id_endereco={idEndereco} " +
                 $"WHERE id={tsBuscar.Text}";
 
             try
             {
-                conn.Open();
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -205,7 +205,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
             limparDados();
             listarClietes();
@@ -224,13 +224,13 @@ namespace Sistema_de_Caixa
                 return;
             }
             
-            sqlString = $"DELETE FROM cliente WHERE id={tsBuscar.Text}";
+            Conexao.sqlString = $"DELETE FROM cliente WHERE id={tsBuscar.Text}";
 
             try
             {
-                conn.Open();
-                using SQLiteTransaction transaction = conn.BeginTransaction();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
                 command.ExecuteNonQuery();
                 transaction.Commit();
@@ -241,7 +241,7 @@ namespace Sistema_de_Caixa
             }
             finally
             {
-                conn.Close();
+                ConexaoString.Close();
             }
 
             limparDados();
@@ -290,7 +290,7 @@ namespace Sistema_de_Caixa
         {
             string pesquisa = txtPesquisar.Text;
 
-            sqlString = 
+            Conexao.sqlString = 
                 "SELECT cliente.id, cliente.nome, " +
                 "cliente.cpf_cnpj AS 'cpf/cnpj', cliente.data_nascimento," +
                 "endereco.rua || ', ' || endereco.numero AS 'endereco' " +
@@ -301,8 +301,8 @@ namespace Sistema_de_Caixa
 
             try
             {
-                conn.Open();
-                SQLiteCommand command = new(sqlString, conn);
+                ConexaoString.Open();
+                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -314,7 +314,7 @@ namespace Sistema_de_Caixa
             {
                 MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message}");
             }
-            finally { conn.Close(); }
+            finally { ConexaoString.Close(); }
         }
 
         private void dgCliente_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
