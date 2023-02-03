@@ -268,7 +268,7 @@
             // txtCNPJ
             // 
             this.txtCNPJ.Location = new System.Drawing.Point(150, 199);
-            this.txtCNPJ.Mask = "00.000.000/0000-00";
+            this.txtCNPJ.Mask = "00,000,000/0000-00";
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(160, 36);
             this.txtCNPJ.TabIndex = 9;
@@ -276,7 +276,7 @@
             // txtCPF
             // 
             this.txtCPF.Location = new System.Drawing.Point(18, 199);
-            this.txtCPF.Mask = "000.000.000-00";
+            this.txtCPF.Mask = "000,000,000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(126, 36);
             this.txtCPF.TabIndex = 8;

@@ -1,4 +1,4 @@
-﻿namespace Validacao
+﻿namespace Sistema_de_Caixa.Controller
 {
     public class ValidaCNPJ
     {

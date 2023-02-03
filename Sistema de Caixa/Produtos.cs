@@ -50,15 +50,15 @@ namespace Sistema_de_Caixa
 
         private void listarCategorias()
         {
-            sqlString = "SELECT id, nome FROM categoria";
+            Conexao.sqlString = "SELECT id, nome FROM categoria";
 
             try
             {
                 ConexaoString.Open();
                 SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
-                SQLiteDataAdapter adapter = new(command);
+                SQLiteDataReader reader = command.ExecuteReader();
 
-                List<string> categorias = new List<string>();
+                List<string> categorias = new();
 
                 while (reader.Read())
                 {
@@ -133,7 +133,7 @@ namespace Sistema_de_Caixa
                 return;
             }
             
-            sqlString = "INSERT INTO produto " +
+            Conexao.sqlString = "INSERT INTO produto " +
                 "(\"codigo_barras\", \"nome\", \"preco_custo\", \"preco_venda\",\"margem_lucro\", \"quantidade\", \"id_categoria\") " +
                 $"VALUES ('{codigoBarras}', '{nome}', {valorProduto}, '{valorVenda}', '{margemLucro}', {quantidade}, {idCategoria})";
 
@@ -190,7 +190,7 @@ namespace Sistema_de_Caixa
                 return;
             }
             
-            sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_custo={valorProduto}, " +
+            Conexao.sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_custo={valorProduto}, " +
                 $"valor_venda={valorVenda}, margem_lucro={margemLucro}, quantidade={quantidade}, id_caregoria={idCategoria} " + 
                 $"WHERE codigo_barras={tsBuscar.Text}";
 
@@ -229,7 +229,7 @@ namespace Sistema_de_Caixa
                 return;
             }
             
-            Conexao.sqlString = $"DELETE FROM produto WHERE id={tsBuscar.Text}";
+            Conexao.sqlString = $"DELETE FROM produto WHERE codigo_barras={tsBuscar.Text}";
 
             try
             {

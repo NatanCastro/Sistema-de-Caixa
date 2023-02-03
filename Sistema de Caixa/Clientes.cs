@@ -11,7 +11,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
-using Validacao;
 using Sistema_de_Caixa.Controller;
 
 namespace Sistema_de_Caixa
@@ -127,7 +126,6 @@ namespace Sistema_de_Caixa
 
             string cpfCnpj = cbTipoPessoa.SelectedItem.ToString() == "Fisica"
                 ? txtCPF.Text : txtCNPJ.Text;
-            cpfCnpj = cpfCnpj.Replace(',', '.');
 
 
             
@@ -177,7 +175,6 @@ namespace Sistema_de_Caixa
 
             string cpfCnpj = cbTipoPessoa.SelectedItem.ToString() == "Fisica"
                 ? txtCPF.Text : txtCNPJ.Text;
-            cpfCnpj = cpfCnpj.Replace(',', '.');
 
             string[] dataArray = txtDataNasc.Text.Split('/');
             string ano = dataArray[2];
