@@ -58,6 +58,14 @@ namespace Sistema_de_Caixa
             txtSenha.Text = string.Empty;
         }
 
+        private void verificarDados()
+        {
+            if (txtNome.Text == string.Empty) {
+                MessageBox.Show("Insira o nome do usuario");
+                return;
+            }
+        }
+
         private void Usuarios_Load(object sender, EventArgs e)
         {
             listarUsuarios();
@@ -65,10 +73,7 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text == string.Empty) {
-                MessageBox.Show("Insira o nome do usuario");
-                return;
-            }
+            verificarDados();
             string nome = txtNome.Text;
             string senha = txtSenha.Text;
 
@@ -106,6 +111,7 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um usuario para editar");
                 return;
             }
+            verificarDados();
 
             string nome = txtNome.Text;
             string senha = txtSenha.Text;

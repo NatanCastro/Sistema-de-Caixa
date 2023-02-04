@@ -45,6 +45,7 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgCategoria)).BeginInit();
@@ -136,6 +137,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.dgCategoria);
             this.panel1.Controls.Add(this.txtPesquisar);
             this.panel1.Controls.Add(this.label3);
@@ -222,6 +224,17 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Cadastrar Categorias";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(75, 20);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(22, 30);
+            this.label9.TabIndex = 19;
+            this.label9.Text = "*";
+            // 
             // Categorias
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -267,5 +280,6 @@
         private DataGridView dgCategoria;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
+        private Label label9;
     }
 }

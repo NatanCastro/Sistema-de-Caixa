@@ -47,6 +47,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsuario)).BeginInit();
@@ -138,6 +139,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.dgUsuario);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.txtPesquisar);
@@ -241,6 +243,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Cadastro de Usuario";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(82, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 30);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "*";
+            // 
             // Usuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -288,5 +301,6 @@
         private Label label2;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
+        private Label label4;
     }
 }

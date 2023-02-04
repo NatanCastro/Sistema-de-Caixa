@@ -79,6 +79,16 @@ namespace Sistema_de_Caixa
             }
         }
 
+        private void verifarDados()
+        {
+            if (txtRua.Text == string.Empty || txtNumero.Text == string.Empty || 
+                txtBairro.Text == string.Empty || txtCidade.Text == string.Empty ||
+                txtUF.Text == string.Empty)
+            {
+                MessageBox.Show("Preencha os campos obrigatorios");
+                return;
+            }
+        }
 
         private void Enderecos_Load(object sender, EventArgs e)
         {
@@ -87,11 +97,7 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            if (txtCEP.Text == string.Empty)
-            {
-                MessageBox.Show("Insira o CEP");
-                return;
-            }
+            verifarDados();
 
             string rua = txtRua.Text;
             string numero = txtNumero.Text;
@@ -137,6 +143,7 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um endereço para editar");
                 return;
             }
+            verifarDados();
 
             string rua = txtRua.Text;
             string numero = txtNumero.Text;

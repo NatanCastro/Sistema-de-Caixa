@@ -85,6 +85,18 @@ namespace Sistema_de_Caixa
             txtQtd.Text = string.Empty;
         }
 
+        private void verificarDados()
+        {
+            Regex valor = new(@"[0-9]{1}\,[0-9]{2}");
+            if (txtCodigoBarras.Text == string.Empty || txtNome.Text == string.Empty ||
+                !valor.IsMatch(txtValorProduto.Text) || !valor.IsMatch(txtValorVenda.Text) || 
+                txtMargemLucro.Text == string.Empty || txtQtd.Text == string.Empty)
+            {
+                MessageBox.Show("Preencha os campos obrigatorios");
+                return;
+            }
+        }
+
         private void Produtos_Load(object sender, EventArgs e)
         {
             listarProdutos();
@@ -115,6 +127,7 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
+            verificarDados();
             string codigoBarras = txtCodigoBarras.Text;
             string nome = txtNome.Text;
             decimal valorProduto = decimal.Parse(txtValorProduto.Text);
@@ -171,6 +184,7 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um cliente para editar");
                 return;
             }
+            verificarDados();
 
             string codigoBarras = txtCodigoBarras.Text;
             string nome = txtNome.Text;

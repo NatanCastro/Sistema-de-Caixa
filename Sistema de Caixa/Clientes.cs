@@ -88,6 +88,32 @@ namespace Sistema_de_Caixa
             txtDataNasc.Text = string.Empty;
         }
 
+        private void verificaDados()
+        {
+            Regex RegexCpf = new(@"[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}");
+            Regex RegexCnpj = new(@"[0-9]{2}\.[0-9]{3}\.[0-9]{3}\/[0-9]{4}\-[0-9]{2}");
+            Regex RegexDataNasc = new(@"([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4}");
+
+            if (txtNome.Text == string.Empty ||
+                !RegexCpf.IsMatch(txtCPF.Text) || !RegexCnpj.IsMatch(txtCNPJ.Text) ||
+                !RegexDataNasc.IsMatch(txtDataNasc.Text))
+            {
+                MessageBox.Show("Preencha os campos obrigatorios");
+                return;
+            }
+
+            if (!ValidaCPF.IsCPF(txtCPF.Text) && txtCPF.Enabled)
+            {
+                MessageBox.Show("CPF não valido");
+                return;
+            }
+            if (!ValidaCNPJ.IsCnpj(txtCNPJ.Text) && txtCNPJ.Enabled)
+            {
+                MessageBox.Show("CNPJ não valido");
+                return;
+            }
+        }
+
         private void Clientes_Load(object sender, EventArgs e)
         {
             listarClietes();
@@ -110,20 +136,8 @@ namespace Sistema_de_Caixa
 
         private void tsSavar_Click(object sender, EventArgs e)
         {
+            verificaDados();
             string nome = txtNome.Text;
-
-            if (!ValidaCPF.IsCPF(txtCPF.Text) && txtCPF.Enabled)
-            {
-                MessageBox.Show("CPF não valido");
-                return;
-            }
-
-            if (!ValidaCNPJ.IsCnpj(txtCNPJ.Text) && txtCNPJ.Enabled)
-            {
-                MessageBox.Show("CNPJ não valido");
-                return;
-            }
-
             string cpfCnpj = cbTipoPessoa.SelectedItem.ToString() == "Fisica"
                 ? txtCPF.Text : txtCNPJ.Text;
 
@@ -170,6 +184,8 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um cliente para editar");
                 return;
             }
+
+            verificaDados();
             
             string nome = txtNome.Text;
 

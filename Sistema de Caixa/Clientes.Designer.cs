@@ -56,6 +56,11 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCadEndereco)).BeginInit();
@@ -149,6 +154,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.pbCadEndereco);
             this.panel1.Controls.Add(this.dgCliente);
             this.panel1.Controls.Add(this.txtPesquisar);
@@ -165,6 +174,7 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtNome);
             this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Location = new System.Drawing.Point(200, 100);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
@@ -346,6 +356,61 @@
             this.label8.TabIndex = 4;
             this.label8.Text = "Cadastro de Clientes";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(87, 20);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(22, 30);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(64, 166);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(22, 30);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(204, 166);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(22, 30);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(790, 166);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(22, 30);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(117, 238);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(22, 30);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "*";
+            // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -402,5 +467,10 @@
         private Label label8;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
     }
 }

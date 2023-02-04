@@ -53,6 +53,14 @@ namespace Sistema_de_Caixa
             txtNome.Text = string.Empty;
         }
 
+        private void validarDados()
+        {
+            if (txtNome.Text == string.Empty) {
+                MessageBox.Show("Insira o nome do categoria");
+                return;
+            }
+        }
+
         private void Categorias_Load(object sender, EventArgs e)
         {
             listarCategoria();
@@ -60,10 +68,7 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text == string.Empty) {
-                MessageBox.Show("Insira o nome do categoria");
-                return;
-            }
+            validarDados();
             string nome = txtNome.Text;
 
             Conexao.sqlString = $"INSERT INTO categoria (nome) " +
@@ -99,6 +104,7 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um categoria para editar");
                 return;
             }
+            validarDados();
 
             string nome = txtNome.Text;
 

@@ -43,6 +43,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtRua = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtCEP = new System.Windows.Forms.MaskedTextBox();
             this.txtPais = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -53,12 +58,12 @@
             this.txtUF = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.dgEndereco = new System.Windows.Forms.DataGridView();
+            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.txtCidade = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
-            this.editar = new System.Windows.Forms.DataGridViewImageColumn();
-            this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgEndereco)).BeginInit();
@@ -203,6 +208,11 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.txtCEP);
             this.panel1.Controls.Add(this.txtPais);
             this.panel1.Controls.Add(this.label10);
@@ -226,6 +236,61 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 4;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(440, 164);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(22, 30);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "*";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(99, 164);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(22, 30);
+            this.label15.TabIndex = 23;
+            this.label15.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(474, 92);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(22, 30);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(765, 20);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(22, 30);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(61, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(22, 30);
+            this.label11.TabIndex = 19;
+            this.label11.Text = "*";
             // 
             // txtCEP
             // 
@@ -315,6 +380,22 @@
             this.dgEndereco.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgEndereco_CellContentClick);
             this.dgEndereco.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgEndereco_CellFormatting);
             // 
+            // editar
+            // 
+            this.editar.HeaderText = "";
+            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
+            this.editar.MinimumWidth = 24;
+            this.editar.Name = "editar";
+            this.editar.Width = 24;
+            // 
+            // apagar
+            // 
+            this.apagar.HeaderText = "";
+            this.apagar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
+            this.apagar.MinimumWidth = 24;
+            this.apagar.Name = "apagar";
+            this.apagar.Width = 24;
+            // 
             // txtPesquisar
             // 
             this.txtPesquisar.Location = new System.Drawing.Point(18, 363);
@@ -345,22 +426,6 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(122, 36);
             this.txtNumero.TabIndex = 3;
-            // 
-            // editar
-            // 
-            this.editar.HeaderText = "";
-            this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
-            this.editar.MinimumWidth = 24;
-            this.editar.Name = "editar";
-            this.editar.Width = 24;
-            // 
-            // apagar
-            // 
-            this.apagar.HeaderText = "";
-            this.apagar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
-            this.apagar.MinimumWidth = 24;
-            this.apagar.Name = "apagar";
-            this.apagar.Width = 24;
             // 
             // Enderecos
             // 
@@ -422,5 +487,10 @@
         private MaskedTextBox txtCEP;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label16;
+        private Label label15;
     }
 }

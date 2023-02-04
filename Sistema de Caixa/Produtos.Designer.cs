@@ -37,6 +37,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.pbCadCategoria = new System.Windows.Forms.PictureBox();
             this.txtValorVenda = new System.Windows.Forms.TextBox();
             this.txtValorProduto = new System.Windows.Forms.TextBox();
             this.dgProduto = new System.Windows.Forms.DataGridView();
@@ -60,11 +64,11 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.pbCadCategoria = new System.Windows.Forms.PictureBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCadCategoria)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -153,6 +157,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label15);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.pbCadCategoria);
             this.panel1.Controls.Add(this.txtValorVenda);
             this.panel1.Controls.Add(this.txtValorProduto);
@@ -178,6 +186,50 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 606);
             this.panel1.TabIndex = 4;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.ForeColor = System.Drawing.Color.Red;
+            this.label15.Location = new System.Drawing.Point(675, 164);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(22, 30);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "*";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(194, 92);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 30);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "*";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(194, 20);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(22, 30);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "*";
+            // 
+            // pbCadCategoria
+            // 
+            this.pbCadCategoria.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
+            this.pbCadCategoria.Location = new System.Drawing.Point(356, 274);
+            this.pbCadCategoria.Name = "pbCadCategoria";
+            this.pbCadCategoria.Size = new System.Drawing.Size(30, 30);
+            this.pbCadCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCadCategoria.TabIndex = 0;
+            this.pbCadCategoria.TabStop = false;
+            this.pbCadCategoria.Click += new System.EventHandler(this.pbCadCategoria_Click);
             // 
             // txtValorVenda
             // 
@@ -253,12 +305,12 @@
             // 
             // cbCategoria
             // 
+            this.cbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(10, 269);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(340, 38);
             this.cbCategoria.TabIndex = 12;
-            this.cbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
             // 
             // txtQtd
             // 
@@ -371,6 +423,24 @@
             this.label12.TabIndex = 21;
             this.label12.Text = "%";
             // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(0, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 23);
+            this.label9.TabIndex = 0;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(123, 236);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(22, 30);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "*";
+            // 
             // Produtos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -391,8 +461,8 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbCadCategoria)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,5 +503,9 @@
         private Label label10;
         private Label label12;
         private PictureBox pbCadCategoria;
+        private Label label14;
+        private Label label13;
+        private Label label15;
+        private Label label16;
     }
 }
