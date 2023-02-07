@@ -37,6 +37,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chInativos = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.chAtivo = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.pbCadEndereco = new System.Windows.Forms.PictureBox();
             this.dgCliente = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -55,12 +62,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbCadEndereco)).BeginInit();
@@ -154,6 +157,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chInativos);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.chAtivo);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
             this.panel1.Controls.Add(this.label11);
@@ -180,12 +186,90 @@
             this.panel1.Size = new System.Drawing.Size(820, 636);
             this.panel1.TabIndex = 3;
             // 
+            // chInativos
+            // 
+            this.chInativos.AutoSize = true;
+            this.chInativos.Location = new System.Drawing.Point(654, 312);
+            this.chInativos.Name = "chInativos";
+            this.chInativos.Size = new System.Drawing.Size(144, 34);
+            this.chInativos.TabIndex = 30;
+            this.chInativos.Text = "Ver inativos";
+            this.chInativos.UseVisualStyleBackColor = true;
+            this.chInativos.CheckedChanged += new System.EventHandler(this.chInativos_CheckedChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(89, 244);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(22, 30);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "*";
+            // 
+            // chAtivo
+            // 
+            this.chAtivo.AutoSize = true;
+            this.chAtivo.Checked = true;
+            this.chAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chAtivo.Location = new System.Drawing.Point(18, 243);
+            this.chAtivo.Name = "chAtivo";
+            this.chAtivo.Size = new System.Drawing.Size(82, 34);
+            this.chAtivo.TabIndex = 28;
+            this.chAtivo.Text = "Ativo";
+            this.chAtivo.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(117, 166);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(22, 30);
+            this.label13.TabIndex = 22;
+            this.label13.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(790, 92);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(22, 30);
+            this.label12.TabIndex = 21;
+            this.label12.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(336, 92);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(22, 30);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(196, 92);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(22, 30);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "*";
+            // 
             // pbCadEndereco
             // 
-            this.pbCadEndereco.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
-            this.pbCadEndereco.Location = new System.Drawing.Point(773, 275);
+            this.pbCadEndereco.Image = global::Sistema_de_Caixa.Properties.Resources.addIcon;
+            this.pbCadEndereco.Location = new System.Drawing.Point(760, 199);
             this.pbCadEndereco.Name = "pbCadEndereco";
-            this.pbCadEndereco.Size = new System.Drawing.Size(30, 30);
+            this.pbCadEndereco.Size = new System.Drawing.Size(38, 38);
             this.pbCadEndereco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbCadEndereco.TabIndex = 17;
             this.pbCadEndereco.TabStop = false;
@@ -243,16 +327,16 @@
             // 
             this.cbEndereco.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEndereco.FormattingEnabled = true;
-            this.cbEndereco.Location = new System.Drawing.Point(18, 271);
+            this.cbEndereco.Location = new System.Drawing.Point(18, 199);
             this.cbEndereco.Name = "cbEndereco";
-            this.cbEndereco.Size = new System.Drawing.Size(749, 38);
+            this.cbEndereco.Size = new System.Drawing.Size(736, 38);
             this.cbEndereco.TabIndex = 13;
             this.cbEndereco.Click += new System.EventHandler(this.cbEndereco_Click);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(18, 238);
+            this.label6.Location = new System.Drawing.Point(18, 166);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 30);
             this.label6.TabIndex = 12;
@@ -260,7 +344,7 @@
             // 
             // txtDataNasc
             // 
-            this.txtDataNasc.Location = new System.Drawing.Point(683, 199);
+            this.txtDataNasc.Location = new System.Drawing.Point(683, 125);
             this.txtDataNasc.Mask = "00/00/0000";
             this.txtDataNasc.Name = "txtDataNasc";
             this.txtDataNasc.Size = new System.Drawing.Size(115, 36);
@@ -269,7 +353,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(590, 166);
+            this.label5.Location = new System.Drawing.Point(590, 92);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(208, 30);
             this.label5.TabIndex = 10;
@@ -277,7 +361,7 @@
             // 
             // txtCNPJ
             // 
-            this.txtCNPJ.Location = new System.Drawing.Point(150, 199);
+            this.txtCNPJ.Location = new System.Drawing.Point(282, 125);
             this.txtCNPJ.Mask = "00,000,000/0000-00";
             this.txtCNPJ.Name = "txtCNPJ";
             this.txtCNPJ.Size = new System.Drawing.Size(160, 36);
@@ -285,7 +369,7 @@
             // 
             // txtCPF
             // 
-            this.txtCPF.Location = new System.Drawing.Point(18, 199);
+            this.txtCPF.Location = new System.Drawing.Point(150, 125);
             this.txtCPF.Mask = "000,000,000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(126, 36);
@@ -315,7 +399,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(150, 166);
+            this.label3.Location = new System.Drawing.Point(282, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 30);
             this.label3.TabIndex = 4;
@@ -324,7 +408,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 166);
+            this.label2.Location = new System.Drawing.Point(150, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 30);
             this.label2.TabIndex = 3;
@@ -346,16 +430,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nome";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Location = new System.Drawing.Point(497, 47);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(212, 30);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Cadastro de Clientes";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -367,49 +441,15 @@
             this.label9.TabIndex = 18;
             this.label9.Text = "*";
             // 
-            // label10
+            // label8
             // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.ForeColor = System.Drawing.Color.Red;
-            this.label10.Location = new System.Drawing.Point(64, 166);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(22, 30);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "*";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(204, 166);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(22, 30);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "*";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(790, 166);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(22, 30);
-            this.label12.TabIndex = 21;
-            this.label12.Text = "*";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(117, 238);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(22, 30);
-            this.label13.TabIndex = 22;
-            this.label13.Text = "*";
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Location = new System.Drawing.Point(497, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(212, 30);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Cadastro de Clientes";
             // 
             // Clientes
             // 
@@ -472,5 +512,8 @@
         private Label label11;
         private Label label10;
         private Label label9;
+        private CheckBox chInativos;
+        private Label label14;
+        private CheckBox chAtivo;
     }
 }

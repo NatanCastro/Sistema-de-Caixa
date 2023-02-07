@@ -37,10 +37,13 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chInativos = new System.Windows.Forms.CheckBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chAtivo = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.pbCadCategoria = new System.Windows.Forms.PictureBox();
             this.txtValorVenda = new System.Windows.Forms.TextBox();
             this.txtValorProduto = new System.Windows.Forms.TextBox();
             this.dgProduto = new System.Windows.Forms.DataGridView();
@@ -63,12 +66,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
+            this.pbCadCategoria = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCadCategoria)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCadCategoria)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -157,6 +159,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chInativos);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.chAtivo);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
@@ -184,8 +189,53 @@
             this.panel1.Controls.Add(this.label12);
             this.panel1.Location = new System.Drawing.Point(453, 97);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(700, 606);
+            this.panel1.Size = new System.Drawing.Size(700, 640);
             this.panel1.TabIndex = 4;
+            // 
+            // chInativos
+            // 
+            this.chInativos.AutoSize = true;
+            this.chInativos.Location = new System.Drawing.Point(504, 339);
+            this.chInativos.Name = "chInativos";
+            this.chInativos.Size = new System.Drawing.Size(144, 34);
+            this.chInativos.TabIndex = 27;
+            this.chInativos.Text = "Ver inativos";
+            this.chInativos.UseVisualStyleBackColor = true;
+            this.chInativos.CheckedChanged += new System.EventHandler(this.chInativos_CheckedChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(575, 272);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(22, 30);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "*";
+            // 
+            // chAtivo
+            // 
+            this.chAtivo.AutoSize = true;
+            this.chAtivo.Checked = true;
+            this.chAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chAtivo.Location = new System.Drawing.Point(504, 271);
+            this.chAtivo.Name = "chAtivo";
+            this.chAtivo.Size = new System.Drawing.Size(82, 34);
+            this.chAtivo.TabIndex = 25;
+            this.chAtivo.Text = "Ativo";
+            this.chAtivo.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.Color.Transparent;
+            this.label16.ForeColor = System.Drawing.Color.Red;
+            this.label16.Location = new System.Drawing.Point(123, 236);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(22, 30);
+            this.label16.TabIndex = 19;
+            this.label16.Text = "*";
             // 
             // label15
             // 
@@ -220,17 +270,6 @@
             this.label13.TabIndex = 22;
             this.label13.Text = "*";
             // 
-            // pbCadCategoria
-            // 
-            this.pbCadCategoria.Image = global::Sistema_de_Caixa.Properties.Resources.editIcon;
-            this.pbCadCategoria.Location = new System.Drawing.Point(356, 274);
-            this.pbCadCategoria.Name = "pbCadCategoria";
-            this.pbCadCategoria.Size = new System.Drawing.Size(30, 30);
-            this.pbCadCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbCadCategoria.TabIndex = 0;
-            this.pbCadCategoria.TabStop = false;
-            this.pbCadCategoria.Click += new System.EventHandler(this.pbCadCategoria_Click);
-            // 
             // txtValorVenda
             // 
             this.txtValorVenda.Location = new System.Drawing.Point(226, 197);
@@ -253,7 +292,7 @@
             this.dgProduto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.editar,
             this.apagar});
-            this.dgProduto.Location = new System.Drawing.Point(10, 385);
+            this.dgProduto.Location = new System.Drawing.Point(10, 418);
             this.dgProduto.Name = "dgProduto";
             this.dgProduto.RowTemplate.Height = 25;
             this.dgProduto.Size = new System.Drawing.Size(680, 211);
@@ -279,7 +318,7 @@
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Location = new System.Drawing.Point(10, 343);
+            this.txtPesquisar.Location = new System.Drawing.Point(10, 376);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(680, 36);
             this.txtPesquisar.TabIndex = 15;
@@ -288,7 +327,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 310);
+            this.label8.Location = new System.Drawing.Point(10, 343);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(103, 30);
             this.label8.TabIndex = 14;
@@ -311,6 +350,7 @@
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(340, 38);
             this.cbCategoria.TabIndex = 12;
+            this.cbCategoria.Click += new System.EventHandler(this.cbCategoria_Click);
             // 
             // txtQtd
             // 
@@ -423,23 +463,16 @@
             this.label12.TabIndex = 21;
             this.label12.Text = "%";
             // 
-            // label9
+            // pbCadCategoria
             // 
-            this.label9.Location = new System.Drawing.Point(0, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(100, 23);
-            this.label9.TabIndex = 0;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.ForeColor = System.Drawing.Color.Red;
-            this.label16.Location = new System.Drawing.Point(123, 236);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(22, 30);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "*";
+            this.pbCadCategoria.Image = global::Sistema_de_Caixa.Properties.Resources.addIcon;
+            this.pbCadCategoria.Location = new System.Drawing.Point(356, 269);
+            this.pbCadCategoria.Name = "pbCadCategoria";
+            this.pbCadCategoria.Size = new System.Drawing.Size(38, 38);
+            this.pbCadCategoria.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbCadCategoria.TabIndex = 0;
+            this.pbCadCategoria.TabStop = false;
+            this.pbCadCategoria.Click += new System.EventHandler(this.pbCadCategoria_Click);
             // 
             // Produtos
             // 
@@ -447,7 +480,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Sistema_de_Caixa.Properties.Resources.wallpaper;
             this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.toolStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -461,8 +493,8 @@
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbCadCategoria)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduto)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbCadCategoria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -494,7 +526,6 @@
         private ComboBox cbCategoria;
         private TextBox txtQtd;
         private Label label6;
-        private Label label9;
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
         private TextBox txtValorVenda;
@@ -502,10 +533,13 @@
         private Label label11;
         private Label label10;
         private Label label12;
-        private PictureBox pbCadCategoria;
         private Label label14;
         private Label label13;
         private Label label15;
         private Label label16;
+        private Label label9;
+        private CheckBox chAtivo;
+        private CheckBox chInativos;
+        private PictureBox pbCadCategoria;
     }
 }

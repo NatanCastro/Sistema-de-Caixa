@@ -23,13 +23,23 @@ namespace Sistema_de_Caixa
             InitializeComponent();
         }
 
-        private void listarProdutos()
+        private void listarProdutos(string pesquisa = "")
         {
-            Conexao.sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
-                "p.preco_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria' "+
+            Conexao.sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.valor_produto AS 'Custo', " +
+                "p.valor_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria', ativo " +
                 "FROM produto AS p " +
                 "LEFT JOIN categoria AS c " +
-                "ON p.id_categoria = c.id";
+                "ON p.id_categoria = c.id ";
+
+            string pesquisaSql = $"WHERE (codigo_barras || p.nome || c.nome) LIKE '%{pesquisa}%'";
+            if (!chInativos.Checked)
+            {
+                Conexao.sqlString += "WHERE ativo = 1 ";
+                if (pesquisa != string.Empty) pesquisaSql = pesquisaSql.Replace("WHERE", "AND");
+            }
+
+            Conexao.sqlString += pesquisa != string.Empty ? pesquisaSql : "";
+
             try
             {
                 ConexaoString.Open();
@@ -85,16 +95,17 @@ namespace Sistema_de_Caixa
             txtQtd.Text = string.Empty;
         }
 
-        private void verificarDados()
+        private bool validarDados()
         {
-            Regex valor = new(@"[0-9]{1}\,[0-9]{2}");
+            Regex valor = new(@"([0-9]{2}|[1-9]{1})\,[0-9]{2}");
             if (txtCodigoBarras.Text == string.Empty || txtNome.Text == string.Empty ||
                 !valor.IsMatch(txtValorProduto.Text) || !valor.IsMatch(txtValorVenda.Text) || 
                 txtMargemLucro.Text == string.Empty || txtQtd.Text == string.Empty)
             {
                 MessageBox.Show("Preencha os campos obrigatorios");
-                return;
+                return false;
             }
+            return true;
         }
 
         private void Produtos_Load(object sender, EventArgs e)
@@ -111,7 +122,7 @@ namespace Sistema_de_Caixa
 
         private void txtValorVenda_TextChanged(object sender, EventArgs e)
         {
-            Regex regex = new(@"[0-9]{1}\,[0-9]{2}");
+            Regex regex = new(@"([0-9]{2}|[1-9]{1})\,[0-9]{2}");
             if (txtValorProduto.Text == string.Empty
                 || txtValorVenda.Text == string.Empty
                 || !regex.IsMatch(txtValorProduto.Text)
@@ -120,14 +131,12 @@ namespace Sistema_de_Caixa
             decimal valorProduto = decimal.Parse(txtValorProduto.Text);
             decimal valorVenda = decimal.Parse(txtValorVenda.Text);
 
-            MessageBox.Show($"{valorProduto} {valorVenda}");
-
             txtMargemLucro.Text = (decimal.Round(((valorVenda -  valorProduto) / valorVenda * 100), 2)).ToString();
         }
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            verificarDados();
+            if (!validarDados()) return;
             string codigoBarras = txtCodigoBarras.Text;
             string nome = txtNome.Text;
             decimal valorProduto = decimal.Parse(txtValorProduto.Text);
@@ -135,10 +144,11 @@ namespace Sistema_de_Caixa
             decimal margemLucro = decimal.Round(decimal.Parse(txtMargemLucro.Text), 2);
             int quantidade = int.Parse(txtQtd.Text);
             uint idCategoria;
+            int ativo = chAtivo.Checked ? 1 : 0;
 
             if (cbCategoria.SelectedItem.ToString() != "")
             {
-                idCategoria = uint.Parse(cbCategoria.SelectedItem.ToString().Substring(0, 1));
+                idCategoria = uint.Parse(cbCategoria.SelectedItem.ToString()[..1]);
             }
             else
             {
@@ -147,10 +157,8 @@ namespace Sistema_de_Caixa
             }
             
             Conexao.sqlString = "INSERT INTO produto " +
-                "(\"codigo_barras\", \"nome\", \"preco_custo\", \"preco_venda\",\"margem_lucro\", \"quantidade\", \"id_categoria\") " +
-                $"VALUES ('{codigoBarras}', '{nome}', {valorProduto}, '{valorVenda}', '{margemLucro}', {quantidade}, {idCategoria})";
-
-            MessageBox.Show(Conexao.sqlString);
+                "(\"codigo_barras\", \"nome\", \"valor_produto\", \"valor_venda\", \"margem_lucro\", \"quantidade\", \"ativo\", \"id_categoria\") " +
+                $"VALUES ('{codigoBarras}', '{nome}', '{valorProduto}', '{valorVenda}', '{margemLucro}', {quantidade}, {ativo}, {idCategoria})";
 
             try
             {
@@ -184,7 +192,7 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um cliente para editar");
                 return;
             }
-            verificarDados();
+            if (!validarDados()) return;
 
             string codigoBarras = txtCodigoBarras.Text;
             string nome = txtNome.Text;
@@ -193,10 +201,11 @@ namespace Sistema_de_Caixa
             decimal margemLucro = decimal.Round(decimal.Parse(txtMargemLucro.Text), 2);
             int quantidade = int.Parse(txtQtd.Text);
             uint idCategoria;
+            int ativo = chAtivo.Checked ? 1 : 0;
 
             if (cbCategoria.SelectedItem.ToString() != "")
             {
-                idCategoria = uint.Parse(cbCategoria.SelectedItem.ToString().Substring(0, 1));
+                idCategoria = uint.Parse(cbCategoria.SelectedItem.ToString()[..1]);
             }
             else
             {
@@ -204,10 +213,10 @@ namespace Sistema_de_Caixa
                 return;
             }
             
-            Conexao.sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_custo={valorProduto}, " +
-                $"valor_venda={valorVenda}, margem_lucro={margemLucro}, quantidade={quantidade}, id_caregoria={idCategoria} " + 
+            Conexao.sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_produto='{valorProduto}', " +
+                $"valor_venda='{valorVenda}', margem_lucro='{margemLucro}', quantidade={quantidade}, ativo={ativo}, id_categoria={idCategoria} " + 
                 $"WHERE codigo_barras={tsBuscar.Text}";
-
+            MessageBox.Show(Conexao.sqlString);
             try
             {
                 ConexaoString.Open();
@@ -275,30 +284,7 @@ namespace Sistema_de_Caixa
 
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
-            string pesquisa = txtPesquisar.Text;
-
-            Conexao.sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.preco_custo AS 'Custo', " +
-                "p.preco_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria' "+
-                "FROM produto AS p " +
-                "LEFT JOIN categoria AS c " +
-                $"WHERE (codigo_barras || nome || c.nome) LIKE %{pesquisa}%";
-
-            try
-            {
-                ConexaoString.Open();
-                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
-                SQLiteDataAdapter adapter = new(command);
-
-                DataTable table = new();
-                adapter.Fill(table);
-
-                dgProduto.DataSource = table;
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message}");
-            }
-            finally { ConexaoString.Close(); }
+            listarProdutos(txtPesquisar.Text);
         }
 
         private void dgProduto_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -313,6 +299,7 @@ namespace Sistema_de_Caixa
                 txtValorVenda.Text = dgProduto.Rows[e.RowIndex].Cells["Venda"].Value.ToString();
                 txtMargemLucro.Text = dgProduto.Rows[e.RowIndex].Cells["Lucro/%"].Value.ToString();
                 txtQtd.Text = dgProduto.Rows[e.RowIndex].Cells["quantidade"].Value.ToString();
+                chAtivo.Checked = dgProduto.Rows[e.RowIndex].Cells["ativo"].Value.ToString() == "1" ? true : false;
             }
         }
 
@@ -320,6 +307,21 @@ namespace Sistema_de_Caixa
         {
             dgProduto.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
             dgProduto.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
+
+            if (dgProduto.Rows[e.RowIndex].Cells["ativo"].Value.ToString() == "0")
+            {
+                dgProduto.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+            }
+        }
+
+        private void cbCategoria_Click(object sender, EventArgs e)
+        {
+            listarCategorias();
+        }
+
+        private void chInativos_CheckedChanged(object sender, EventArgs e)
+        {
+            listarProdutos(txtPesquisar.Text);
         }
     }
 }

@@ -79,15 +79,16 @@ namespace Sistema_de_Caixa
             }
         }
 
-        private void verifarDados()
+        private bool validarDados()
         {
             if (txtRua.Text == string.Empty || txtNumero.Text == string.Empty || 
                 txtBairro.Text == string.Empty || txtCidade.Text == string.Empty ||
                 txtUF.Text == string.Empty)
             {
                 MessageBox.Show("Preencha os campos obrigatorios");
-                return;
+                return false;
             }
+            return true;
         }
 
         private void Enderecos_Load(object sender, EventArgs e)
@@ -97,7 +98,7 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            verifarDados();
+            if (!validarDados()) return;
 
             string rua = txtRua.Text;
             string numero = txtNumero.Text;
@@ -143,7 +144,7 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um endereço para editar");
                 return;
             }
-            verifarDados();
+            if (!validarDados()) return;
 
             string rua = txtRua.Text;
             string numero = txtNumero.Text;

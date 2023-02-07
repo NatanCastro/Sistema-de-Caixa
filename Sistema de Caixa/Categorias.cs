@@ -22,9 +22,15 @@ namespace Sistema_de_Caixa
             InitializeComponent();
         }
 
-        private void listarCategoria()
+        private void listarCategoria(string pesquisa = "")
         {
             Conexao.sqlString = "SELECT id, nome FROM categoria";
+            string pesquisaSql = $"WHERE (codigo_barras || p.nome || c.nome) LIKE '%{pesquisa}%'";
+            if (!chInativos.Checked)
+            {
+                Conexao.sqlString += "WHERE ativo = 1 ";
+                if (pesquisa != string.Empty) pesquisaSql = pesquisaSql.Replace("WHERE", "AND");
+            }
 
             try
             {
@@ -53,12 +59,13 @@ namespace Sistema_de_Caixa
             txtNome.Text = string.Empty;
         }
 
-        private void validarDados()
+        private bool validarDados()
         {
             if (txtNome.Text == string.Empty) {
                 MessageBox.Show("Insira o nome do categoria");
-                return;
+                return false;
             }
+            return true;
         }
 
         private void Categorias_Load(object sender, EventArgs e)
@@ -68,11 +75,12 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            validarDados();
+            if (!validarDados()) return;
             string nome = txtNome.Text;
+            int ativo = chAtivo.Checked ? 1 : 0;
 
-            Conexao.sqlString = $"INSERT INTO categoria (nome) " +
-                $"VALUES ('{nome}')"; 
+            Conexao.sqlString = $"INSERT INTO categoria (nome, ativo) " +
+                $"VALUES ('{nome}', {ativo})"; 
 
             try
             {
@@ -104,7 +112,7 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um categoria para editar");
                 return;
             }
-            validarDados();
+            if (!validarDados()) return;
 
             string nome = txtNome.Text;
 
@@ -214,6 +222,11 @@ namespace Sistema_de_Caixa
         {
             dgCategoria.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
             dgCategoria.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
+        }
+
+        private void chInativos_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

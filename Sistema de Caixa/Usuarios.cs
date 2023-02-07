@@ -25,9 +25,16 @@ namespace Sistema_de_Caixa
             this.PrimeiroUsuario = PrimeiroUsuario;
         }
 
-        private void listarUsuarios()
+        private void listarUsuarios(string pesquisa = "")
         {
-            Conexao.sqlString = "SELECT id, nome FROM usuario";
+            Conexao.sqlString = "SELECT id, nome FROM usuario ";
+            string pesquisaSql = $"WHERE c.nome || c.cpf_cnpj LIKE '%{pesquisa}%' ";
+            if (!chInativos.Checked)
+            {
+                Conexao.sqlString += "WHERE ativo = 1 ";
+                if (pesquisa != string.Empty) pesquisaSql = pesquisaSql.Replace("WHERE", "AND");
+            }
+            Conexao.sqlString += pesquisa != string.Empty ? pesquisaSql : "";
 
             try
             {
@@ -58,12 +65,13 @@ namespace Sistema_de_Caixa
             txtSenha.Text = string.Empty;
         }
 
-        private void verificarDados()
+        private bool validarDados()
         {
             if (txtNome.Text == string.Empty) {
                 MessageBox.Show("Insira o nome do usuario");
-                return;
+                return false;
             }
+            return true;
         }
 
         private void Usuarios_Load(object sender, EventArgs e)
@@ -73,12 +81,13 @@ namespace Sistema_de_Caixa
 
         private void tsSalvar_Click(object sender, EventArgs e)
         {
-            verificarDados();
+            if (!validarDados()) return;
             string nome = txtNome.Text;
             string senha = txtSenha.Text;
+            int ativo = chAtivo.Checked ? 1 : 0;
 
-            Conexao.sqlString = $"INSERT INTO usuario (nome, senha) " +
-                $"VALUES ('{nome}', '{senha}')";
+            Conexao.sqlString = $"INSERT INTO usuario (nome, senha, ativo) " +
+                $"VALUES ('{nome}', '{senha}', {ativo})";
 
             try
             {
@@ -111,12 +120,13 @@ namespace Sistema_de_Caixa
                 MessageBox.Show("Selecione um usuario para editar");
                 return;
             }
-            verificarDados();
+            if (!validarDados()) return;
 
             string nome = txtNome.Text;
             string senha = txtSenha.Text;
+            int ativo = chAtivo.Checked ? 1 : 0;
 
-            Conexao.sqlString = $"UPDATE usuario SET nome='{nome}', senha='{senha}' " +
+            Conexao.sqlString = $"UPDATE usuario SET nome='{nome}', senha='{senha}', ativo={ativo} " +
                 $"WHERE id={tsBuscar.Text}";
 
             try
@@ -191,40 +201,24 @@ namespace Sistema_de_Caixa
             {
                 tsBuscar.Text = dgUsuario.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 txtNome.Text = dgUsuario.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                chAtivo.Checked = dgUsuario.Rows[e.RowIndex].Cells["ativo"].Value.ToString() == "1" ? true : false;
             }
         }
 
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
             string pesquisa = txtPesquisar.Text;
-            Conexao.sqlString = $"SELECT id, nome FROM usuario WHERE nome LIKE %{pesquisa}%";
-
-            try
-            {
-                ConexaoString.Open();
-
-                SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
-                SQLiteDataAdapter adapter = new(command);
-
-                DataTable table = new();
-                adapter.Fill(table);
-
-                dgUsuario.DataSource = table;
-            }
-            catch (SQLiteException ex)
-            {
-                MessageBox.Show($"Não foi possivel fazer a pesquisa\n\n{ex.Message}");
-            }
-            finally
-            {
-                ConexaoString.Close();
-            }
+            listarUsuarios(pesquisa);
         }
 
         private void dgUsuario_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             dgUsuario.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
             dgUsuario.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
+            if (dgUsuario.Rows[e.RowIndex].Cells["ativo"].Value.ToString() == "0")
+            {
+                dgUsuario.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+            }
         }
     }
 }

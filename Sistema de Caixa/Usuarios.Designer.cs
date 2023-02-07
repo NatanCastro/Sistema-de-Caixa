@@ -37,6 +37,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsSair = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chInativos = new System.Windows.Forms.CheckBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chAtivo = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.dgUsuario = new System.Windows.Forms.DataGridView();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.apagar = new System.Windows.Forms.DataGridViewImageColumn();
@@ -47,7 +51,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUsuario)).BeginInit();
@@ -139,6 +142,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.chInativos);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.chAtivo);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.dgUsuario);
             this.panel1.Controls.Add(this.label5);
@@ -149,8 +155,52 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(278, 94);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 565);
+            this.panel1.Size = new System.Drawing.Size(712, 635);
             this.panel1.TabIndex = 3;
+            // 
+            // chInativos
+            // 
+            this.chInativos.AutoSize = true;
+            this.chInativos.Location = new System.Drawing.Point(565, 227);
+            this.chInativos.Name = "chInativos";
+            this.chInativos.Size = new System.Drawing.Size(144, 34);
+            this.chInativos.TabIndex = 12;
+            this.chInativos.Text = "Ver inativos";
+            this.chInativos.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(82, 160);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(22, 30);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "*";
+            // 
+            // chAtivo
+            // 
+            this.chAtivo.AutoSize = true;
+            this.chAtivo.Checked = true;
+            this.chAtivo.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chAtivo.Location = new System.Drawing.Point(6, 156);
+            this.chAtivo.Name = "chAtivo";
+            this.chAtivo.Size = new System.Drawing.Size(82, 34);
+            this.chAtivo.TabIndex = 10;
+            this.chAtivo.Text = "Ativo";
+            this.chAtivo.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(82, 9);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(22, 30);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "*";
             // 
             // dgUsuario
             // 
@@ -159,7 +209,7 @@
             this.dgUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.editar,
             this.apagar});
-            this.dgUsuario.Location = new System.Drawing.Point(6, 237);
+            this.dgUsuario.Location = new System.Drawing.Point(6, 306);
             this.dgUsuario.Name = "dgUsuario";
             this.dgUsuario.RowTemplate.Height = 25;
             this.dgUsuario.Size = new System.Drawing.Size(703, 325);
@@ -186,7 +236,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 162);
+            this.label5.Location = new System.Drawing.Point(6, 231);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 30);
             this.label5.TabIndex = 7;
@@ -194,7 +244,7 @@
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Location = new System.Drawing.Point(5, 195);
+            this.txtPesquisar.Location = new System.Drawing.Point(5, 264);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(704, 36);
             this.txtPesquisar.TabIndex = 6;
@@ -227,7 +277,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 9);
+            this.label2.Location = new System.Drawing.Point(6, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 30);
             this.label2.TabIndex = 0;
@@ -242,17 +292,6 @@
             this.label1.Size = new System.Drawing.Size(209, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cadastro de Usuario";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(82, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(22, 30);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "*";
             // 
             // Usuarios
             // 
@@ -302,5 +341,8 @@
         private DataGridViewImageColumn editar;
         private DataGridViewImageColumn apagar;
         private Label label4;
+        private CheckBox chInativos;
+        private Label label6;
+        private CheckBox chAtivo;
     }
 }

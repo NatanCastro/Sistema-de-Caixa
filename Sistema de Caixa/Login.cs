@@ -10,17 +10,6 @@ namespace Sistema_de_Caixa
             InitializeComponent();
         }
 
-        private void Login_Load(object sender, EventArgs e)
-        {
-            bool temUsuarios = loginController.VerificaCadastros();
-            if (!temUsuarios)
-            {
-                MessageBox.Show("Cadastre seu primeiro usuario");
-                Usuarios usuarios = new(true);
-                usuarios.ShowDialog();
-            }
-        }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (txtLogin.Text == string.Empty)
@@ -37,6 +26,17 @@ namespace Sistema_de_Caixa
                 Dashboard dashboard = new();
                 this.Hide();
                 dashboard.ShowDialog();
+            }
+        }
+
+        private void Login_Activated(object sender, EventArgs e)
+        {
+            bool temUsuarios = loginController.VerificaCadastros();
+            if (!temUsuarios)
+            {
+                MessageBox.Show("Cadastre seu primeiro usuario");
+                Usuarios usuarios = new(true);
+                usuarios.ShowDialog();
             }
         }
     }
