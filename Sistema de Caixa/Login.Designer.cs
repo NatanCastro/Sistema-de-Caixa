@@ -82,7 +82,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Sistema_de_Caixa.Properties.Resources.userIcon;
-            this.pictureBox1.Location = new System.Drawing.Point(250, 26);
+            this.pictureBox1.Location = new System.Drawing.Point(250, 30);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 100);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
