@@ -14,14 +14,5 @@ namespace Sistema_de_Caixa.Controller
         public string sqlString = string.Empty;
 
         public static SQLiteConnection GetConnection() { return Conn; }
-
-        //public string GetSql()
-        //{
-        //    return sqlString;
-        //}
-        //public void SetSql(string sql)
-        //{
-        //    sqlString = sql;
-        //}
     }
 }
