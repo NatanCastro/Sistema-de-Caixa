@@ -24,7 +24,7 @@ namespace Sistema_de_Caixa
 
         private void listarCategoria(string pesquisa = "")
         {
-            Conexao.sqlString = "SELECT id, nome FROM categoria";
+            Conexao.sqlString = "SELECT id, nome, ativo FROM categoria ";
             string pesquisaSql = $"WHERE (codigo_barras || p.nome || c.nome) LIKE '%{pesquisa}%'";
             if (!chInativos.Checked)
             {
@@ -215,6 +215,8 @@ namespace Sistema_de_Caixa
             {
                 tsBuscar.Text = dgCategoria.Rows[e.RowIndex].Cells["id"].Value.ToString();
                 txtNome.Text = dgCategoria.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                chAtivo.Checked = dgCategoria.Rows[e.RowIndex]
+                    .Cells["ativo"].Value.ToString() == "1" ? true : false;
             }
         }
 
@@ -222,11 +224,16 @@ namespace Sistema_de_Caixa
         {
             dgCategoria.Rows[e.RowIndex].Cells["editar"].ToolTipText = "editar";
             dgCategoria.Rows[e.RowIndex].Cells["apagar"].ToolTipText = "apagar";
+
+            if (dgCategoria.Rows[e.RowIndex].Cells["ativo"].Value.ToString() == "0")
+            {
+                dgCategoria.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+            }
         }
 
         private void chInativos_CheckedChanged(object sender, EventArgs e)
         {
-
+            listarCategoria(txtPesquisar.Text);
         }
     }
 }
