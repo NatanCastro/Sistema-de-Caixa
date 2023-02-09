@@ -18,7 +18,7 @@ namespace Sistema_de_Caixa
         private void listarProdutos(string pesquisa = "")
         {
             Conexao.sqlString = "SELECT p.codigo_barras AS 'Codigo', p.nome AS 'Produto', p.valor_produto AS 'Custo', " +
-                "p.valor_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria', ativo " +
+                "p.valor_venda AS 'Venda', p.margem_lucro AS 'Lucro/%', p.quantidade, c.nome AS 'Categoria', p.ativo " +
                 "FROM produto AS p " +
                 "LEFT JOIN categoria AS c " +
                 "ON p.id_categoria = c.id ";
@@ -26,7 +26,7 @@ namespace Sistema_de_Caixa
             string pesquisaSql = $"WHERE (codigo_barras || p.nome || c.nome) LIKE '%{pesquisa}%'";
             if (!chInativos.Checked)
             {
-                Conexao.sqlString += "WHERE ativo = 1 ";
+                Conexao.sqlString += "WHERE p.ativo = 1 ";
                 if (pesquisa != string.Empty) pesquisaSql = pesquisaSql.Replace("WHERE", "AND");
             }
 
@@ -52,7 +52,7 @@ namespace Sistema_de_Caixa
 
         private void listarCategorias()
         {
-            Conexao.sqlString = "SELECT id, nome FROM categoria";
+            Conexao.sqlString = "SELECT id, nome FROM categoria WHERE ativo = 1";
 
             try
             {
