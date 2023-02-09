@@ -11,6 +11,10 @@ namespace Sistema_de_Venda
         {
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
+
+            Hide();
+            Caixa caixa = new();
+            caixa.ShowDialog();
         }
     }
 }
