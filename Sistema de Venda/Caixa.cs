@@ -18,7 +18,7 @@ namespace Sistema_de_Venda
         readonly Conexao Conexao = new();
         readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
 
-        List<ProdutoVendaModel> listaProdutos = new();
+        VendaModel venda = new();
 
         public Caixa()
         {
@@ -46,7 +46,8 @@ namespace Sistema_de_Venda
                     int quantidade = int.Parse(numQuantidade.Value.ToString());
                     ProdutoVendaModel produto = new(reader.GetString(0), reader.GetString(1),
                                                     reader.GetString(2), quantidade);
-                    listaProdutos.Add(produto);
+                    venda.AdicionaProduto(produto);
+                    dgVenda.DataSource = venda.listaProdutos;
                 }
             }
             catch (SQLiteException ex)

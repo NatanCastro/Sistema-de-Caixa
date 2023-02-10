@@ -8,17 +8,19 @@ namespace Sistema_de_Venda.Models
 {
     internal class ProdutoVendaModel
     {
-        public string codigo_barras { get; set; }
+        public string codigo { get; set; }
         public string nome { get; set; }
-        public string valor{ get; set; }
-        public int quantidade { get; set; }
+        public string valor_unit { get; set; }
+        public string valor_total { get; }
+        public int qtd { get; set; }
 
-        public ProdutoVendaModel(string codigo_barras, string nome, string valor, int quantidade)
+        public ProdutoVendaModel(string codigo, string nome, string valor, int qtd)
         {
-            this.codigo_barras = codigo_barras;
+            this.codigo = codigo;
             this.nome = nome;
-            this.valor = valor;
-            this.quantidade = quantidade;
+            this.qtd = qtd;
+            this.valor_unit = valor;
+            this.valor_total = (float.Parse(valor) * qtd).ToString();
         }
     }
 }

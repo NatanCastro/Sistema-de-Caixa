@@ -37,8 +37,15 @@
             this.txtNomeProduto = new System.Windows.Forms.TextBox();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.lblCpfCnpj = new System.Windows.Forms.Label();
+            this.lblVendedor = new System.Windows.Forms.Label();
+            this.dgVenda = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenda)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -139,6 +146,59 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Codigo do Produto";
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.lblCliente);
+            this.panel2.Controls.Add(this.lblCpfCnpj);
+            this.panel2.Controls.Add(this.lblVendedor);
+            this.panel2.Location = new System.Drawing.Point(718, 23);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(606, 120);
+            this.panel2.TabIndex = 1;
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.BackColor = System.Drawing.Color.Transparent;
+            this.lblCliente.Location = new System.Drawing.Point(0, 60);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(91, 30);
+            this.lblCliente.TabIndex = 2;
+            this.lblCliente.Text = "Cliente: ";
+            // 
+            // lblCpfCnpj
+            // 
+            this.lblCpfCnpj.AutoSize = true;
+            this.lblCpfCnpj.BackColor = System.Drawing.Color.Transparent;
+            this.lblCpfCnpj.Location = new System.Drawing.Point(0, 90);
+            this.lblCpfCnpj.Name = "lblCpfCnpj";
+            this.lblCpfCnpj.Size = new System.Drawing.Size(119, 30);
+            this.lblCpfCnpj.TabIndex = 1;
+            this.lblCpfCnpj.Text = "CPF/CNPJ: ";
+            // 
+            // lblVendedor
+            // 
+            this.lblVendedor.AutoSize = true;
+            this.lblVendedor.BackColor = System.Drawing.Color.Transparent;
+            this.lblVendedor.Location = new System.Drawing.Point(0, 0);
+            this.lblVendedor.Name = "lblVendedor";
+            this.lblVendedor.Size = new System.Drawing.Size(120, 30);
+            this.lblVendedor.TabIndex = 0;
+            this.lblVendedor.Text = "Vendedor: ";
+            // 
+            // dgVenda
+            // 
+            this.dgVenda.AllowUserToAddRows = false;
+            this.dgVenda.AllowUserToDeleteRows = false;
+            this.dgVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVenda.Location = new System.Drawing.Point(718, 140);
+            this.dgVenda.Name = "dgVenda";
+            this.dgVenda.ReadOnly = true;
+            this.dgVenda.RowTemplate.Height = 25;
+            this.dgVenda.Size = new System.Drawing.Size(606, 377);
+            this.dgVenda.TabIndex = 2;
+            // 
             // Caixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -146,9 +206,10 @@
             this.BackgroundImage = global::Sistema_de_Venda.Properties.Resources.wallpaper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.dgVenda);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "Caixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -157,6 +218,9 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgVenda)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,5 +236,10 @@
         private TextBox txtValorProduto;
         private Label label4;
         private NumericUpDown numQuantidade;
+        private Panel panel2;
+        private Label lblCliente;
+        private Label lblCpfCnpj;
+        private Label lblVendedor;
+        private DataGridView dgVenda;
     }
 }
