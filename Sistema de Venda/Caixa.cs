@@ -1,4 +1,5 @@
 ﻿using Banco_de_dados;
+using Sistema_de_Venda.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,8 @@ namespace Sistema_de_Venda
         readonly Conexao Conexao = new();
         readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
 
+        List<ProdutoVendaModel> listaProdutos = new();
+
         public Caixa()
         {
             InitializeComponent();
@@ -25,7 +28,7 @@ namespace Sistema_de_Venda
         private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar != (char)13) return;
-            Conexao.sqlString = $"SELECT nome, valor_venda FROM produto " +
+            Conexao.sqlString = $"SELECT codigo_barras, nome, valor_venda FROM produto " +
                 $"WHERE codigo_barras={txtCodigoBarras.Text} AND ativo=1 " +
                 $"LIMIT 1";
 
@@ -34,11 +37,16 @@ namespace Sistema_de_Venda
                 ConexaoString.Open();
                 SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
                 SQLiteDataReader reader = command.ExecuteReader();
-                
+
                 while (reader.Read())
                 {
-                    txtNomeProduto.Text = reader.GetString(0);
-                    txtValorProduto.Text = reader.GetString(1); 
+                    txtNomeProduto.Text = reader.GetString(1);
+                    txtValorProduto.Text = reader.GetString(2);
+
+                    int quantidade = int.Parse(numQuantidade.Value.ToString());
+                    ProdutoVendaModel produto = new(reader.GetString(0), reader.GetString(1),
+                                                    reader.GetString(2), quantidade);
+                    listaProdutos.Add(produto);
                 }
             }
             catch (SQLiteException ex)

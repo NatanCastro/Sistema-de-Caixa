@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numQuantidade = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtValorProduto = new System.Windows.Forms.TextBox();
@@ -36,10 +38,13 @@
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.numQuantidade);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtValorProduto);
@@ -50,6 +55,32 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(600, 500);
             this.panel1.TabIndex = 0;
+            // 
+            // numQuantidade
+            // 
+            this.numQuantidade.Location = new System.Drawing.Point(111, 195);
+            this.numQuantidade.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numQuantidade.Name = "numQuantidade";
+            this.numQuantidade.Size = new System.Drawing.Size(120, 36);
+            this.numQuantidade.TabIndex = 8;
+            this.numQuantidade.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(109, 162);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(122, 30);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "quantidade";
             // 
             // label3
             // 
@@ -125,6 +156,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -138,5 +170,7 @@
         private Label label3;
         private Label label2;
         private TextBox txtValorProduto;
+        private Label label4;
+        private NumericUpDown numQuantidade;
     }
 }

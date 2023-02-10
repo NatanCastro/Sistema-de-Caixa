@@ -23,6 +23,7 @@ namespace Sistema_de_Caixa
                 Conexao.sqlString += "WHERE ativo = 1 ";
                 if (pesquisa != string.Empty) pesquisaSql = pesquisaSql.Replace("WHERE", "AND");
             }
+            Conexao.sqlString += pesquisaSql;
 
             try
             {
