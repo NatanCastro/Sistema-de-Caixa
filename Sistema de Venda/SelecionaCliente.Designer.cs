@@ -91,14 +91,15 @@
             this.dgCliente.Location = new System.Drawing.Point(12, 194);
             this.dgCliente.Name = "dgCliente";
             this.dgCliente.RowTemplate.Height = 25;
-            this.dgCliente.Size = new System.Drawing.Size(576, 594);
+            this.dgCliente.Size = new System.Drawing.Size(576, 543);
             this.dgCliente.TabIndex = 5;
+            this.dgCliente.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCliente_CellContentDoubleClick);
             // 
             // SelecionaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 800);
+            this.ClientSize = new System.Drawing.Size(600, 749);
             this.Controls.Add(this.dgCliente);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnPesquisar);

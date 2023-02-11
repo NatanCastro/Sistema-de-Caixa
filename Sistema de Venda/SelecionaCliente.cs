@@ -14,17 +14,21 @@ namespace Sistema_de_Venda
 {
     public partial class SelecionaCliente : Form
     {
-        private Conexao conn = new();
-        private SQLiteConnection ConexaoString = Conexao.GetConnection();
+        private static readonly string User = "user";
+        public static SQLiteConnection Conn = new($"Data Source=C:/Users/{User}/source/repos/natan22gt/Sistema-de-Caixa/Banco de dados/caixa.sqlite3; Version=3;") { };
+        public string sqlString = string.Empty;
+
+        public Caixa caixa;
         
-        public SelecionaCliente()
+        public SelecionaCliente(Caixa caixa)
         {
             InitializeComponent();
+            this.caixa = caixa;
         }
 
         private void listarClietes(string pesquisa = "")
         {
-            conn.sqlString =
+            sqlString =
                 "SELECT c.id, c.nome, " +
                 "c.cpf_cnpj AS 'cpf/cnpj', c.data_nascimento, " +
                 "e.rua || ', ' || e.numero AS 'endereco', ativo " +
@@ -35,12 +39,12 @@ namespace Sistema_de_Venda
 
             string pesquisaSql = $"AND c.nome || c.cpf_cnpj LIKE '%{pesquisa}%'";
 
-            conn.sqlString += pesquisa != string.Empty ? pesquisaSql : "";
+            sqlString += pesquisa != string.Empty ? pesquisaSql : "";
 
             try
             {
-                ConexaoString.Open();
-                SQLiteCommand command = new(conn.sqlString, ConexaoString);
+                Conn.Open();
+                SQLiteCommand command = new(sqlString, Conn);
                 SQLiteDataAdapter adapter = new(command);
 
                 DataTable table = new();
@@ -52,7 +56,7 @@ namespace Sistema_de_Venda
             {
                 MessageBox.Show($"Não foi possivel retornar os dados dos Clientes\n\n{ex.Message}");
             }
-            finally { ConexaoString.Close(); }
+            finally { Conn.Close(); }
         }
 
 
@@ -69,6 +73,15 @@ namespace Sistema_de_Venda
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            Close();
+        }
+
+        private void dgCliente_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idCliente = int.Parse(dgCliente.Rows[e.RowIndex].Cells["id"].Value.ToString());
+            string nomeCliente = dgCliente.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+            string cpfCnpj = dgCliente.Rows[e.RowIndex].Cells["cpf/cnpj"].Value.ToString();
+            caixa.selecionaCliente(idCliente, nomeCliente, cpfCnpj);
             Close();
         }
     }

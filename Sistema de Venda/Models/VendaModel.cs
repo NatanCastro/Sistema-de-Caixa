@@ -9,13 +9,14 @@ namespace Sistema_de_Venda.Models
     internal class VendaModel
     {
         public List<ProdutoVendaModel> listaProdutos = new();
-        public int id_cliente { get; set; }
+        public int? id_cliente { get; set; }
+        public int id_usuario { get; set; }
 
         public void AdicionaProduto(ProdutoVendaModel produto)
         {
             listaProdutos.Add(produto);
         }
-        public void removeProduto(string codigo)
+        public void RemoveProduto(string codigo)
         {
             ProdutoVendaModel? produto = listaProdutos.Find(produto => produto.codigo == codigo);
             if (produto == null)

@@ -20,10 +20,10 @@ namespace Sistema_de_Caixa
             string pesquisaSql = $"WHERE nome LIKE '%{pesquisa}%'";
             if (!chInativos.Checked)
             {
-                Conexao.sqlString += "WHERE ativo = 1 ";
+                Conexao.sqlString += "WHERE ativo=1 ";
                 if (pesquisa != string.Empty) pesquisaSql = pesquisaSql.Replace("WHERE", "AND");
             }
-            Conexao.sqlString += pesquisaSql;
+            Conexao.sqlString += pesquisa != string.Empty ? pesquisaSql : "";
 
             try
             {

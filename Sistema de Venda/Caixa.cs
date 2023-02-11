@@ -25,6 +25,24 @@ namespace Sistema_de_Venda
             InitializeComponent();
         }
 
+        public void selecionaCliente(int id, string nome, string cpfCnpj)
+        {
+            venda.id_cliente = id;
+            lblCliente.Text = nome;
+            lblCpfCnpj.Text = cpfCnpj;
+        }
+
+        public void selecionaUsuario(int id, string vendedor)
+        {
+            venda.id_usuario = id;
+            lblVendedor.Text = vendedor;
+        }
+
+        public void cancelaVenda()
+        {
+            venda = new();
+        }
+
         private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar != (char)13) return;
@@ -43,17 +61,19 @@ namespace Sistema_de_Venda
                     txtNomeProduto.Text = reader.GetString(1);
                     txtValorProduto.Text = reader.GetString(2);
 
-                    if (venda.listaProdutos.Count == 0 )
-                    {
-                        SelecionaCliente cliente = new();
-                        cliente.ShowDialog();
-                    }
-
                     int quantidade = int.Parse(numQuantidade.Value.ToString());
                     ProdutoVendaModel produto = new(reader.GetString(0), reader.GetString(1),
                                                     reader.GetString(2), quantidade);
                     venda.AdicionaProduto(produto);
                     dgVenda.DataSource = venda.listaProdutos;
+
+                    if (venda.listaProdutos.Count == 1 )
+                    {
+                        SelecionaCliente cliente = new(this);
+                        cliente.ShowDialog();
+                        SelecionaUsuario usuario = new(this);
+                        usuario.ShowDialog();
+                    }
                 }
             }
             catch (SQLiteException ex)

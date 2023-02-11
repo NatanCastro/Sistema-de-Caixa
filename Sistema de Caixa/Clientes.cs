@@ -95,7 +95,7 @@ namespace Sistema_de_Caixa
             Regex RegexDataNasc = new(@"([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4}");
 
             if (txtNome.Text == string.Empty ||
-                (!RegexCpf.IsMatch(txtCPF.Text) || !RegexCnpj.IsMatch(txtCNPJ.Text)) ||
+                (!RegexCpf.IsMatch(txtCPF.Text) && !RegexCnpj.IsMatch(txtCNPJ.Text)) ||
                 !RegexDataNasc.IsMatch(txtDataNasc.Text))
             {
                 MessageBox.Show("Preencha os campos obrigatorios");
