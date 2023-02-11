@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Banco de dados\Banco de dados.csproj" />
+    <ProjectReference Include="..\Sistema de Caixa\Sistema de Caixa.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -75,6 +75,7 @@ namespace Sistema_de_Venda
             string vendedor = dgUsuario.Rows[e.RowIndex].Cells["nome"].Value.ToString();
 
             caixa.selecionaUsuario(idUsuario, vendedor);
+            Close();
         }
     }
 }

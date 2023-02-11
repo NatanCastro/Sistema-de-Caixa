@@ -109,6 +109,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Name = "SelecionaUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SelecionaUsuario";
             this.Load += new System.EventHandler(this.SelecionaUsuario_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgUsuario)).EndInit();
