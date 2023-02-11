@@ -30,9 +30,11 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtBusca = new System.Windows.Forms.TextBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.dgCliente = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgCliente)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -55,40 +57,52 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "CPF/CNPJ ou nome";
             // 
-            // textBox1
+            // txtBusca
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 100);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(576, 36);
-            this.textBox1.TabIndex = 2;
+            this.txtBusca.Location = new System.Drawing.Point(12, 100);
+            this.txtBusca.Name = "txtBusca";
+            this.txtBusca.Size = new System.Drawing.Size(576, 36);
+            this.txtBusca.TabIndex = 2;
             // 
-            // button1
+            // btnPesquisar
             // 
-            this.button1.Location = new System.Drawing.Point(12, 148);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 100);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Pesquisar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Location = new System.Drawing.Point(12, 148);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(120, 40);
+            this.btnPesquisar.TabIndex = 3;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
-            // button2
+            // btnCancelar
             // 
-            this.button2.ForeColor = System.Drawing.Color.Red;
-            this.button2.Location = new System.Drawing.Point(468, 148);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 100);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCancelar.ForeColor = System.Drawing.Color.Red;
+            this.btnCancelar.Location = new System.Drawing.Point(468, 148);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(120, 40);
+            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // dgCliente
+            // 
+            this.dgCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgCliente.Location = new System.Drawing.Point(12, 194);
+            this.dgCliente.Name = "dgCliente";
+            this.dgCliente.RowTemplate.Height = 25;
+            this.dgCliente.Size = new System.Drawing.Size(576, 594);
+            this.dgCliente.TabIndex = 5;
             // 
             // SelecionaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 260);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(600, 800);
+            this.Controls.Add(this.dgCliente);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnPesquisar);
+            this.Controls.Add(this.txtBusca);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -97,6 +111,8 @@
             this.Name = "SelecionaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SelecionaCliente";
+            this.Load += new System.EventHandler(this.SelecionaCliente_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,8 +122,9 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
-        private Button button1;
-        private Button button2;
+        private TextBox txtBusca;
+        private Button btnPesquisar;
+        private Button btnCancelar;
+        private DataGridView dgCliente;
     }
 }

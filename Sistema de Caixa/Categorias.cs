@@ -17,7 +17,7 @@ namespace Sistema_de_Caixa
         private void listarCategoria(string pesquisa = "")
         {
             Conexao.sqlString = "SELECT id, nome, ativo FROM categoria ";
-            string pesquisaSql = $"WHERE (codigo_barras || p.nome || c.nome) LIKE '%{pesquisa}%'";
+            string pesquisaSql = $"WHERE nome LIKE '%{pesquisa}%'";
             if (!chInativos.Checked)
             {
                 Conexao.sqlString += "WHERE ativo = 1 ";

@@ -10,7 +10,6 @@ namespace Sistema_de_Caixa
     {
         readonly Conexao Conexao = new();
         readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
-
         public Clientes()
         {
             InitializeComponent();

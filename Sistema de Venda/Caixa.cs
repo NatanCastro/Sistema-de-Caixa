@@ -43,6 +43,12 @@ namespace Sistema_de_Venda
                     txtNomeProduto.Text = reader.GetString(1);
                     txtValorProduto.Text = reader.GetString(2);
 
+                    if (venda.listaProdutos.Count == 0 )
+                    {
+                        SelecionaCliente cliente = new();
+                        cliente.ShowDialog();
+                    }
+
                     int quantidade = int.Parse(numQuantidade.Value.ToString());
                     ProdutoVendaModel produto = new(reader.GetString(0), reader.GetString(1),
                                                     reader.GetString(2), quantidade);
