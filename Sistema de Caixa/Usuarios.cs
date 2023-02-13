@@ -19,8 +19,8 @@ namespace Sistema_de_Caixa
 
         private void listarUsuarios(string pesquisa = "")
         {
-            Conexao.sqlString = "SELECT id, nome, ativo FROM usuario ";
-            string pesquisaSql = $"WHERE c.nome || c.cpf_cnpj LIKE '%{pesquisa}%' ";
+            Conexao.sqlString = "SELECT id, nome FROM usuario ";
+            string pesquisaSql = $"WHERE nome LIKE '%{pesquisa}%' ";
             if (!chInativos.Checked)
             {
                 Conexao.sqlString += "WHERE ativo = 1 ";
