@@ -99,7 +99,7 @@ namespace Sistema_de_Venda
                     "(id_venda, codigo_produto, quantidade, valor_unit, valor_total) " +
                     $"VALUES ((SELECT id FROM venda ORDER BY data_venda DESC LIMIT 1), " +
                     $"'{produto.codigo}', {produto.qtd}, '{produto.valorUnit}', '{produto.valorTotal}'); " +
-                    $"UPDATE produto SET quantidade=quantidade-{produto.qtd} WHERE {produto.codigo};";
+                    $"UPDATE produto SET quantidade=quantidade-{produto.qtd} WHERE codigo_barras='{produto.codigo}';";
 
                 try
                 {
