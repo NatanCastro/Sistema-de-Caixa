@@ -13,11 +13,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-
--- Copiando estrutura do banco de dados para caixa
-CREATE DATABASE IF NOT EXISTS "caixa";
-;
-
 -- Copiando estrutura para tabela caixa.categoria
 CREATE TABLE IF NOT EXISTS categoria 
 ( 
@@ -27,7 +22,7 @@ CREATE TABLE IF NOT EXISTS categoria
  UNIQUE (nome)
 );
 
--- Copiando dados para a tabela caixa.categoria: -1 rows
+-- Copiando dados para a tabela caixa.categoria: 2 rows
 DELETE FROM "categoria";
 /*!40000 ALTER TABLE "categoria" DISABLE KEYS */;
 INSERT INTO "categoria" ("id", "nome", "ativo") VALUES
@@ -47,7 +42,7 @@ CREATE TABLE IF NOT EXISTS cliente
  FOREIGN KEY(id_endereco) REFERENCES endereco (id) ON DELETE SET NULL
 );
 
--- Copiando dados para a tabela caixa.cliente: -1 rows
+-- Copiando dados para a tabela caixa.cliente: 2 rows
 DELETE FROM "cliente";
 /*!40000 ALTER TABLE "cliente" DISABLE KEYS */;
 INSERT INTO "cliente" ("id", "nome", "cpf_cnpj", "data_nascimento", "ativo", "id_endereco") VALUES
@@ -69,7 +64,7 @@ CREATE TABLE IF NOT EXISTS endereco
  pais TEXT
 );
 
--- Copiando dados para a tabela caixa.endereco: -1 rows
+-- Copiando dados para a tabela caixa.endereco: 1 rows
 DELETE FROM "endereco";
 /*!40000 ALTER TABLE "endereco" DISABLE KEYS */;
 INSERT INTO "endereco" ("id", "rua", "numero", "bairro", "complemento", "cidade", "uf", "cep", "pais") VALUES
@@ -91,7 +86,7 @@ CREATE TABLE IF NOT EXISTS itens_venda
  ON DELETE SET NULL ON UPDATE CASCADE 
 );
 
--- Copiando dados para a tabela caixa.itens_venda: -1 rows
+-- Copiando dados para a tabela caixa.itens_venda: 0 rows
 DELETE FROM "itens_venda";
 /*!40000 ALTER TABLE "itens_venda" DISABLE KEYS */;
 /*!40000 ALTER TABLE "itens_venda" ENABLE KEYS */;
@@ -102,7 +97,7 @@ CREATE TABLE IF NOT EXISTS metodo_pagamento (
 	"nome" TEXT NOT NULL
 );
 
--- Copiando dados para a tabela caixa.metodo_pagamento: -1 rows
+-- Copiando dados para a tabela caixa.metodo_pagamento: 4 rows
 DELETE FROM "metodo_pagamento";
 /*!40000 ALTER TABLE "metodo_pagamento" DISABLE KEYS */;
 INSERT INTO "metodo_pagamento" ("id", "nome") VALUES
@@ -126,7 +121,7 @@ CREATE TABLE IF NOT EXISTS produto
  FOREIGN KEY(id_categoria) REFERENCES categoria (id) ON DELETE SET NULL
 );
 
--- Copiando dados para a tabela caixa.produto: -1 rows
+-- Copiando dados para a tabela caixa.produto: 3 rows
 DELETE FROM "produto";
 /*!40000 ALTER TABLE "produto" DISABLE KEYS */;
 INSERT INTO "produto" ("codigo_barras", "nome", "valor_produto", "valor_venda", "margem_lucro", "quantidade", "ativo", "id_categoria") VALUES
@@ -144,7 +139,7 @@ CREATE TABLE IF NOT EXISTS usuario
  ativo INTEGER NOT NULL DEFAULT 1
 );
 
--- Copiando dados para a tabela caixa.usuario: -1 rows
+-- Copiando dados para a tabela caixa.usuario: 1 rows
 DELETE FROM "usuario";
 /*!40000 ALTER TABLE "usuario" DISABLE KEYS */;
 INSERT INTO "usuario" ("id", "nome", "senha", "ativo") VALUES
@@ -169,7 +164,7 @@ CREATE TABLE IF NOT EXISTS venda (
 	ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
--- Copiando dados para a tabela caixa.venda: -1 rows
+-- Copiando dados para a tabela caixa.venda: 0 rows
 DELETE FROM "venda";
 /*!40000 ALTER TABLE "venda" DISABLE KEYS */;
 /*!40000 ALTER TABLE "venda" ENABLE KEYS */;
