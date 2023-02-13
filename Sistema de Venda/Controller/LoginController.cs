@@ -1,7 +1,7 @@
 ﻿using System.Data.SQLite;
 using Banco_de_dados;
 
-namespace Sistema_de_Caixa.Controller
+namespace Sistema_de_Venda.Controller
 {
     public class LoginController
     {

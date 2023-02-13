@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Net.Security;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Transactions;
-using System.Windows.Forms;
 using Sistema_de_Caixa.Controller;
+using Banco_de_dados;
 
 namespace Sistema_de_Caixa
 {
@@ -19,7 +10,6 @@ namespace Sistema_de_Caixa
     {
         readonly Conexao Conexao = new();
         readonly SQLiteConnection ConexaoString = Conexao.GetConnection();
-
         public Clientes()
         {
             InitializeComponent();
@@ -105,7 +95,7 @@ namespace Sistema_de_Caixa
             Regex RegexDataNasc = new(@"([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/[0-9]{4}");
 
             if (txtNome.Text == string.Empty ||
-                (!RegexCpf.IsMatch(txtCPF.Text) || !RegexCnpj.IsMatch(txtCNPJ.Text)) ||
+                (!RegexCpf.IsMatch(txtCPF.Text) && !RegexCnpj.IsMatch(txtCNPJ.Text)) ||
                 !RegexDataNasc.IsMatch(txtDataNasc.Text))
             {
                 MessageBox.Show("Preencha os campos obrigatorios");

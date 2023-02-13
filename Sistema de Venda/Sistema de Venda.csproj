@@ -3,24 +3,15 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>Sistema_de_Caixa</RootNamespace>
+    <RootNamespace>Sistema_de_Venda</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\.editorconfig" Link=".editorconfig" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="Refit" Version="6.3.2" />
-    <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Banco de dados\Banco de dados.csproj" />
+    <ProjectReference Include="..\Sistema de Caixa\Sistema de Caixa.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,7 +24,7 @@
 
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
+      <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

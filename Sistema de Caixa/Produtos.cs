@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using Sistema_de_Caixa.Controller;
+using Banco_de_dados;
 
 namespace Sistema_de_Caixa
 {
@@ -167,8 +159,6 @@ namespace Sistema_de_Caixa
                 using SQLiteTransaction transaction = ConexaoString.BeginTransaction();
                 SQLiteCommand command = new(Conexao.sqlString, ConexaoString);
 
-                MessageBox.Show(Conexao.sqlString);
-
                 command.ExecuteNonQuery();
                 transaction.Commit();
             }
@@ -216,7 +206,6 @@ namespace Sistema_de_Caixa
             Conexao.sqlString = $"UPDATE produto SET codigo_barras='{codigoBarras}', nome='{nome}', valor_produto='{valorProduto}', " +
                 $"valor_venda='{valorVenda}', margem_lucro='{margemLucro}', quantidade={quantidade}, ativo={ativo}, id_categoria={idCategoria} " + 
                 $"WHERE codigo_barras={tsBuscar.Text}";
-            MessageBox.Show(Conexao.sqlString);
             try
             {
                 ConexaoString.Open();

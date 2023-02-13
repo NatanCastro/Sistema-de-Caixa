@@ -1,14 +1,6 @@
-﻿using Sistema_de_Caixa.Controller;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Banco_de_dados;
 using System.Data;
 using System.Data.SQLite;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Sistema_de_Caixa
 {
@@ -25,12 +17,13 @@ namespace Sistema_de_Caixa
         private void listarCategoria(string pesquisa = "")
         {
             Conexao.sqlString = "SELECT id, nome, ativo FROM categoria ";
-            string pesquisaSql = $"WHERE (codigo_barras || p.nome || c.nome) LIKE '%{pesquisa}%'";
+            string pesquisaSql = $"WHERE nome LIKE '%{pesquisa}%'";
             if (!chInativos.Checked)
             {
-                Conexao.sqlString += "WHERE ativo = 1 ";
+                Conexao.sqlString += "WHERE ativo=1 ";
                 if (pesquisa != string.Empty) pesquisaSql = pesquisaSql.Replace("WHERE", "AND");
             }
+            Conexao.sqlString += pesquisa != string.Empty ? pesquisaSql : "";
 
             try
             {

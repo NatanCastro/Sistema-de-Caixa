@@ -1,6 +1,7 @@
-using Sistema_de_Caixa.Controller;
+using Sistema_de_Caixa;
+using Sistema_de_Venda.Controller;
 
-namespace Sistema_de_Caixa
+namespace Sistema_de_Venda
 {
     public partial class Login : Form
     {
@@ -23,10 +24,11 @@ namespace Sistema_de_Caixa
             bool LoginValido = loginController.VerificaLogin(nome, senha);
             if (LoginValido)
             {
-                Dashboard dashboard = new();
+                Caixa caixa = new();
                 Hide();
-                dashboard.ShowDialog();
+                caixa.ShowDialog();
                 Close();
+
             }
         }
 
