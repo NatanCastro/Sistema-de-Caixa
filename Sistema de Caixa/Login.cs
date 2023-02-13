@@ -24,8 +24,9 @@ namespace Sistema_de_Caixa
             if (LoginValido)
             {
                 Dashboard dashboard = new();
-                this.Hide();
+                Hide();
                 dashboard.ShowDialog();
+                Close();
             }
         }
 

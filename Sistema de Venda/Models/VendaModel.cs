@@ -9,8 +9,12 @@ namespace Sistema_de_Venda.Models
     internal class VendaModel
     {
         public List<ProdutoVendaModel> listaProdutos = new();
-        public int? id_cliente { get; set; }
-        public int id_usuario { get; set; }
+        public int idCliente { get; set; }
+        public int idUsuario { get; set; }
+        public int idMetodoPagamento { get; set; }
+        public float valorTotal { get; set; }
+        public float desconto { get; set; }
+        public float valorFinal { get; set; }
 
         public void AdicionaProduto(ProdutoVendaModel produto)
         {

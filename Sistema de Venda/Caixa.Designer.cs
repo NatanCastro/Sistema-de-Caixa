@@ -38,13 +38,19 @@
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblCpfCnpj = new System.Windows.Forms.Label();
+            this.lblCliente = new System.Windows.Forms.Label();
+            this.lblVendedor = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgVenda = new System.Windows.Forms.DataGridView();
-            this.lblVendedor = new System.Windows.Forms.Label();
-            this.lblCliente = new System.Windows.Forms.Label();
-            this.lblCpfCnpj = new System.Windows.Forms.Label();
+            this.Cancelar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnFinalizarVenda = new System.Windows.Forms.Button();
+            this.btnCancelarVenda = new System.Windows.Forms.Button();
+            this.lblData = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).BeginInit();
             this.panel2.SuspendLayout();
@@ -151,7 +157,10 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.lblData);
+            this.panel2.Controls.Add(this.lblTotal);
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.lblCpfCnpj);
             this.panel2.Controls.Add(this.lblCliente);
             this.panel2.Controls.Add(this.lblVendedor);
@@ -160,8 +169,52 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Location = new System.Drawing.Point(718, 23);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(606, 120);
+            this.panel2.Size = new System.Drawing.Size(606, 587);
             this.panel2.TabIndex = 1;
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblTotal.Location = new System.Drawing.Point(473, 517);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(78, 45);
+            this.lblTotal.TabIndex = 7;
+            this.lblTotal.Text = "0,00";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(372, 517);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(95, 45);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Total:";
+            // 
+            // lblCpfCnpj
+            // 
+            this.lblCpfCnpj.AutoSize = true;
+            this.lblCpfCnpj.Location = new System.Drawing.Point(125, 90);
+            this.lblCpfCnpj.Name = "lblCpfCnpj";
+            this.lblCpfCnpj.Size = new System.Drawing.Size(0, 30);
+            this.lblCpfCnpj.TabIndex = 5;
+            // 
+            // lblCliente
+            // 
+            this.lblCliente.AutoSize = true;
+            this.lblCliente.Location = new System.Drawing.Point(97, 60);
+            this.lblCliente.Name = "lblCliente";
+            this.lblCliente.Size = new System.Drawing.Size(0, 30);
+            this.lblCliente.TabIndex = 4;
+            // 
+            // lblVendedor
+            // 
+            this.lblVendedor.AutoSize = true;
+            this.lblVendedor.Location = new System.Drawing.Point(126, 0);
+            this.lblVendedor.Name = "lblVendedor";
+            this.lblVendedor.Size = new System.Drawing.Size(0, 30);
+            this.lblVendedor.TabIndex = 3;
             // 
             // label6
             // 
@@ -197,37 +250,62 @@
             // 
             this.dgVenda.AllowUserToAddRows = false;
             this.dgVenda.AllowUserToDeleteRows = false;
+            this.dgVenda.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgVenda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Cancelar});
             this.dgVenda.Location = new System.Drawing.Point(718, 140);
             this.dgVenda.Name = "dgVenda";
             this.dgVenda.ReadOnly = true;
             this.dgVenda.RowTemplate.Height = 25;
             this.dgVenda.Size = new System.Drawing.Size(606, 377);
             this.dgVenda.TabIndex = 2;
+            this.dgVenda.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgVenda_CellContentDoubleClick);
+            this.dgVenda.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgVenda_CellFormatting);
             // 
-            // lblVendedor
+            // Cancelar
             // 
-            this.lblVendedor.AutoSize = true;
-            this.lblVendedor.Location = new System.Drawing.Point(126, 0);
-            this.lblVendedor.Name = "lblVendedor";
-            this.lblVendedor.Size = new System.Drawing.Size(0, 30);
-            this.lblVendedor.TabIndex = 3;
+            this.Cancelar.HeaderText = "";
+            this.Cancelar.Image = global::Sistema_de_Venda.Properties.Resources.deleteIconSmall;
+            this.Cancelar.MinimumWidth = 24;
+            this.Cancelar.Name = "Cancelar";
+            this.Cancelar.ReadOnly = true;
+            this.Cancelar.Width = 24;
             // 
-            // lblCliente
+            // btnFinalizarVenda
             // 
-            this.lblCliente.AutoSize = true;
-            this.lblCliente.Location = new System.Drawing.Point(97, 60);
-            this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(0, 30);
-            this.lblCliente.TabIndex = 4;
+            this.btnFinalizarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinalizarVenda.FlatAppearance.BorderSize = 0;
+            this.btnFinalizarVenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizarVenda.Location = new System.Drawing.Point(12, 637);
+            this.btnFinalizarVenda.Name = "btnFinalizarVenda";
+            this.btnFinalizarVenda.Size = new System.Drawing.Size(120, 100);
+            this.btnFinalizarVenda.TabIndex = 3;
+            this.btnFinalizarVenda.Text = "Finalizar\r\nVenda";
+            this.btnFinalizarVenda.UseVisualStyleBackColor = true;
+            this.btnFinalizarVenda.Click += new System.EventHandler(this.btnFinalizarVenda_Click);
             // 
-            // lblCpfCnpj
+            // btnCancelarVenda
             // 
-            this.lblCpfCnpj.AutoSize = true;
-            this.lblCpfCnpj.Location = new System.Drawing.Point(125, 90);
-            this.lblCpfCnpj.Name = "lblCpfCnpj";
-            this.lblCpfCnpj.Size = new System.Drawing.Size(0, 30);
-            this.lblCpfCnpj.TabIndex = 5;
+            this.btnCancelarVenda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelarVenda.FlatAppearance.BorderSize = 0;
+            this.btnCancelarVenda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelarVenda.Location = new System.Drawing.Point(138, 637);
+            this.btnCancelarVenda.Name = "btnCancelarVenda";
+            this.btnCancelarVenda.Size = new System.Drawing.Size(120, 100);
+            this.btnCancelarVenda.TabIndex = 9;
+            this.btnCancelarVenda.Text = "Cancelar\r\nVenda";
+            this.btnCancelarVenda.UseVisualStyleBackColor = true;
+            this.btnCancelarVenda.Click += new System.EventHandler(this.btnCancelarVenda_Click);
+            // 
+            // lblData
+            // 
+            this.lblData.AutoSize = true;
+            this.lblData.Location = new System.Drawing.Point(446, 30);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(127, 30);
+            this.lblData.TabIndex = 8;
+            this.lblData.Text = "00/00/0000";
             // 
             // Caixa
             // 
@@ -236,6 +314,8 @@
             this.BackgroundImage = global::Sistema_de_Venda.Properties.Resources.wallpaper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.btnCancelarVenda);
+            this.Controls.Add(this.btnFinalizarVenda);
             this.Controls.Add(this.dgVenda);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -245,6 +325,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Caixa";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Caixa_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).EndInit();
@@ -274,5 +355,11 @@
         private Label lblCpfCnpj;
         private Label lblCliente;
         private Label lblVendedor;
+        private Button btnFinalizarVenda;
+        private Button btnCancelarVenda;
+        private DataGridViewImageColumn Cancelar;
+        private Label lblTotal;
+        private Label label8;
+        private Label lblData;
     }
 }

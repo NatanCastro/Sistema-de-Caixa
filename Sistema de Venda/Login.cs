@@ -25,8 +25,10 @@ namespace Sistema_de_Venda
             if (LoginValido)
             {
                 Caixa caixa = new();
-                this.Hide();
+                Hide();
                 caixa.ShowDialog();
+                Close();
+
             }
         }
 

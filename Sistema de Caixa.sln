@@ -6,10 +6,13 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sistema de Caixa", "Sistema de Caixa\Sistema de Caixa.csproj", "{188AC19D-6005-487B-B7BF-E08B1FFA147A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{31473B6A-89CC-4A1C-8458-25763ADDB9D1}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sistema de Venda", "Sistema de Venda\Sistema de Venda.csproj", "{8915184E-56DF-42FF-8CF5-7ED6E4904848}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banco de dados", "Banco de dados\Banco de dados.csproj", "{712AC335-ABF7-4565-AEC0-D3EBC4D5FFF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Banco de dados", "Banco de dados\Banco de dados.csproj", "{712AC335-ABF7-4565-AEC0-D3EBC4D5FFF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
