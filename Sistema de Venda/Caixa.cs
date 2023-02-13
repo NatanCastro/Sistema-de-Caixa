@@ -75,12 +75,19 @@ namespace Sistema_de_Venda
             try
             {
                 Conn.Open();
+                using SQLiteTransaction transaction = Conn.BeginTransaction();
                 SQLiteCommand command = new(sqlString, Conn);
+
                 command.ExecuteNonQuery();
+                transaction.Commit();
             }
             catch (SQLiteException ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Conn.Close();
             }
         }
 
@@ -97,8 +104,11 @@ namespace Sistema_de_Venda
                 try
                 {
                     Conn.Open();
+                    using SQLiteTransaction transaction = Conn.BeginTransaction();
                     SQLiteCommand command = new(sqlString, Conn);
+
                     command.ExecuteNonQuery();
+                    transaction.Commit();
                 }
                 catch (SQLiteException ex)
                 {
