@@ -14,7 +14,7 @@ namespace Sistema_de_Venda
     public partial class SelecionaUsuario : Form
     {
         private static readonly string User = "user";
-        public static SQLiteConnection Conn = new($"Data Source={Directory.GetCurrentDirectory()}; Version=3;") { };
+        public static SQLiteConnection Conn = new($"Data Source={Directory.GetCurrentDirectory()}/caixa.sqlite3; Version=3;") { };
         public string sqlString = string.Empty;
 
         Caixa caixa;
