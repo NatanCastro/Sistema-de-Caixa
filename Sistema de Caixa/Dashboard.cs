@@ -36,5 +36,11 @@
             Usuarios usuarios = new(false);
             usuarios.ShowDialog();
         }
+
+        private void listarVendasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vendas vendas = new();
+            vendas.ShowDialog();
+        }
     }
 }

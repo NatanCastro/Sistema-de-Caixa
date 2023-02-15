@@ -237,6 +237,12 @@ namespace Sistema_de_Venda
             cancelaVenda();
         }
 
+        private void btnProduto_Click(object sender, EventArgs e)
+        {
+            SelecionaProduto produto = new(this);
+            produto.ShowDialog();
+        }
+
         private void dgVenda_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgVenda.Rows[e.RowIndex].Cells[e.RowIndex] != dgVenda.Rows[e.RowIndex].Cells["Cancelar"]) return;
@@ -262,12 +268,6 @@ namespace Sistema_de_Venda
         {
             DateOnly date = DateOnly.FromDateTime(DateTime.Now);
             lblData.Text = date.ToString();
-        }
-
-        private void btnProduto_Click(object sender, EventArgs e)
-        {
-            SelecionaProduto produto = new(this);
-            produto.ShowDialog();
         }
     }
 }

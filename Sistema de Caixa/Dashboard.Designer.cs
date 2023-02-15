@@ -38,6 +38,8 @@
             this.cadastrareditarconsultarexcluirFornecedorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.endereçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listarVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +50,8 @@
             this.produtosToolStripMenuItem,
             this.clientesToolStripMenuItem,
             this.fornecedorToolStripMenuItem,
-            this.endereçoToolStripMenuItem});
+            this.endereçoToolStripMenuItem,
+            this.vendasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1370, 24);
@@ -123,6 +126,21 @@
             this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem.Text = "cadastrar/editar/consultar/excluir endereço";
             this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem.Click += new System.EventHandler(this.cadastrareditarconsultarexcluirEndereçoToolStripMenuItem_Click);
             // 
+            // vendasToolStripMenuItem
+            // 
+            this.vendasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.listarVendasToolStripMenuItem});
+            this.vendasToolStripMenuItem.Name = "vendasToolStripMenuItem";
+            this.vendasToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.vendasToolStripMenuItem.Text = "vendas";
+            // 
+            // listarVendasToolStripMenuItem
+            // 
+            this.listarVendasToolStripMenuItem.Name = "listarVendasToolStripMenuItem";
+            this.listarVendasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listarVendasToolStripMenuItem.Text = "listar vendas";
+            this.listarVendasToolStripMenuItem.Click += new System.EventHandler(this.listarVendasToolStripMenuItem_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 30F);
@@ -157,5 +175,7 @@
         private ToolStripMenuItem cadastrareditarconsultarexcluirFornecedorToolStripMenuItem;
         private ToolStripMenuItem endereçoToolStripMenuItem;
         private ToolStripMenuItem cadastrareditarconsultarexcluirEndereçoToolStripMenuItem;
+        private ToolStripMenuItem vendasToolStripMenuItem;
+        private ToolStripMenuItem listarVendasToolStripMenuItem;
     }
 }
