@@ -15,7 +15,6 @@ namespace Sistema_de_Venda
 {
     public partial class Caixa : Form
     {
-        private static readonly string User = "user";
         public static SQLiteConnection Conn = new($"Data Source={Directory.GetCurrentDirectory()}/caixa.sqlite3; Version=3;") { };
         public string sqlString = string.Empty;
 
@@ -37,6 +36,16 @@ namespace Sistema_de_Venda
         {
             venda.idUsuario = id;
             lblVendedor.Text = vendedor;
+        }
+
+        public void selecionaProduto(string? codigo)
+        {
+            if (string.IsNullOrEmpty(codigo))
+            {
+                MessageBox.Show("Não foi possivel retornar o codigo do produto selecionado");
+                return;
+            }
+            txtCodigoBarras.Text = codigo;
         }
 
         public void selecionaMetodoPagamento(string metodo)
@@ -253,6 +262,12 @@ namespace Sistema_de_Venda
         {
             DateOnly date = DateOnly.FromDateTime(DateTime.Now);
             lblData.Text = date.ToString();
+        }
+
+        private void btnProduto_Click(object sender, EventArgs e)
+        {
+            SelecionaProduto produto = new(this);
+            produto.ShowDialog();
         }
     }
 }

@@ -16,6 +16,9 @@
     <Compile Update="SelecionaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="SelecionaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SelecionaUsuario.cs">
       <SubType>Form</SubType>
     </Compile>

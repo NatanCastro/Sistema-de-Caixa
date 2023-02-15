@@ -38,6 +38,7 @@
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblData = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblCpfCnpj = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@
             this.Cancelar = new System.Windows.Forms.DataGridViewImageColumn();
             this.btnFinalizarVenda = new System.Windows.Forms.Button();
             this.btnCancelarVenda = new System.Windows.Forms.Button();
-            this.lblData = new System.Windows.Forms.Label();
+            this.btnProduto = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numQuantidade)).BeginInit();
             this.panel2.SuspendLayout();
@@ -171,6 +172,15 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(606, 587);
             this.panel2.TabIndex = 1;
+            // 
+            // lblData
+            // 
+            this.lblData.AutoSize = true;
+            this.lblData.Location = new System.Drawing.Point(446, 30);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(127, 30);
+            this.lblData.TabIndex = 8;
+            this.lblData.Text = "00/00/0000";
             // 
             // lblTotal
             // 
@@ -298,14 +308,17 @@
             this.btnCancelarVenda.UseVisualStyleBackColor = true;
             this.btnCancelarVenda.Click += new System.EventHandler(this.btnCancelarVenda_Click);
             // 
-            // lblData
+            // btnProduto
             // 
-            this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(446, 30);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(127, 30);
-            this.lblData.TabIndex = 8;
-            this.lblData.Text = "00/00/0000";
+            this.btnProduto.FlatAppearance.BorderSize = 0;
+            this.btnProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProduto.Location = new System.Drawing.Point(264, 637);
+            this.btnProduto.Name = "btnProduto";
+            this.btnProduto.Size = new System.Drawing.Size(120, 100);
+            this.btnProduto.TabIndex = 10;
+            this.btnProduto.Text = "Buscar produto";
+            this.btnProduto.UseVisualStyleBackColor = true;
+            this.btnProduto.Click += new System.EventHandler(this.btnProduto_Click);
             // 
             // Caixa
             // 
@@ -314,6 +327,7 @@
             this.BackgroundImage = global::Sistema_de_Venda.Properties.Resources.wallpaper;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.Controls.Add(this.btnProduto);
             this.Controls.Add(this.btnCancelarVenda);
             this.Controls.Add(this.btnFinalizarVenda);
             this.Controls.Add(this.dgVenda);
@@ -361,5 +375,6 @@
         private Label lblTotal;
         private Label label8;
         private Label lblData;
+        private Button btnProduto;
     }
 }
