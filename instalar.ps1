@@ -1,11 +1,9 @@
-winget install Microsoft.DotNet.SDK.7
-winget install SQLite.SQLite
-. $PROFILE
-$caminho = $env:userprofile + '\bin\sistema-de-caixa'
+#winget install Microsoft.DotNet.SDK.7
+#winget install SQLite.SQLite
+$caminho = $env:userprofile + '\bin\produto-curso'
 mkdir $caminho
 Copy-Item '.\Banco de dados\caixa.sql' $caminho
+dotnet.exe publish '.\Sistema de Caixa.sln' -o $caminho -v q -c release
 Set-Location -Path $caminho
-dotnet.exe publish '.\Sistema de Caixa.sln' -o $caminho
-New-Item -Path $caminho -Name caixa.sqlite3
 type caixa.sql | sqlite3 caixa.sqlite3
 
