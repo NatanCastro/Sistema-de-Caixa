@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsSavar = new System.Windows.Forms.ToolStripButton();
             this.tsEdit = new System.Windows.Forms.ToolStripButton();
@@ -278,12 +280,30 @@
             // dgCliente
             // 
             this.dgCliente.AllowUserToAddRows = false;
+            this.dgCliente.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.editar,
             this.apagar});
             this.dgCliente.Location = new System.Drawing.Point(18, 387);
             this.dgCliente.Name = "dgCliente";
+            this.dgCliente.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgCliente.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgCliente.RowTemplate.Height = 25;
             this.dgCliente.Size = new System.Drawing.Size(780, 237);
             this.dgCliente.TabIndex = 16;
@@ -296,6 +316,7 @@
             this.editar.Image = global::Sistema_de_Caixa.Properties.Resources.editIconSmall;
             this.editar.MinimumWidth = 6;
             this.editar.Name = "editar";
+            this.editar.ReadOnly = true;
             this.editar.Width = 24;
             // 
             // apagar
@@ -304,6 +325,7 @@
             this.apagar.Image = global::Sistema_de_Caixa.Properties.Resources.deleteIconSmall;
             this.apagar.MinimumWidth = 6;
             this.apagar.Name = "apagar";
+            this.apagar.ReadOnly = true;
             this.apagar.Width = 24;
             // 
             // txtPesquisar

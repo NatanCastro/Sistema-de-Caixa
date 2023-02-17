@@ -25,7 +25,8 @@ namespace Sistema_de_Caixa
         public void listarVendas(string pesquisa = "")
         {
             Conexao.sqlString = "SELECT DISTINCT v.id AS 'id', c.nome AS 'cliente', u.nome AS 'vendedor', mp.nome AS 'metodo de pagamento', " +
-            "v.valor_total AS 'valor total', v.desconto, v.valor_final AS 'valor final', v.data_venda AS 'data da venda' " +
+            "v.valor_total AS 'valor total', v.desconto, " +
+            "v.valor_final AS 'valor final', strftime('%d/%m/%Y', v.data_venda) AS 'data da venda' " +
             "FROM venda AS v " +
             "INNER JOIN cliente AS c ON v.id_cliente = c.id " +
             "INNER JOIN usuario AS u ON v.id_usuario = u.id " +

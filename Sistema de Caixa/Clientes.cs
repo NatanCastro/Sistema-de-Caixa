@@ -19,7 +19,7 @@ namespace Sistema_de_Caixa
         {
             Conexao.sqlString =
                 "SELECT c.id, c.nome, " +
-                "c.cpf_cnpj AS 'cpf/cnpj', c.data_nascimento, " +
+                "c.cpf_cnpj AS 'cpf/cnpj', strftime('%d/%m/%Y', c.data_nascimento) AS 'data de nascimento', " +
                 "e.rua || ', ' || e.numero AS 'endereco', ativo " +
                 "FROM cliente AS c " +
                 "LEFT JOIN endereco AS e " +
@@ -296,9 +296,7 @@ namespace Sistema_de_Caixa
                         .Cells["cpf/cnpj"].Value.ToString();
                 }
 
-                string[] dataNascArray = dgCliente.Rows[e.RowIndex]
-                    .Cells["data_nascimento"].Value.ToString().Split("-");
-                txtDataNasc.Text = $"{dataNascArray[2]}/{dataNascArray[1]}/{dataNascArray[0]}";
+                txtDataNasc.Text= dgCliente.Rows[e.RowIndex].Cells["data_nascimento"].Value.ToString();
             }
         }
 

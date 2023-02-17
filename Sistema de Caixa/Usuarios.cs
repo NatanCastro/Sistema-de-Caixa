@@ -19,7 +19,7 @@ namespace Sistema_de_Caixa
 
         private void listarUsuarios(string pesquisa = "")
         {
-            Conexao.sqlString = "SELECT id, nome FROM usuario ";
+            Conexao.sqlString = "SELECT id, nome, ativo FROM usuario ";
             string pesquisaSql = $"WHERE nome LIKE '%{pesquisa}%' ";
             if (!chInativos.Checked)
             {
